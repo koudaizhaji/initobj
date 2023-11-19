@@ -12,7 +12,9 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "api:dev": "pnpm --filter ./project/base-api-obj run dev",
-    "api:build": "pnpm --filter ./project/base-api-obj run build"
+    "api:build": "pnpm --filter ./project/base-api-obj run build",
+    "pc:dev": "pnpm --filter ./project/pc-vue3-ts run dev",
+    "pc:build": "pnpm --filter ./project/pc-vue3-ts run build-only"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
