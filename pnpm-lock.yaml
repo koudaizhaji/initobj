@@ -181,6 +181,12 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(webpack@5.89.0)
 
+  project/pc-vue-ts: {}
+
+  project/uniapp-mobile: {}
+
+  tools: {}
+
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
