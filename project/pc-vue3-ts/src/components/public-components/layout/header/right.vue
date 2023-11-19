@@ -34,7 +34,7 @@ const logout = () => {
     <el-dropdown class="m-r-8px">
       <div
         class="el-dropdown-link cursor-pointer flex flex-items-center focus-visible-outline-0px"
-        style="color: var(--el-color-primary);"
+        style="color: var(--el-color-primary)"
       >
         {{ username }}
         <el-icon class="el-icon--right">

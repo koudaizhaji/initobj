@@ -28,7 +28,7 @@ const editItem = (item: PublicSearchItemProps) => {
 </script>
 
 <template>
-  <div class="flex justify-left" style="grid-column: span 1;">
+  <div class="flex justify-left" style="grid-column: span 1">
     <ElTag
       v-for="item of showList[0]"
       :key="item.key"
