@@ -1,13 +1,12 @@
-import Login from './login.js'
-import Home from './home.js'
-import Find from './find.js'
-import My from './my.js'
-
+import Login from './login';
+import Home from './home';
+import Find from './find';
+import My from './my';
 
 const api = {
-	Login,
-	Home,
+  Login,
+  Home,
   Find,
-	My
-}
+  My,
+};
 export default api;
