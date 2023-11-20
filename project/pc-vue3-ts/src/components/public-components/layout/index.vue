@@ -54,7 +54,7 @@ const breadcrumbTo = (route?: string) => {
           >
         </ElBreadcrumb>
         <slot v-if="route.meta.isSpecially"></slot>
-        <ElCard v-else style="height: calc(100% - 32px);">
+        <ElCard v-else style="height: calc(100% - 32px)">
           <slot></slot>
         </ElCard>
       </ElMain>
