@@ -1,5 +1,5 @@
 {
-  "name": "openx-ui",
+  "name": "init-obj",
   "private": true,
   "scripts": {
     "clean:type": "rimraf ./dist",
