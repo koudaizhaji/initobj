@@ -10,7 +10,7 @@
         <el-input
           placeholder="请输入用户名"
           autoComplete="on"
-          style="position: relative;"
+          style="position: relative"
           v-model="account.username"
           @keyup.enter.native="submitForm(formRef)"
         >
@@ -42,7 +42,7 @@
         </el-input>
       </el-form-item>
 
-      <el-form-item style="width: 100%;">
+      <el-form-item style="width: 100%">
         <el-button :loading="loading" class="login-btn" type="primary" @click="submitForm(formRef)"
           >登录</el-button
         >
