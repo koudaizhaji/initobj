@@ -7,7 +7,7 @@ import My from './my.js'
 const api = {
 	Login,
 	Home,
-    Find,
+  Find,
 	My
 }
 export default api;
