@@ -86,7 +86,7 @@ onMounted(() => {
 
   .content {
     display: flex;
-    margin-left: 0px;
+    margin-left: 0;
     font-size: 26px;
     color: rgba(0, 0, 0, 0.85);
     flex: 1;

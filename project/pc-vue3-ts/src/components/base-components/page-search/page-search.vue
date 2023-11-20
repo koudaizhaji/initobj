@@ -51,7 +51,7 @@
 
 <script setup lang="ts" name="page-search">
 import type { ElForm } from 'element-plus'
-import { reactive, ref, defineEmits, defineProps } from 'vue'
+import { reactive, ref } from 'vue'
 import usePermissions from '@/hooks/usePermissions'
 // 自定义事件和接收的属性
 interface IProps {
