@@ -15,8 +15,8 @@
     "api:build": "pnpm --filter ./project/base-api-obj run build",
     "pc:dev": "pnpm --filter ./project/pc-vue3-ts run dev",
     "pc:build": "pnpm --filter ./project/pc-vue3-ts run build-only",
-    "uni:dev": "pnpm --filter ./project/uniapp-mobile run dev",
-    "uni:build": "pnpm --filter ./project/uniapp-mobile run build-only"
+    "h5:dev": "pnpm --filter ./project/uniapp-mobile run dev:h5",
+    "h5:build": "pnpm --filter ./project/uniapp-mobile run build:h5"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
