@@ -17,7 +17,7 @@ import Right from './right.vue'
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  height: 50px;
+  height: 40px;
   border: 0 solid rgba(217, 217, 217, 0.7);
   border-bottom-width: 1px;
   box-sizing: border-box;

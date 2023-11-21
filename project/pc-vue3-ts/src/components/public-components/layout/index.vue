@@ -35,12 +35,12 @@ const breadcrumbTo = (route?: string) => {
 
 <template>
   <ElContainer class="main-content">
-    <ElAside width="250px">
+    <ElAside width="200px">
       <TopMenu :data="props.menuList" @change="setTopMenuId" />
       <MainMenu :menuList="mainMenuLise || []" />
     </ElAside>
     <ElContainer>
-      <ElHeader height="50px">
+      <ElHeader height="40px">
         <Header />
       </ElHeader>
       <ElMain>

@@ -58,14 +58,14 @@ const logout = () => {
   <div
     class="h-full top-menu flex-col bg-#252F3C flex flex-justify-between text-center select-none"
   >
-    <div class="font-20rpx p-t-8px">
+    <div class="font-14px p-t-8px">
       <div
         v-for="(item, index) of props.data"
         :key="index"
         :class="`m-t-8px cursor-pointer p-t-8px p-b-8px hover-bg-#45505D ${getMenuItemClass(item)}`"
         @click="setActive(item, index)"
       >
-        <div :class="`text-center w-full font-size-24px h-26px`">
+        <div :class="`text-center w-full font-size-16px h-18px`">
           <component :is="getIcon(item.icon)" />
         </div>
         <div>{{ item.title }}</div>
