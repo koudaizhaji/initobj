@@ -1,50 +1,62 @@
 <script setup lang="ts">
-import { ElButton, ElDialog } from 'element-plus'
-import { reactive, ref } from 'vue'
-import { getMenuList } from '@/services/base/home'
-// import CreateOrEditButton from './CreateOrEditButton.vue'
+import { ElButton, ElMessage, ElMessageBox } from 'element-plus'
+import { ref } from 'vue'
+import { deleteMenu, getMenuList } from '@/services/base/home'
+import { menuList } from './hooks'
+import CreateOrEditButton from './CreateOrEditButton.vue'
 import moment from 'moment'
 
-const treeList = reactive({ data: [] })
 const loading = ref<boolean>(true)
-getMenuList()
-  .then(({ data }) => {
-    treeList.data = data
-  })
-  .finally(() => {
-    loading.value = false
-  })
+const getList = () =>
+  getMenuList()
+    .then(({ data }) => {
+      menuList.value = data
+    })
+    .finally(() => {
+      loading.value = false
+    })
+getList()
 
-const dialogInfo = reactive({
-  visible: false,
-  type: '',
-  data: {},
-  loading: false,
-  title: ''
-})
-const open = (type: string, title: string, data?: object) => {
-  dialogInfo.type = type
-  dialogInfo.title = title
-  dialogInfo.data = data || {}
-  dialogInfo.visible = true
-}
-const close = () => {
-  dialogInfo.type = ''
-  dialogInfo.visible = false
-  dialogInfo.title = ''
-  dialogInfo.loading = false
-  dialogInfo.data = {}
+const deleteMenuBtn = (id: number | string) => {
+  ElMessageBox.confirm('是否删除当前菜单', '删除', {
+    confirmButtonText: 'OK',
+    cancelButtonText: 'Cancel',
+    type: 'warning'
+  })
+    .then(() => {
+      const waiting = ElMessage.info({
+        message: '删除中...',
+        duration: 0
+      })
+      deleteMenu(id).then(({ code }) => {
+        waiting.close()
+        if (code === 0) {
+          ElMessage.success('删除成功')
+          getList()
+        } else {
+          ElMessage.error('删除失败')
+        }
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: 'Delete canceled',
+      })
+    })
 }
 </script>
 
 <template>
   <div class="m-l-16px w-full h-full flex flex-col flex-justify-left">
     <div class="">
-      <ElButton type="primary" @click="open('create', '创建')">创建新一级</ElButton>
+      <CreateOrEditButton @refresh="getList" :loading="loading" type="primary">
+        创建
+      </CreateOrEditButton>
     </div>
     <div class="m-t-8px h-full overflow-auto">
       <el-table
-        :data="treeList.data"
+        :data="menuList"
         style="width: 100%"
         row-key="id"
         border
@@ -59,22 +71,15 @@ const close = () => {
             moment(scope.row.createdAt).format('YYYY-MM-DD HH:mm:ss')
           }}</template>
         </el-table-column>
-        <el-table-column label="创建时间">
+        <el-table-column label="操作">
           <template v-slot:default="scope">
-            <ElButton @click="open('create', '创建', scope.row)" type="primary">创建子级</ElButton>
-            <ElButton @click="open('edit', '编辑', scope.row)">编辑</ElButton>
-            <el-button type="danger">删除</el-button>
+            <CreateOrEditButton isEdit @refresh="getList" :data="scope.row" link>
+              编辑
+            </CreateOrEditButton>
+            <el-button type="danger" @click="deleteMenuBtn(Number(scope.row.id))" link>删除</el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
   </div>
-  <ElDialog
-    v-if="dialogInfo.visible"
-    v-model="dialogInfo.visible"
-    :title="dialogInfo.title"
-    width="30%"
-    :before-close="close"
-  >
-  </ElDialog>
 </template>
