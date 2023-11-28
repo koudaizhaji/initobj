@@ -77,7 +77,7 @@ const keydown = (e) => {
             <ElButton type="default" size="small" :disabled="selectValue.size < 0" @click="submit"
               >确定</ElButton
             >
-            <ElButton style="margin-left: 4px;" type="" size="small" @click="cancel">取消</ElButton>
+            <ElButton style="margin-left: 4px" type="" size="small" @click="cancel">取消</ElButton>
           </div>
         </div>
       </template>

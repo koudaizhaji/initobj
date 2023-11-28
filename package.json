@@ -1,5 +1,5 @@
 {
-  "name": "openx-ui",
+  "name": "init-obj",
   "private": true,
   "scripts": {
     "clean:type": "rimraf ./dist",
@@ -16,7 +16,9 @@
     "pc:dev": "pnpm --filter ./project/pc-vue3-ts run dev",
     "pc:build": "pnpm --filter ./project/pc-vue3-ts run build-only",
     "h5:dev": "pnpm --filter ./project/uniapp-mobile run dev:h5",
-    "h5:build": "pnpm --filter ./project/uniapp-mobile run build:h5"
+    "h5:build": "pnpm --filter ./project/uniapp-mobile run build:h5",
+    "docs:dev": "pnpm --filter ./docs run dev",
+    "docs:build": "pnpm --filter ./docs run build"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
