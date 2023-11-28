@@ -17,6 +17,7 @@ import { computed, ref } from 'vue'
 
 const props = defineProps<{
   menuList: MenuProps
+  loading: boolean
 }>()
 const route = useRoute()
 // 因为element breadcrumb 无法跳转路由而设置的
@@ -34,7 +35,7 @@ const breadcrumbTo = (route?: string) => {
 </script>
 
 <template>
-  <ElContainer class="main-content">
+  <ElContainer class="main-content" v-if="!props.loading">
     <ElAside width="200px">
       <TopMenu :data="props.menuList" @change="setTopMenuId" />
       <MainMenu :menuList="mainMenuLise || []" />
