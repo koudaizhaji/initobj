@@ -79,9 +79,13 @@ const breadcrumbTo = (route?: string) => {
   background-color: #252f3c;
   .top-menu {
     width: 75px;
+    max-width: 75px;
+    overflow-x: hidden;
   }
   .main-menu {
     width: 175px;
+    max-width: 175px;
+    overflow-x: hidden;
   }
 }
 .el-header {
