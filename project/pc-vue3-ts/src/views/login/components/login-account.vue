@@ -59,6 +59,7 @@ import { ElMessage } from 'element-plus'
 // import { getTimeStateStr } from '@/utils/index'
 import useLoginStore from '@/stores/login/login'
 import { accountLogin } from '@/services/login/login'
+import router from "@/routers";
 
 // const router = useRouter()
 // const UserStore = useUserStore()
@@ -99,6 +100,8 @@ const submitForm = (formEl: FormInstance | undefined) => {
           if (data.code === 0) {
             // 后续操作交给pinia
             loginStore.setLoginInfo(data)
+            // 跳转到首页
+            router.push('/')
           } else if (data.code === 'S1000050') {
             ElMessage({
               type: 'error',
