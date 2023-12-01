@@ -7,14 +7,10 @@
  * @Description: 参考代码，从登录到登录成功后的所作操作
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
-// import router, { addRoutesWithMenu } from '@/routers'
-import router from '@/routers'
-import { getRoleMenus, getUserById } from '@/services/login/login'
+import { getUserById } from '@/services/login/login'
 import { localCache } from '@/utils/cache'
-// import { mapMenuToPersssions } from '@/utils/map-menu'
 import { defineStore } from 'pinia'
-import { LOGIN_TOKEN, USER_INFO, USER_MENUS } from '@/config'
-// import useMainStore from '../main/main'
+import { LOGIN_TOKEN, USER_INFO } from '@/config'
 
 interface ILoginState {
   token: string
@@ -47,17 +43,17 @@ const useLoginStore = defineStore('login', {
       //   return
       // }
       // // 3.获取用户菜单
-      const menusRes = await getRoleMenus()
-      this.userMenus = menusRes.data
-      console.log('拿到的用户菜单', this.userMenus)
-      // // 判断下如果信息不对，提示登录失败
-      // if (!menusRes) {
-      //   return
-      // }
-      // // 4.保存到缓存中
-      // localCache.set('token', token)
-      // localCache.set('userInfo', userRes)
-      localCache.setCache(USER_MENUS, this.userMenus)
+      // const menusRes = await getRoleMenus()
+      // this.userMenus = menusRes.data
+      // console.log('拿到的用户菜单', this.userMenus)
+      // // // 判断下如果信息不对，提示登录失败
+      // // if (!menusRes) {
+      // //   return
+      // // }
+      // // // 4.保存到缓存中
+      // // localCache.set('token', token)
+      // // localCache.set('userInfo', userRes)
+      // localCache.setCache(USER_MENUS, this.userMenus)
       // // 5.保存到vuex中
       // // 2.保存在cache中
       // localCache.setCache('token', token)
@@ -84,9 +80,6 @@ const useLoginStore = defineStore('login', {
 
       // // 5.动态添加路由
       // addRoutesWithMenu(this.userMenus)
-
-      // 跳转到首页
-      router.push('/')
     },
     loadLocalDataAction() {
       this.token = localCache.getCache('token')
