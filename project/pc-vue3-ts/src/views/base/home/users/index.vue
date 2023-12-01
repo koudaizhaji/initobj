@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ElInput } from 'element-plus'
-import { getUserList } from '@/services/base/home'
-import { ref } from 'vue'
+import { ElInput, ElMessage, ElMessageBox } from 'element-plus'
+import { getUserList, deleteUser } from '@/services/base/home'
+import { ref, watch } from 'vue'
+import CreateOrEditButton from './CreateOrEditButton.vue'
 import moment from 'moment'
 
 // 添加 编辑 删除 分页 --- 未完成
@@ -9,6 +10,7 @@ const searchID = ref<string>('')
 const searchName = ref<string>('')
 const selectStatus = ref<string>('')
 const tableData = ref<any[]>([])
+const currentPage = ref<number>(1)
 
 const getUserInfo = (pageNum:number, pageSize:number, name?:String) => {
   getUserList({
@@ -17,27 +19,51 @@ const getUserInfo = (pageNum:number, pageSize:number, name?:String) => {
     name
   }).then(({ data }) => {
     console.log(data)
-    tableData.value = data.list
+    tableData.value = data
   })
 }
-getUserInfo(1, 10)
+getUserInfo(1, 5)
 // 按钮点击事件
 const handleButton = (type: string) => {
  if (type === 'query') {
   console.log('查询')
-  getUserInfo(1, 10, searchName.value)
+  getUserInfo(1, 5, searchName.value)
   
  } else if (type === 'reset') {
   console.log('重置')
   searchID.value = ''
   searchName.value = ''
   selectStatus.value = ''
-  getUserInfo(1, 10)
+  getUserInfo(1, 5)
  }
 }
-const addAdmin = () => {
-  console.log('添加管理员')
+const onDel = (id:string|number) => {
+  ElMessageBox.confirm('是否删除当前菜单', '删除', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    const waiting = ElMessage.info({
+      message: '删除中...',
+      duration: 0
+    })
+    deleteUser(id).then(({ code }) => {
+      waiting.close()
+      if (code === 0) {
+        ElMessage.success('删除成功')
+        getUserInfo(1, 5)
+      } else {
+        ElMessage.error('删除失败')
+      }
+    })
+  })
 }
+watch(currentPage, (newVal, oldVal) => {
+  console.log(`当前页码从 ${oldVal} 变为 ${newVal}`);
+
+  getUserInfo(newVal, 5)
+  // 在这里处理页码改变后的逻辑
+})
 
 </script>
 
@@ -53,17 +79,21 @@ const addAdmin = () => {
       </ElSelect>
     </div>
     <div class="button-box">
-      <ElButton type="primary" @click="()=> handleButton('query')">查询</ElButton>
-      <ElButton type="primary" @click="()=> handleButton('reset')">重置</ElButton>
+      <ElButton type="primary" @click="handleButton('query')">查询</ElButton>
+      <ElButton type="primary" @click="handleButton('reset')">重置</ElButton>
     </div>
   </div>
   <!-- 操作按钮 -->
   <div>
-    <ElButton type="primary" round @click="addAdmin">添加管理员</ElButton>
+    <CreateOrEditButton @refresh="getUserInfo(1, 5)" type="primary" round>添加管理员</CreateOrEditButton>
   </div>
   <!-- 表格 -->
   <div class="table-box">
-    <ElTable border :data="tableData">
+    <ElTable
+      border
+      :data="tableData.list"
+      style="width: 100%"
+    >
       <ElTableColumn prop="id" label="ID" />
       <ElTableColumn prop="username" label="用户名" />
       <ElTableColumn prop="status" label="状态">
@@ -85,13 +115,19 @@ const addAdmin = () => {
         </ElTableColumn>
         <ElTableColumn label="操作">
           <template v-slot:default="scope">
-            <ElButton link>
+            <CreateOrEditButton isEdit link @refresh="getUserInfo(1, 5)" :data="scope.row">
               编辑
-            </ElButton>
-            <ElButton type="danger" link>删除</ElButton>
+            </CreateOrEditButton>
+            <ElButton type="danger" link @click="onDel(scope.row.id)">删除</ElButton>
           </template>
         </ElTableColumn>
     </ElTable>
+    <ElPagination
+      layout="prev, pager, next"
+      :total="tableData.total"
+      :default-page-size="5"
+      v-model:current-page="currentPage"
+    />
   </div>
 </template>
 <style scoped lang="less">
