@@ -13,7 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.1.0",
+    "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.5.1",
     "dayjs": "^1.11.10",
     "echarts": "^5.4.3",
@@ -39,6 +39,7 @@
     "@unocss/preset-uno": "^0.56.5",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vue/compiler-sfc": "^3.3.9",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/test-utils": "^2.4.1",
@@ -52,8 +53,8 @@
     "prettier": "^3.0.3",
     "typescript": "~5.2.0",
     "unocss": "^0.56.5",
-    "unplugin-auto-import": "^0.16.6",
-    "unplugin-icons": "^0.17.3",
+    "unplugin-auto-import": "^0.16.7",
+    "unplugin-icons": "^0.17.4",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.9",
     "vite-plugin-svg-icons": "^2.0.1",

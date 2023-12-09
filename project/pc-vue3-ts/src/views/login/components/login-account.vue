@@ -100,8 +100,8 @@ const submitForm = (formEl: FormInstance | undefined) => {
           if (data.code === 0) {
             // 后续操作交给pinia
             loginStore.setLoginInfo(data)
-            // 跳转到首页
-            router.push('/')
+            // // 跳转到首页
+            // router.push('/')
           } else if (data.code === 'S1000050') {
             ElMessage({
               type: 'error',

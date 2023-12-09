@@ -11,7 +11,7 @@ export function accountLogin(account: any) {
 
 export function getUserById() {
   return liliRequest.get({
-    url: '/pcadmin/user/info'
+    url: '/pcadmin/users/info'
     // headers: {
     //   Authorization: localCache.getCache(LOGIN_TOKEN)
     // }

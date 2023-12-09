@@ -2,7 +2,7 @@
 import { ElCard } from 'element-plus'
 import PublicTable, {
   type PublicTableProps
-} from '@/components/public-components/public-table/index.ts'
+} from '@/components/public/public-table/index.ts'
 
 const publicTableProps: PublicTableProps = {
   hiddenPagination: true,
