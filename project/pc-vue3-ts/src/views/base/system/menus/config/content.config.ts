@@ -1,3 +1,12 @@
+/*
+ * @Author: 李立
+ * @Date: 2023-12-09 12:16:04
+ * @LastEditors: 李立
+ * @LastEditTime: 2023-12-09 14:11:04
+ * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\views\base\system\menus\config\content.config.ts
+ * @Description:
+ * 相关开发文件头自动添加：联系微信huaiplayboy
+ */
 /** @description: 用户管理-表格配置
  * 一个配置文件，控制整个表格的相对固定的信息
  */
@@ -12,10 +21,16 @@ const contentConfig: pageContentTable = {
   },
   // isDisabled: false,
   propsList: [
+
     {
       prop: "title",
       label: "菜单名称",
       minWidth: "150"
+    },
+    {
+      prop: 'id',
+      label: '菜单编号',
+      minWidth:80
     },
     { prop: "type", label: "级别", minWidth: "60" },
     {

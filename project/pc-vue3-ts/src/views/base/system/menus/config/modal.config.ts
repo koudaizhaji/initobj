@@ -1,3 +1,12 @@
+/*
+ * @Author: 李立
+ * @Date: 2023-12-09 12:16:04
+ * @LastEditors: 李立
+ * @LastEditTime: 2023-12-09 14:08:21
+ * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\views\base\system\menus\config\modal.config.ts
+ * @Description:
+ * 相关开发文件头自动添加：联系微信huaiplayboy
+ */
 import type { PageModalConfigType } from "@/global/types/pageModal.type"
 
 const modalConfig: PageModalConfigType = {
@@ -33,6 +42,11 @@ const modalConfig: PageModalConfigType = {
           id:2,
           name: "二级菜单",
           value: 2
+        },
+        {
+          id:3,
+          name: "三级页面",
+          value: 3
         },
         {
           id:4,

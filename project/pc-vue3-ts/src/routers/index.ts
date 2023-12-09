@@ -39,6 +39,21 @@ const router = createRouter({
       component: () => import('@/views/weixin/weixin.vue')
     },
     {
+      path: '/screen',
+      name: 'screen',
+      component: () => import('@/views/screen/screen.vue')
+    },
+    {
+      path: '/study',
+      name: 'study',
+      component: () => import('@/views/study/study.vue')
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: () => import('@/views/chat/chat.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: () => import('../views/public/err-page/404-view.vue')
