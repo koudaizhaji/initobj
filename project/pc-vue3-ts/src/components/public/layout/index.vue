@@ -65,7 +65,6 @@ const mainMenuLise = computed(() => {
 </script>
 
 
-
 <style scoped lang="less">
 .main-content {
   height: 100%;
