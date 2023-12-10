@@ -11,63 +11,63 @@
  * 所有的配置，都在一个文件当中，以后使用表单时就可以通过各种配置文件来直接完成项目
  */
 
-import type { LILIFormConfig } from "@/global/types/pageSearch.type"
+import type { LILIFormConfig } from '@/global/types/pageSearch.type'
 
 const searchConfig: LILIFormConfig = {
-  pageName: "users",
-  labelWidth: "120px",
-  itemStyle: "padding: 10px 40px",
+  pageName: 'users',
+  labelWidth: '120px',
+  itemStyle: 'padding: 10px 40px',
   // colLayout: { span: 8 },
   // 下列数据要保持跟接口一致
   formItems: [
     {
-      prop: "id",
-      type: "input",
-      label: "id",
+      prop: 'id',
+      type: 'input',
+      label: 'id',
       rules: [],
-      placeholder: "请输入id",
+      placeholder: '请输入id',
       initialValue: '' // 默认值，初始化的值
     },
     {
-      prop: "username",
-      type: "input",
-      label: "用户名",
+      prop: 'username',
+      type: 'input',
+      label: '用户名',
       rules: [],
-      placeholder: "请输入用户名"
+      placeholder: '请输入用户名'
     },
     {
-      prop: "phone",
-      type: "input",
-      label: "手机号",
+      prop: 'phone',
+      type: 'input',
+      label: '手机号',
       rules: [],
-      placeholder: "请输入绑定的手机号"
+      placeholder: '请输入绑定的手机号'
     },
 
     {
-      prop: "status",
-      type: "select",
-      label: "用户状态",
-      placeholder: "请选择状态",
+      prop: 'status',
+      type: 'select',
+      label: '用户状态',
+      placeholder: '请选择状态',
       options: [
         {
           value: 1,
-          label: "已启用"
+          label: '已启用'
         },
         {
           value: 2,
-          label: "已禁用"
+          label: '已禁用'
         }
       ]
     },
     {
-      prop: "createdAt",
-      type: "date-picker",
-      label: "创建时间",
+      prop: 'createdAt',
+      type: 'date-picker',
+      label: '创建时间',
       // placeholder: "请选择创建时间"
       otherOptions: {
-        startPlaceholder: "开始时间",
-        endPlaceholder: "结束时间",
-        type: "daterange"
+        startPlaceholder: '开始时间',
+        endPlaceholder: '结束时间',
+        type: 'daterange'
       }
     }
   ]

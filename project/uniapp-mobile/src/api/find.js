@@ -1,8 +1,6 @@
-import { get, post } from '@/request/request.js'
-
+import { get, post } from '@/request/request.js';
 
 const Find = {
-	
-	
-}
-export default Find
+
+};
+export default Find;

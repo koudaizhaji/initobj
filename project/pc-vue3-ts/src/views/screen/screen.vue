@@ -1,7 +1,6 @@
-
 <template>
   <Layout :menuList="menus">
-  <RouterView />
+    <RouterView />
   </Layout>
 </template>
 

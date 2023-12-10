@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="header-right h-full line-height-100% flex justify-end flex-items-center">
     <el-button class="m-r-4px" link><i class="ri-settings-2-line font-size-20px" /></el-button>
@@ -55,9 +53,9 @@ const logout = () => {
       ElMessage.error('登出失败')
     })
 }
-const clearLocal =async () => {
+const clearLocal = async () => {
   // 清除用户菜单，重新获取
-  localCache.removeCache( USER_MENUS )
+  localCache.removeCache(USER_MENUS)
   await loginStore.getUserMenus()
   ElMessage.success('清除缓存成功')
   setTimeout(() => {

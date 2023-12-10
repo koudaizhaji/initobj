@@ -1,8 +1,11 @@
 <template>
   <div class="modal">
-    <el-dialog v-model="dialogVisible"
-    :title="isEdit ? modalConfig.editTitle : modalConfig.title"
-    width="30%" center>
+    <el-dialog
+      v-model="dialogVisible"
+      :title="isEdit ? modalConfig.editTitle : modalConfig.title"
+      width="30%"
+      center
+    >
       <div class="form">
         <el-form :model="formData" label-width="80px" size="large">
           <template v-for="item in modalConfig.formItems" :key="item.prop">
@@ -63,7 +66,7 @@ interface IProps {
   modalConfig: {
     pageName: string
     title: string
-    editTitle:string
+    editTitle: string
     formItems: any[]
   }
   otherInfo?: any

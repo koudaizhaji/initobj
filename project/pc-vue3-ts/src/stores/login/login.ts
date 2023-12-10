@@ -7,15 +7,14 @@
  * @Description: 参考代码，从登录到登录成功后的所作操作
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
-import { getUserById,getRoleMenus } from '@/services/login/login'
+import { getUserById, getRoleMenus } from '@/services/login/login'
 import { localCache } from '@/utils/cache'
 import { defineStore } from 'pinia'
-import { LOGIN_TOKEN, USER_INFO,USER_MENUS,PERMISSIONS } from '@/config'
-import {mapMenusToRoutes,mapMenuToPermissions} from "@/utils/map-menus"
-import router,{addRoutesWithMenu} from "@/routers"
-import { urlMatch } from "@/utils/format"
-import useMainStore from "@/stores/base/main"
-
+import { LOGIN_TOKEN, USER_INFO, USER_MENUS, PERMISSIONS } from '@/config'
+import { mapMenusToRoutes, mapMenuToPermissions } from '@/utils/map-menus'
+import router, { addRoutesWithMenu } from '@/routers'
+import { urlMatch } from '@/utils/format'
+import useMainStore from '@/stores/base/main'
 
 interface ILoginState {
   token: string
@@ -55,8 +54,8 @@ const useLoginStore = defineStore('login', {
         // 获取根路径名称base,weixin
         const rootPath = urlMatch(route.path)
         // 动态添加路由
-        if(rootPath){
-          router.addRoute(rootPath,route)
+        if (rootPath) {
+          router.addRoute(rootPath, route)
         }
       })
 
@@ -83,7 +82,7 @@ const useLoginStore = defineStore('login', {
       const userMenus = localCache.getCache(USER_MENUS)
       const permissions = localCache.getCache('permissions')
 
-      if(token&&userInfo&&userMenus){
+      if (token && userInfo && userMenus) {
         this.token = token
         this.userInfo = userInfo
         this.userMenus = userMenus
@@ -93,7 +92,7 @@ const useLoginStore = defineStore('login', {
         const mainStore = useMainStore()
         mainStore.fetchEntireDataAction()
 
-        console.log('this.userMenus',this.userMenus)
+        console.log('this.userMenus', this.userMenus)
         const routes = mapMenusToRoutes(this.userMenus)
         // console.log('routes', routes)
         routes.forEach((route: any) => {
@@ -102,11 +101,10 @@ const useLoginStore = defineStore('login', {
           // 获取根路径名称base,weixin
           const rootPath = urlMatch(route.path)
           // 动态添加路由
-          if (rootPath){
-            router.addRoute(rootPath,route)
+          if (rootPath) {
+            router.addRoute(rootPath, route)
           }
         })
-
       }
     },
     async getUserMenus(): Promise<any> {

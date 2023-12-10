@@ -1,8 +1,5 @@
-
 <template>
-  <div class="sidebars">
-    测试内容
-  </div>
+  <div class="sidebars">测试内容</div>
 </template>
 
 <script setup lang="ts" name="page-search">
@@ -32,7 +29,7 @@ function handleResetClick() {
   emit('resetClick')
 }
 function handleQueryClick() {
-  console.log('拿到的搜索信息',searchForm)
+  console.log('拿到的搜索信息', searchForm)
   emit('queryClick', searchForm)
 }
 </script>

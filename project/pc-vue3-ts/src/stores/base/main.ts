@@ -7,7 +7,7 @@
  * @Description:
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
-import { getGroupData, getMenuData, getRoleData } from '@/services/main/system/system';
+import { getGroupData, getMenuData, getRoleData } from '@/services/main/system/system'
 import { defineStore } from 'pinia'
 
 interface IMainState {

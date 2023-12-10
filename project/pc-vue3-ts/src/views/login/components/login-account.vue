@@ -59,7 +59,7 @@ import { ElMessage } from 'element-plus'
 // import { getTimeStateStr } from '@/utils/index'
 import useLoginStore from '@/stores/login/login'
 import { accountLogin } from '@/services/login/login'
-import router from "@/routers";
+import router from '@/routers'
 
 // const router = useRouter()
 // const UserStore = useUserStore()

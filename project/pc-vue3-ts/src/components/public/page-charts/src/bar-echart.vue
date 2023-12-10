@@ -1,4 +1,3 @@
-
 <template>
   <div class="bar-echart">
     <base-echart :options="options"></base-echart>

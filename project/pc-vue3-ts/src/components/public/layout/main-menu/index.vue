@@ -1,13 +1,17 @@
 <template>
   <div class="main-menu">
-      <div class="logo">
-        <h2 class="text-18px text-center">后台管理系统</h2>
-      </div>
-      <el-menu :defaultActive="routePath" class="main-menu-content" @open="handleOpen" @close="handleClose"
-        :router="true">
-        <MenuItem v-for="(item, index) of props.menuList || []" :key="index" :item="item" />
-      </el-menu>
-
+    <div class="logo">
+      <h2 class="text-18px text-center">后台管理系统</h2>
+    </div>
+    <el-menu
+      :defaultActive="routePath"
+      class="main-menu-content"
+      @open="handleOpen"
+      @close="handleClose"
+      :router="true"
+    >
+      <MenuItem v-for="(item, index) of props.menuList || []" :key="index" :item="item" />
+    </el-menu>
   </div>
 </template>
 
@@ -31,8 +35,6 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 </script>
 
-
-
 <style lang="less" scoped>
 .main-menu {
   background-color: rgba(255, 255, 255, 1);
@@ -44,7 +46,7 @@ const handleClose = (key: string, keyPath: string[]) => {
   box-sizing: border-box;
   height: 100%;
   user-select: none;
-  .logo{
+  .logo {
     // background-color: green;
     margin-bottom: 20px;
   }

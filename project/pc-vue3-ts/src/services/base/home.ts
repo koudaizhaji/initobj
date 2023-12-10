@@ -22,7 +22,7 @@ export const deleteMenu = (id: string | number) =>
     url: '/pcadmin/menus/' + id
   })
 
-  // 获取管理员用户列表
+// 获取管理员用户列表
 export const getUserList = <T>(data: T) =>
   liliRequest.get({
     url: 'pcadmin/users/list',

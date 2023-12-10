@@ -11,8 +11,8 @@
 <script lang="ts" setup>
 /** 面包屑组件封装
  */
-import { defineProps, PropType } from "vue"
-import { LILIBreadcrumbItem } from "./types"
+import { defineProps, PropType } from 'vue'
+import { LILIBreadcrumbItem } from './types'
 
 defineProps({
   breadcrumbs: {

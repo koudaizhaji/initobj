@@ -7,11 +7,20 @@
 
     <div class="main-content">
       <!-- Top Search Bar -->
-      <pageSearch :search-config="searchConfig" @query-click="handleQueryClick" @reset-click="handleResetClick" />
+      <pageSearch
+        :search-config="searchConfig"
+        @query-click="handleQueryClick"
+        @reset-click="handleResetClick"
+      />
 
       <!-- Table and Content -->
       <div class="group">
-        <pageContent :contentConfig="contentConfig" @new-click="handleNewDataClick" @edit-click="handleEditDataClick" ref="contentRef">
+        <pageContent
+          :contentConfig="contentConfig"
+          @new-click="handleNewDataClick"
+          @edit-click="handleEditDataClick"
+          ref="contentRef"
+        >
           <!-- Custom Slot for Status -->
           <template #status="scope">
             <el-tag :type="scope.row[scope.prop] == 1 ? 'primary' : 'danger'">
@@ -26,14 +35,14 @@
 </template>
 
 <script lang="ts" setup name="group">
-import pageSearch from "@/components/public/page-search/page-search.vue";
-import searchConfig from "./config/search.config";
-import pageContent from "@/components/public/page-content/page-content.vue";
-import contentConfig from "./config/content.config";
-import pageModal from "@/components/public/page-modal/page-modal.vue";
-import modalConfig from "./config/modal.config";
-import usePageContent from "@/hooks/usePageContent";
-import usePageModal from "@/hooks/usePageModal";
+import pageSearch from '@/components/public/page-search/page-search.vue'
+import searchConfig from './config/search.config'
+import pageContent from '@/components/public/page-content/page-content.vue'
+import contentConfig from './config/content.config'
+import pageModal from '@/components/public/page-modal/page-modal.vue'
+import modalConfig from './config/modal.config'
+import usePageContent from '@/hooks/usePageContent'
+import usePageModal from '@/hooks/usePageModal'
 
 // 弹窗所需操作
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()

@@ -1,4 +1,3 @@
-
 <template>
   <div class="count-card">
     <div class="header">
@@ -20,17 +19,17 @@
 </template>
 
 <script setup lang="ts">
-import { CountUp } from "countup.js";
-import { ref,onMounted } from 'vue'
+import { CountUp } from 'countup.js'
+import { ref, onMounted } from 'vue'
 
 interface IProps {
-  amount?:string;
-  title?:string;
-  tips?:string;
-  count?:number;
-  number?:number;
-  countUnit?:string;
-  subtitle?:string
+  amount?: string
+  title?: string
+  tips?: string
+  count?: number
+  number?: number
+  countUnit?: string
+  subtitle?: string
 }
 // 保留接口的属性类型约束，并使用默认值，使用如下写法
 const props = withDefaults(defineProps<IProps>(), {
@@ -43,23 +42,21 @@ const props = withDefaults(defineProps<IProps>(), {
 })
 
 // 创建动画实例对象
-const countRef = ref<HTMLElement>();
-const numberRef = ref<HTMLElement>();
+const countRef = ref<HTMLElement>()
+const numberRef = ref<HTMLElement>()
 // 只要用到dom操作都可以写这里
 // countup可选属性参数
 const countOption = {
-  prefix: props.amount ==='saleroom' ? '￥' : '',
-  startVal:1000
+  prefix: props.amount === 'saleroom' ? '￥' : '',
+  startVal: 1000
 }
-onMounted( ()=>{
-      // 参数1：执行动画的元素，参数2数字增加的值：10000
-      const countup1 = new CountUp(countRef.value, props.count, countOption)
-      const countup2 = new CountUp(numberRef.value, props.number, countOption)
-      countup1.start()
-      countup2.start()
-  }
-)
-
+onMounted(() => {
+  // 参数1：执行动画的元素，参数2数字增加的值：10000
+  const countup1 = new CountUp(countRef.value, props.count, countOption)
+  const countup2 = new CountUp(numberRef.value, props.number, countOption)
+  countup1.start()
+  countup2.start()
+})
 </script>
 
 <style lang="less" scoped>
@@ -68,10 +65,10 @@ onMounted( ()=>{
   flex-direction: column;
   padding: 0 20px;
   height: 130px;
-  background:#fff;
+  background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-  .header{
+  .header {
     display: flex;
     height: 38px;
     font-size: 14px;

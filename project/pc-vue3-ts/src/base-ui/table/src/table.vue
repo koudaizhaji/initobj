@@ -16,8 +16,19 @@
       @selection-change="handleSelectionChange"
       v-bind="childrenProps"
     >
-      <el-table-column v-if="showSelectColumn" type="selection" align="center" width="60"></el-table-column>
-      <el-table-column v-if="showIndexColumn" type="index" align="center" label="序号" width="60"></el-table-column>
+      <el-table-column
+        v-if="showSelectColumn"
+        type="selection"
+        align="center"
+        width="60"
+      ></el-table-column>
+      <el-table-column
+        v-if="showIndexColumn"
+        type="index"
+        align="center"
+        label="序号"
+        width="60"
+      ></el-table-column>
 
       <template v-for="propItem in propList" :key="propItem.id">
         <el-table-column v-bind="propItem" align="center" show-overflow-tooltip>
@@ -46,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from "vue"
+import { defineProps, defineEmits } from 'vue'
 const props = defineProps({
   title: {
     type: String,
@@ -93,25 +104,25 @@ const props = defineProps({
 })
 
 // 发送出去的事件
-const emit = defineEmits(["selection-change", "update:page"])
+const emit = defineEmits(['selection-change', 'update:page'])
 
 const handleSelectionChange = (val: any) => {
   console.log(val)
-  emit("selection-change", val)
+  emit('selection-change', val)
 }
 
 // 当前页改变时触发
 const handleCurrentChange = (currentPage: number) => {
-  console.log("当前页改变时触发", currentPage)
-  emit("update:page", {
+  console.log('当前页改变时触发', currentPage)
+  emit('update:page', {
     ...props.page,
     currentPage
   })
 }
 // 每页条数改变时触发
 const handleSizeChange = (pageSize: number) => {
-  console.log("每页条数改变时触发", pageSize)
-  emit("update:page", {
+  console.log('每页条数改变时触发', pageSize)
+  emit('update:page', {
     ...props.page,
     pageSize
   })

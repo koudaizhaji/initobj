@@ -1,5 +1,5 @@
-import LILIBreadcrumb from "./src/breadcrumb.vue"
+import LILIBreadcrumb from './src/breadcrumb.vue'
 
-export * from "./src/types"
+export * from './src/types'
 
 export default LILIBreadcrumb

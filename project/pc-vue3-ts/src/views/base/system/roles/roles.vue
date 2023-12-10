@@ -1,6 +1,10 @@
 <template>
   <div class="role">
-    <pageSearch :search-config="searchConfig" @query-click="handleQueryClick" @reset-click="handleResetClick" />
+    <pageSearch
+      :search-config="searchConfig"
+      @query-click="handleQueryClick"
+      @reset-click="handleResetClick"
+    />
     <pageContent
       :content-config="contentConfig"
       ref="contentRef"
@@ -27,22 +31,22 @@
 </template>
 
 <script lang="ts" setup name="role">
-import pageSearch from "@/components/public/page-search/page-search.vue"
-import searchConfig from "./config/search.config"
+import pageSearch from '@/components/public/page-search/page-search.vue'
+import searchConfig from './config/search.config'
 
-import pageContent from "@/components/public/page-content/page-content.vue"
-import contentConfig from "./config/content.config"
+import pageContent from '@/components/public/page-content/page-content.vue'
+import contentConfig from './config/content.config'
 
-import pageModal from "@/components/public/page-modal/page-modal.vue"
-import modalConfig from "./config/modal.config"
+import pageModal from '@/components/public/page-modal/page-modal.vue'
+import modalConfig from './config/modal.config'
 
-import usePageContent from "@/hooks/usePageContent"
-import usePageModal from "@/hooks/usePageModal"
+import usePageContent from '@/hooks/usePageContent'
+import usePageModal from '@/hooks/usePageModal'
 
-import { mapMenuListToIds } from "@/utils/map-menus"
+import { mapMenuListToIds } from '@/utils/map-menus'
 
-import {  ref, nextTick } from "vue"
-import { ElTree } from "element-plus"
+import { ref, nextTick } from 'vue'
+import { ElTree } from 'element-plus'
 import useMainStore from '@/stores/base/main'
 import { storeToRefs } from 'pinia'
 
@@ -95,7 +99,10 @@ const { entireMenus } = storeToRefs(mainStore)
 
 // 弹窗所需操作
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
-const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal(newCallback,editCanllback)
+const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal(
+  newCallback,
+  editCanllback
+)
 
 const otherInfo = ref({})
 // 树形组件
@@ -103,7 +110,7 @@ const treeRef = ref<InstanceType<typeof ElTree>>()
 
 // 树形选择操作
 const handleElTreeCheck = (data1: any, data2: any) => {
-  console.log("handleElTreeCheck", data1, data2)
+  console.log('handleElTreeCheck', data1, data2)
   // 拿到选中的id
   const muluList = [...data2.checkedKeys, ...data2.halfCheckedKeys]
   // console.log("这里就是拿到的菜单id数组", muluList)
@@ -119,18 +126,17 @@ function editCanllback(itemData: any) {
     // 这里拿到的是对应用户的全部菜单，然后转为ids数组，取决于接口返回的信息
     const menuIds = mapMenuListToIds(itemData.menuList)
     // treeRef.value?.setCheckedKeys([1, 2, 3, 4])
-    console.log("拿到的菜单id数组111", menuIds)
+    console.log('拿到的菜单id数组111', menuIds)
     treeRef.value?.setCheckedKeys(menuIds)
     // treeRef.value?.setCheckedKeys(itemData.menuList)
   })
 }
 // 新建的操作
-function newCallback(itemData:any){
-  nextTick(()=>{
+function newCallback(itemData: any) {
+  nextTick(() => {
     treeRef.value?.setCheckedKeys([])
   })
 }
-
 </script>
 
 <style scoped></style>

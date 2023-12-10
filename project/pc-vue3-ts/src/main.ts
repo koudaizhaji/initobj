@@ -7,7 +7,6 @@ import App from './App.vue' // 引入应用程序根组件
 // 导入所有elementplus图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-
 const app = createApp(App)
 // 导入所有elementplus图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

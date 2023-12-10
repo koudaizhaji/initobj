@@ -13,7 +13,7 @@ import { localCache } from '@/utils/cache'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import { firstMenu, mapMenusToRoutes } from '@/utils/map-menus'
-import { urlMatch } from "@/utils/format"
+import { urlMatch } from '@/utils/format'
 
 // 路由
 const router = createRouter({
@@ -84,35 +84,33 @@ export function addRoutesWithMenu(menus: any) {
     const rootPath = urlMatch(route.path)
     router.addRoute('base', route)
   }
-  console.log("此时的router",router)
+  console.log('此时的router', router)
 }
 
 router.beforeEach((to, from, next) => {
-  const token = localCache.getCache(LOGIN_TOKEN);
+  const token = localCache.getCache(LOGIN_TOKEN)
 
   // console.log('to.path:', to.path);
 
-  if (to.path !== '/login'&& !token) {
-    console.log('Not on login page');
-      // 仅当未登录时才重定向到登录页
-    return next('/login');
+  if (to.path !== '/login' && !token) {
+    console.log('Not on login page')
+    // 仅当未登录时才重定向到登录页
+    return next('/login')
   }
   // console.log('1111111',to.path,firstMenu,Object.keys(firstMenu).includes(to.path))
-  if(Object.keys(firstMenu).includes(to.path)){
+  if (Object.keys(firstMenu).includes(to.path)) {
     return next(firstMenu[to.path])
   }
   // if(to.path =='/base'){
-    // if(token && to.path == urlMatch(firstMenu?.path,true)){
-      // console.log('Redirecting to:', firstMenu?.path);
-      // 异步获取菜单信息
-      // return next(firstMenu?.path);
-    // }
+  // if(token && to.path == urlMatch(firstMenu?.path,true)){
+  // console.log('Redirecting to:', firstMenu?.path);
+  // 异步获取菜单信息
+  // return next(firstMenu?.path);
+  // }
 
   // 如果已经在登录页，正常导航
-  console.log('Already on login page, proceeding with navigation');
-  return next();
-});
-
-
+  console.log('Already on login page, proceeding with navigation')
+  return next()
+})
 
 export default router

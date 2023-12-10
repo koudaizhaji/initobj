@@ -2,8 +2,8 @@
   <ElContainer class="main-content">
     <!-- 菜单栏 -->
     <ElAside width="200px">
-        <TopMenu :data="props.menuList" @change="setTopMenuId" />
-        <MainMenu :menuList="mainMenuLise || []" />
+      <TopMenu :data="props.menuList" @change="setTopMenuId" />
+      <MainMenu :menuList="mainMenuLise || []" />
     </ElAside>
     <!-- 主要内容 -->
     <ElContainer>
@@ -11,7 +11,6 @@
         <Header />
       </ElHeader>
       <ElMain>
-
         <div class="m-b-16px">
           <LILIBreadcrumb></LILIBreadcrumb>
         </div>
@@ -31,21 +30,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import {
-  ElContainer,
-  ElAside,
-  ElHeader,
-  ElMain,
-  ElCard
-} from 'element-plus'
+import { ElContainer, ElAside, ElHeader, ElMain, ElCard } from 'element-plus'
 import type { MenuProps } from './index.ts'
 
 import Header from '@/components/public/layout/header'
 import MainMenu from './main-menu'
 import TopMenu from './top-menu'
 
-import LILIBreadcrumb from "./breadcrumb"
-
+import LILIBreadcrumb from './breadcrumb'
 
 const props = defineProps<{
   menuList: MenuProps
@@ -61,16 +53,14 @@ const setTopMenuId = (id: string | number) => {
 const mainMenuLise = computed(() => {
   return props.menuList.find((item) => item.id === topMenuId.value)?.children
 })
-
 </script>
-
 
 <style scoped lang="less">
 .main-content {
   height: 100%;
   width: 100%;
 
-  .logo{
+  .logo {
     width: 100rpx;
     background-color: green;
   }
@@ -83,13 +73,13 @@ const mainMenuLise = computed(() => {
   background-color: #252f3c;
   .top-menu {
     width: 75px;
-    max-width:75px;
-    overflow:hidden;
+    max-width: 75px;
+    overflow: hidden;
   }
   .main-menu {
     width: 175px;
-    max-width:175px;
-    overflow:hidden;
+    max-width: 175px;
+    overflow: hidden;
   }
 }
 .el-header {
@@ -99,7 +89,7 @@ const mainMenuLise = computed(() => {
 .el-main {
   background-color: #f7fbff;
 }
-.cardClass{
+.cardClass {
   margin-left: -10px;
   margin-right: -10px;
 }

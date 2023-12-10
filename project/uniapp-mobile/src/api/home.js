@@ -1,9 +1,6 @@
-import { get, post } from '@/request/request.js'
-
+import { get, post } from '@/request/request.js';
 
 const Home = {
-	
-	
-	
-}
-export default Home
+
+};
+export default Home;

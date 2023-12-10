@@ -1,16 +1,16 @@
 type LILIFormType =
-  | "input"
-  | "password"
-  | "select"
-  | "radio"
-  | "checkbox"
-  | "date"
-  | "datepicker"
-  | "time"
-  | "textarea"
-  | "upload"
-  | "editor"
-  | "custom"
+  | 'input'
+  | 'password'
+  | 'select'
+  | 'radio'
+  | 'checkbox'
+  | 'date'
+  | 'datepicker'
+  | 'time'
+  | 'textarea'
+  | 'upload'
+  | 'editor'
+  | 'custom'
 
 export interface LILIFormItem {
   field: string

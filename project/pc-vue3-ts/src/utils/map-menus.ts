@@ -1,9 +1,9 @@
 /** 工具文件
  * 后台路径与菜单路由的映射关系
  */
-import type { LILIBreadcrumbItem } from "@/components/public/layout/breadcrumb"
-import type { RouteRecordRaw } from "vue-router"
-import { urlMatch } from "@/utils/format"
+import type { LILIBreadcrumbItem } from '@/components/public/layout/breadcrumb'
+import type { RouteRecordRaw } from 'vue-router'
+import { urlMatch } from '@/utils/format'
 
 /** 默认main的对应的菜单
  * 定义好空数组localRoutes方便返回
@@ -18,32 +18,32 @@ import { urlMatch } from "@/utils/format"
 export let firstMenu: any = {}
 
 // 加载本地路由的函数封装
-function loadLocalRoutes(){
+function loadLocalRoutes() {
   // 动态添加路由，1动态获取所有路由对象，放在数组中
-      // 路由对象都在文件中，从文件中读取动态添加到数组中
-      const localRoutes: RouteRecordRaw[] = []
-      // 读取所有的指定位置的ts文件
-      // const basefiles:Record<string,any> = import.meta.glob('@/routers/base/**/*.ts',{
-      //   eager: true
-      // })
+  // 路由对象都在文件中，从文件中读取动态添加到数组中
+  const localRoutes: RouteRecordRaw[] = []
+  // 读取所有的指定位置的ts文件
+  // const basefiles:Record<string,any> = import.meta.glob('@/routers/base/**/*.ts',{
+  //   eager: true
+  // })
 
-      const files:Record<string,any> = import.meta.glob('@/routers/**/*.ts',{
-        eager: true
-      })
+  const files: Record<string, any> = import.meta.glob('@/routers/**/*.ts', {
+    eager: true
+  })
 
-      // console.log('basefiles', files)
-      for (const key in files) {
-        // console.log('key',key)
-        if(key=='/src/routers/index.ts') continue
-        const basefile = files[key]
-        const base = basefile.default
-        // console.log('base', base)
-        localRoutes.push(base)
-        // 动态添加路由
-        // localRoutes.push(base)
-      }
+  // console.log('basefiles', files)
+  for (const key in files) {
+    // console.log('key',key)
+    if (key == '/src/routers/index.ts') continue
+    const basefile = files[key]
+    const base = basefile.default
+    // console.log('base', base)
+    localRoutes.push(base)
+    // 动态添加路由
+    // localRoutes.push(base)
+  }
 
-      return localRoutes
+  return localRoutes
 }
 
 // 后台路径与菜单的映射关系,参数：用户的菜单
@@ -54,28 +54,28 @@ export const mapMenusToRoutes = (userMenus: any[]): RouteRecordRaw[] => {
   // console.log('拿到的本地文件路径',localRoutes)
   // step2:根据菜单匹配正确的路由
   // 匹配到的真正路由放在这里
-  const routes:RouteRecordRaw[]=[]
-  for(const menu of userMenus){
+  const routes: RouteRecordRaw[] = []
+  for (const menu of userMenus) {
     // console.log('拿到的每个菜单项',menu)
-    for(const submenu of menu.children){
-      for(const page of submenu.children){
+    for (const submenu of menu.children) {
+      for (const page of submenu.children) {
         const route = localRoutes.find((item) => item.path === page.url)
         // console.log('匹配结果',route)
-        if(route){
+        if (route) {
           // 给2级路由增加一个重定向功能，但只需要增加1次，且判断用户是否有权限
-          if(!routes.find((item)=>item.path === submenu.url)){
-            routes.push({path: submenu.url, redirect: route.path})
+          if (!routes.find((item) => item.path === submenu.url)) {
+            routes.push({ path: submenu.url, redirect: route.path })
           }
           // 这里是将3级菜单对应的路径加到路由中
           routes.push(route)
-          const isHasRootpath = Object.keys(firstMenu).includes(urlMatch(route.path,true))
-          if(!isHasRootpath){
-            firstMenu[urlMatch(route.path,true)] = route.path
+          const isHasRootpath = Object.keys(firstMenu).includes(urlMatch(route.path, true))
+          if (!isHasRootpath) {
+            firstMenu[urlMatch(route.path, true)] = route.path
           }
         }
         // if(!firstMenu && route) {
-          // console.log('firstMenu', route)
-          // firstMenu = route
+        // console.log('firstMenu', route)
+        // firstMenu = route
         // }
       }
     }
@@ -87,7 +87,7 @@ export const mapMenusToRoutes = (userMenus: any[]): RouteRecordRaw[] => {
    * 2.2. 再获取二级菜单
    */
   const _recurseGetRoutes = (menus: any[]) => {
-    console.log("这里的menus", menus)
+    console.log('这里的menus', menus)
     menus.map((menu) => {
       // 无子菜单或type为2，就是二级菜单,直接添加
       if (menu.children?.length === 0 || menu.type === 2) {
@@ -119,31 +119,26 @@ export const mapMenusToRoutes = (userMenus: any[]): RouteRecordRaw[] => {
   return localRoutes
 }
 
-
-
 // 根据当前路径获取对应的面包屑
-export function pathMapBreadcrumbs( currentPath: string,userMenus: any[]): any {
+export function pathMapBreadcrumbs(currentPath: string, userMenus: any[]): any {
   // 定义面包屑
   const breadcrumbs: LILIBreadcrumbItem[] = []
 
   // 遍历获取面包屑的层级
-  for(const menu of userMenus){
-    for(const submenu of menu.children){
-      for(const page of submenu.children){
-        if(page.url === currentPath){
-          breadcrumbs.push({name: menu.title,path: '/'})
-          breadcrumbs.push({name: submenu.title,path:submenu.url})
-          breadcrumbs.push({name: page.title,path: page.url})
+  for (const menu of userMenus) {
+    for (const submenu of menu.children) {
+      for (const page of submenu.children) {
+        if (page.url === currentPath) {
+          breadcrumbs.push({ name: menu.title, path: '/' })
+          breadcrumbs.push({ name: submenu.title, path: submenu.url })
+          breadcrumbs.push({ name: page.title, path: page.url })
         }
       }
     }
   }
-  console.log("breadcrumbs的加工结果", breadcrumbs)
+  console.log('breadcrumbs的加工结果', breadcrumbs)
   return breadcrumbs
 }
-
-
-
 
 // 通过菜单信息获取到所有对应的id
 // 注意点：我们要取到的是最底层的id,ElTree是直接选中父级id

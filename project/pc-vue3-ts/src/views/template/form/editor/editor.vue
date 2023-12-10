@@ -1,5 +1,3 @@
-
-
 <template>
   <div>富文本编辑操作</div>
 </template>

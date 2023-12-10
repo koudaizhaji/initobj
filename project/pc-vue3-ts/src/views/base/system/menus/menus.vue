@@ -8,7 +8,7 @@
     >
       <template #status="scope">
         <el-tag :type="scope.row[scope.prop] == 1 ? 'success' : 'danger'">{{
-          scope.row[scope.prop] == 1 ? "启用" : "禁用"
+          scope.row[scope.prop] == 1 ? '启用' : '禁用'
         }}</el-tag>
       </template>
     </pageContent>
@@ -18,19 +18,18 @@
 </template>
 
 <script lang="ts" setup name="menu">
-import pageContent from "@/components/public/page-content/page-content.vue"
-import contentConfig from "./config/content.config"
+import pageContent from '@/components/public/page-content/page-content.vue'
+import contentConfig from './config/content.config'
 
-import pageModal from "@/components/public/page-modal/page-modal.vue"
-import modalConfig from "./config/modal.config"
+import pageModal from '@/components/public/page-modal/page-modal.vue'
+import modalConfig from './config/modal.config'
 
-import usePageContent from "@/hooks/usePageContent"
-import usePageModal from "@/hooks/usePageModal"
+import usePageContent from '@/hooks/usePageContent'
+import usePageModal from '@/hooks/usePageModal'
 
 const { contentRef } = usePageContent()
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 // 新建按钮
-
 </script>
 
 <style scoped></style>

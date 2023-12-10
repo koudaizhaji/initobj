@@ -4,7 +4,7 @@
   >
     <div class="font-14px p-t-8px">
       <div class="w-40px h-40px logo">
-        <img  src="@src-assets/logo.svg" alt="">
+        <img src="@src-assets/logo.svg" alt="" />
       </div>
       <div
         v-for="(item, index) of props.data"
@@ -75,7 +75,7 @@ const getMenuItemClass = (item: MenuItemProps) => {
   if (active.value === item.id) return 'c-#70B2F6'
   return 'c-#FEFEFE'
 }
-const getIcon = (icon:string) =>{
+const getIcon = (icon: string) => {
   // console.log('拿到的图标','i-ep-'+icon)
   return icon
 }
@@ -96,10 +96,8 @@ const logout = () => {
     })
 }
 </script>
-<style  scoped lang="less">
-
-.logo{
-  margin:0 auto;
-
+<style scoped lang="less">
+.logo {
+  margin: 0 auto;
 }
 </style>

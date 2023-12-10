@@ -20,14 +20,11 @@ import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/public/svg-icon/index.vue'
 import type { App } from 'vue'
 
-
 export default function appSetup(app: App): void {
   app.component('svg-icon', SvgIcon)
   app.component('PageWrapLayout', PageWrapLayout)
 
   app.use(store)
 
-
   app.use(router)
-
 }

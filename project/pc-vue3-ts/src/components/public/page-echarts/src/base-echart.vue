@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts" name="base-echart">
-
 import * as echarts from 'echarts'
 import { onMounted, ref, watchEffect } from 'vue'
 import type { EChartsOption } from 'echarts'
@@ -43,8 +42,6 @@ onMounted(() => {
     echartInstance.resize()
   })
 })
-
-
 </script>
 
 <style scoped lang="less"></style>

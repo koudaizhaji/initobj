@@ -78,7 +78,7 @@
 import { storeToRefs } from 'pinia'
 import useSystemStore from '@/stores/base/system/system'
 import { utcFormat } from '@/utils/format'
-import { ref,computed } from 'vue'
+import { ref, computed } from 'vue'
 import usePermission from '@/hooks/usePermission'
 
 interface IProps {
@@ -89,7 +89,7 @@ interface IProps {
       btnTitle: string
     }
     propsList: any[]
-    childrenProps?: any,
+    childrenProps?: any
     showFooter?: boolean
   }
 }
@@ -114,26 +114,33 @@ async function fetchPageListData(queryInfo: any = {}) {
   if (!isQuery) return
   // 1.获取offset和size
   const size = pageSize.value
-  const offset = (currentPage.value)
+  const offset = currentPage.value
   console.log('请求参数2222s', offset, size, queryInfo)
   // 2.发生网络请求
-  systemStore.getPageListDataAction(props.contentConfig.pageName, {pageNum:offset, pageSize:size, ...queryInfo })
+  systemStore.getPageListDataAction(props.contentConfig.pageName, {
+    pageNum: offset,
+    pageSize: size,
+    ...queryInfo
+  })
 }
 fetchPageListData()
 // 监听systemStore里的actions被执行
-systemStore.$onAction(({name,after}) => {
-  after(()=>{
-    if (name === 'editPageDataAction' || name === 'newPageDataAction' || name === 'deletePageDataAction' ) {
+systemStore.$onAction(({ name, after }) => {
+  after(() => {
+    if (
+      name === 'editPageDataAction' ||
+      name === 'newPageDataAction' ||
+      name === 'deletePageDataAction'
+    ) {
       currentPage.value = 1
       // pageSize.value = 10
     }
   })
-
 })
 
 // 2.展示数据
 const { pageList, pageTotalCount } = storeToRefs(systemStore)
-console.log('拿到的页面数据',pageList, pageTotalCount)
+console.log('拿到的页面数据', pageList, pageTotalCount)
 // 3.绑定分页数据
 function handleCurrentChange() {
   fetchPageListData()

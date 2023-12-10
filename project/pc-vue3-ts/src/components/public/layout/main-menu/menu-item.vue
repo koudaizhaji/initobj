@@ -35,6 +35,4 @@ const findSubMenu = (children: MenuItemProps[]): boolean => {
 }
 </script>
 
-
-
 <style scoped lang="less"></style>

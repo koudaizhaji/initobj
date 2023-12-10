@@ -24,14 +24,17 @@ export default {
 .theme-code-block {
   display: none;
 }
+
 .theme-code-block__active {
   display: block;
 }
+
 .theme-code-block > pre {
   background-color: orange;
 }
-@media (max-width: 419px) {
-  .theme-code-group div[class*='language-'] {
+
+@media (width <= 419px) {
+  .theme-code-group div[class*="language-"] {
     margin: 0;
   }
 }

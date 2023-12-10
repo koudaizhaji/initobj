@@ -19,25 +19,26 @@ export default defineConfig({
     UnoCSS(),
     Icons({ compiler: 'vue3', autoInstall: true }),
     AutoImport({
-      resolvers: [ElementPlusResolver(),
-      // Auto import icon components
+      resolvers: [
+        ElementPlusResolver(),
+        // Auto import icon components
         // 自动导入图标组件
         IconsResolver({
-          prefix: 'Icon',
-        }),
-      ],
-
+          prefix: 'Icon'
+        })
+      ]
     }),
     Components({
-      resolvers: [ElementPlusResolver(),
-      // 自动注册图标组件
-      IconsResolver({
-        enabledCollections: ['ep'],
-      }),
-    ]
+      resolvers: [
+        ElementPlusResolver(),
+        // 自动注册图标组件
+        IconsResolver({
+          enabledCollections: ['ep']
+        })
+      ]
     }),
     Icons({
-      autoInstall: true,
+      autoInstall: true
     }),
     // * 使用 svg 图标
     createSvgIconsPlugin({

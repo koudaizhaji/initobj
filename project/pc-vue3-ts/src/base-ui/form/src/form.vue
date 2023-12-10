@@ -7,7 +7,12 @@
     <el-form :label-width="labelWidth">
       <el-row>
         <el-col v-for="item in formItems" :key="item.label" v-bind="colLayout">
-          <el-form-item v-if="!item.isHidden" :label="item.label" :rules="item.rules" :style="itemStyle">
+          <el-form-item
+            v-if="!item.isHidden"
+            :label="item.label"
+            :rules="item.rules"
+            :style="itemStyle"
+          >
             <!-- 如果是输入框或密码 -->
             <!-- <template v-if="item.type === 'input' || item.type === 'password'">
               <el-input
@@ -28,7 +33,11 @@
             </template>
             <!-- 如果是选择器 -->
             <template v-else-if="item.type === 'select'">
-              <el-select :placeholder="item.placeholder" v-bind="item.otherOptions" v-model="formData[`${item.field}`]">
+              <el-select
+                :placeholder="item.placeholder"
+                v-bind="item.otherOptions"
+                v-model="formData[`${item.field}`]"
+              >
                 <el-option
                   v-for="option in item.options"
                   :key="option.value"
@@ -52,8 +61,8 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType, defineProps, defineEmits, ref, watch } from "vue"
-import { LILIFormItem } from "../types"
+import { PropType, defineProps, defineEmits, ref, watch } from 'vue'
+import { LILIFormItem } from '../types'
 
 const props = defineProps({
   /** 在这里写，就表明这个组件是可以通过外界参数信息进行控制的
@@ -70,11 +79,11 @@ const props = defineProps({
   },
   labelWidth: {
     type: String,
-    default: "100px"
+    default: '100px'
   },
   itemStyle: {
     type: Object,
-    default: () => ({ padding: "5px 30px" })
+    default: () => ({ padding: '5px 30px' })
   },
 
   colLayout: {

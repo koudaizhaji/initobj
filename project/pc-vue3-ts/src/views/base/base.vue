@@ -1,6 +1,6 @@
 <template>
   <Layout :menuList="menus">
-  <RouterView />
+    <RouterView />
   </Layout>
 </template>
 
@@ -12,5 +12,3 @@ import { USER_MENUS } from '@/config'
 
 const menus = localCache.getCache(USER_MENUS)
 </script>
-
-

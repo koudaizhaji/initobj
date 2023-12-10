@@ -10,7 +10,7 @@ interface modalFormItemsType {
 
 export interface PageModalConfigType {
   // 弹窗顶部显示名称
-  title:string
+  title: string
   // 弹窗编辑名称
   editTitle?: string
   // 页面名称
