@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { defineProps, computed } from 'vue'
-
+// 通过城市名称获取地图上的经纬度
 import { convertData } from '../utils/convert-data'
 import type { IEchartValueData } from '../types'
 import type { EChartsOption } from 'echarts'

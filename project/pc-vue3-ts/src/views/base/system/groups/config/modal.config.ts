@@ -3,7 +3,7 @@ import type { PageModalConfigType } from "@/global/types/pageModal.type"
 const modalConfig: PageModalConfigType = {
   title:"添加分组",
   // newtitle: "添加分组",
-  // edittitle: "修改分组",
+  editTitle: "修改分组",
   pageName: "groups",
   formItems: [
     {

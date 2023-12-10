@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { defineProps, computed } from 'vue'
-import BaseEchart from '@/components/echarts'
+import BaseEchart from '@/components/echarts/index.vue'
 import type { EChartsOption } from 'echarts'
 import type { IEchartValueData } from '../types'
 

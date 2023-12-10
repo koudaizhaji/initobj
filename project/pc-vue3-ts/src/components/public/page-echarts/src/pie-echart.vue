@@ -1,3 +1,4 @@
+
 <template>
   <div class="pie-echart">
     <base-echart :options="options"></base-echart>
@@ -7,6 +8,7 @@
 <script lang="ts" setup>
 import { defineProps, computed } from 'vue'
 import BaseEchart from './base-echart.vue'
+
 import type { EChartsOption } from 'echarts'
 import type { IPieEchartData } from '../types'
 

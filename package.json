@@ -18,7 +18,8 @@
     "h5:dev": "pnpm --filter ./project/uniapp-mobile run dev:h5",
     "h5:build": "pnpm --filter ./project/uniapp-mobile run build:h5",
     "docs:dev": "pnpm --filter ./docs run dev",
-    "docs:build": "pnpm --filter ./docs run build"
+    "docs:build": "pnpm --filter ./docs run build",
+    "lint": "eslint . --ext .vue,.js.jsx,.cjs,.mjs,.ts,tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
@@ -27,12 +28,16 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "@vue/tsconfig": "^0.1.3",
     "eslint": "^8.53.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-define-config": "^1.24.1",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-vue": "^9.18.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",

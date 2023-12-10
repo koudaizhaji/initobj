@@ -1,3 +1,4 @@
+
 <template>
   <div class="bar-echart">
     <base-echart :options="options"></base-echart>
@@ -7,7 +8,7 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue'
 import * as echarts from 'echarts'
-import BaseEchart from '@/components/echarts'
+import BaseEchart from '@/components/echarts/index.vue'
 import type { IEchartValueData } from '../types'
 import type { EChartsOption } from 'echarts'
 

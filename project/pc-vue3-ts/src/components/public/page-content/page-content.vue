@@ -109,8 +109,8 @@ const isQuery = usePermission(props.contentConfig.pageName, 'query')
 // 1.请求数据
 const systemStore = useSystemStore()
 const currentPage = ref(1)
-const pageSize = ref(10)
-function fetchPageListData(queryInfo: any = {}) {
+const pageSize = ref(2)
+async function fetchPageListData(queryInfo: any = {}) {
   if (!isQuery) return
   // 1.获取offset和size
   const size = pageSize.value
@@ -120,11 +120,15 @@ function fetchPageListData(queryInfo: any = {}) {
   systemStore.getPageListDataAction(props.contentConfig.pageName, {pageNum:offset, pageSize:size, ...queryInfo })
 }
 fetchPageListData()
-systemStore.$onAction((arg) => {
-  if (arg.name === 'editPageDataAction' || arg.name === 'newPageDataAction') {
-    currentPage.value = 1
-    pageSize.value = 10
-  }
+// 监听systemStore里的actions被执行
+systemStore.$onAction(({name,after}) => {
+  after(()=>{
+    if (name === 'editPageDataAction' || name === 'newPageDataAction' || name === 'deletePageDataAction' ) {
+      currentPage.value = 1
+      // pageSize.value = 10
+    }
+  })
+
 })
 
 // 2.展示数据

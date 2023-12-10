@@ -12,7 +12,7 @@ import type { PageModalConfigType } from "@/global/types/pageModal.type"
 const modalConfig: PageModalConfigType = {
   title: "菜单管理",
   // newtitle: "添加菜单",
-  // edittitle: "编辑菜单",
+  editTitle: "编辑菜单",
   pageName: "menus",
   formItems: [
     {

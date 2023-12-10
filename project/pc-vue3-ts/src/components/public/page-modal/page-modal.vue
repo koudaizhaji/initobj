@@ -1,6 +1,8 @@
 <template>
   <div class="modal">
-    <el-dialog v-model="dialogVisible" :title="modalConfig.title" width="30%" center>
+    <el-dialog v-model="dialogVisible"
+    :title="isEdit ? modalConfig.editTitle : modalConfig.title"
+    width="30%" center>
       <div class="form">
         <el-form :model="formData" label-width="80px" size="large">
           <template v-for="item in modalConfig.formItems" :key="item.prop">
@@ -61,6 +63,7 @@ interface IProps {
   modalConfig: {
     pageName: string
     title: string
+    editTitle:string
     formItems: any[]
   }
   otherInfo?: any
@@ -69,7 +72,7 @@ interface IProps {
 const props = defineProps<IProps>()
 
 const dialogVisible = ref(false)
-const isEdit = ref(false)
+const isEdit = ref(false) // 是否编辑
 const editData = ref()
 
 // 部门和角色的数据

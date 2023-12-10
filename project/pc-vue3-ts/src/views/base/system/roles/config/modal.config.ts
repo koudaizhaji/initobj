@@ -2,7 +2,7 @@ import type { PageModalConfigType } from "@/global/types/pageModal.type"
 
 const modalConfig: PageModalConfigType = {
   title: "新增角色",
-  // edittitle: "编辑角色",
+  editTitle: "编辑角色",
   pageName: "roles",
   formItems: [
     {

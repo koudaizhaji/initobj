@@ -45,15 +45,10 @@ const useLoginStore = defineStore('login', {
       localCache.setCache(USER_INFO, this.userInfo)
 
       // 3.根据角色请求用户权限
-      const menusRes = await getRoleMenus()
-      this.userMenus = menusRes.data
-      console.log('拿到的用户菜单', menusRes.data)
-
-      // 4.保存到缓存中
-      localCache.setCache(USER_MENUS, this.userMenus)
+      await this.getUserMenus()
 
       // 5. 动态添加路由
-      const routes = mapMenusToRoutes(menusRes.data)
+      const routes = mapMenusToRoutes(this.userMenus)
       console.log('routes', routes)
       routes.forEach((route: any) => {
         console.log('route', urlMatch(route.path))
@@ -113,6 +108,14 @@ const useLoginStore = defineStore('login', {
         })
 
       }
+    },
+    async getUserMenus(): Promise<any> {
+      const menusRes = await getRoleMenus()
+      this.userMenus = menusRes.data
+      console.log('拿到的用户菜单', menusRes.data)
+
+      // 4.保存到缓存中
+      localCache.setCache(USER_MENUS, this.userMenus)
     }
   }
 })

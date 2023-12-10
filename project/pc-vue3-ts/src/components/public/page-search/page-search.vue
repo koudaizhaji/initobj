@@ -51,6 +51,7 @@
 <script setup lang="ts" name="page-search">
 import type { ElForm } from 'element-plus'
 import { reactive, ref } from 'vue'
+import { utcFormat } from '@/utils/format'
 
 interface IProps {
   searchConfig: {
@@ -74,8 +75,13 @@ function handleResetClick() {
   formRef.value?.resetFields()
   emit('resetClick')
 }
+// 搜索按钮事件
 function handleQueryClick() {
-  console.log('拿到的搜索信息',searchForm)
+  const dataList = []
+  dataList.push(utcFormat(searchForm.createdAt[0]))
+  dataList.push(utcFormat(searchForm.createdAt[1]))
+  // console.log('拿到的搜索信息',dataList)
+  searchForm.createdAt = dataList
   emit('queryClick', searchForm)
 }
 </script>

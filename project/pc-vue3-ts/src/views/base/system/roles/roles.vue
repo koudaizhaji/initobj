@@ -41,7 +41,7 @@ import usePageModal from "@/hooks/usePageModal"
 
 import { mapMenuListToIds } from "@/utils/map-menus"
 
-import { onMounted, computed, ref, nextTick } from "vue"
+import {  ref, nextTick } from "vue"
 import { ElTree } from "element-plus"
 import useMainStore from '@/stores/base/main'
 import { storeToRefs } from 'pinia'
@@ -95,7 +95,7 @@ const { entireMenus } = storeToRefs(mainStore)
 
 // 弹窗所需操作
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
-const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal(editCanllback)
+const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal(newCallback,editCanllback)
 
 const otherInfo = ref({})
 // 树形组件
@@ -119,12 +119,17 @@ function editCanllback(itemData: any) {
     // 这里拿到的是对应用户的全部菜单，然后转为ids数组，取决于接口返回的信息
     const menuIds = mapMenuListToIds(itemData.menuList)
     // treeRef.value?.setCheckedKeys([1, 2, 3, 4])
-    // console.log("拿到的菜单id数组111", menuIds)
+    console.log("拿到的菜单id数组111", menuIds)
     treeRef.value?.setCheckedKeys(menuIds)
     // treeRef.value?.setCheckedKeys(itemData.menuList)
   })
 }
-
+// 新建的操作
+function newCallback(itemData:any){
+  nextTick(()=>{
+    treeRef.value?.setCheckedKeys([])
+  })
+}
 
 </script>
 
