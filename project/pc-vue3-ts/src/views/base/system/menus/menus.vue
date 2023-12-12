@@ -5,10 +5,11 @@
       ref="contentRef"
       @new-click="handleNewDataClick"
       @edit-click="handleEditDataClick"
+      @filter-method="filterHandler"
     >
       <template #status="scope">
-        <el-tag :type="scope.row[scope.prop] == 1 ? 'success' : 'danger'">{{
-          scope.row[scope.prop] == 1 ? '启用' : '禁用'
+        <el-tag :type="scope.row.status == '1' ? 'success' : 'danger'">{{
+          scope.row.status == '1' ? '启用' : '禁用'
         }}</el-tag>
       </template>
     </pageContent>
@@ -27,9 +28,18 @@ import modalConfig from './config/modal.config'
 import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'
 
+import type { TableColumnCtx } from 'element-plus'
+
 const { contentRef } = usePageContent()
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
-// 新建按钮
+
+// 筛选操作
+const filterHandler = (value: string, row: any, column: TableColumnCtx<any>) => {
+  // console.log('进行了筛选操作', data)
+  const property = column['property']
+  console.log('property', property, row[property], value)
+  return row[property] === value
+}
 </script>
 
 <style scoped></style>

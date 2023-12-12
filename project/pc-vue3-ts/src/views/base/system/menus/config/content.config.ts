@@ -1,16 +1,3 @@
-/*
- * @Author: 李立
- * @Date: 2023-12-09 12:16:04
- * @LastEditors: 李立
- * @LastEditTime: 2023-12-09 14:11:04
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\views\base\system\menus\config\content.config.ts
- * @Description:
- * 相关开发文件头自动添加：联系微信huaiplayboy
- */
-/** @description: 用户管理-表格配置
- * 一个配置文件，控制整个表格的相对固定的信息
- */
-
 import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
@@ -24,7 +11,8 @@ const contentConfig: pageContentTable = {
     {
       prop: 'title',
       label: '菜单名称',
-      minWidth: '150'
+      minWidth: '150',
+      fixed: 'left'
     },
     {
       prop: 'id',
@@ -35,7 +23,11 @@ const contentConfig: pageContentTable = {
     {
       prop: 'url',
       label: '菜单url',
-      minWidth: '180'
+      minWidth: '180',
+      filters: [
+        { text: '/base', value: '/base' },
+        { text: '/weixin', value: '/weixin' }
+      ]
     },
     {
       prop: 'icon',
@@ -48,11 +40,16 @@ const contentConfig: pageContentTable = {
       minWidth: '60'
     },
     {
-      type: 'normal',
+      type: 'custom',
       prop: 'status',
       label: '菜单状态',
-      minWidth: '60',
+      minWidth: '80',
       slotName: 'status'
+      // 封装有问题不生效
+      // filters: [
+      //   { text: '启用', value: '1' },
+      //   { text: '禁用', value: '0' }
+      // ]
     },
     {
       prop: 'permission',

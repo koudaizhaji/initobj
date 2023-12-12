@@ -9,7 +9,7 @@
  */
 // 前两个是element-plus组件库table的el-table-column属性，都可以在这里配置
 // random是随机属性
-type tableType = 'selection' | 'index' | 'random' | 'timer' | 'handler' | 'normal'
+type tableType = 'selection' | 'index' | 'random' | 'timer' | 'handler' | 'custom'
 
 interface tablePropList {
   type?: tableType
@@ -19,6 +19,10 @@ interface tablePropList {
   prop?: string
   fixed?: 'left' | 'right'
   slotName?: string
+  filters?: Array<{
+    text: string
+    value: string | number
+  }>
 }
 
 interface tableChildrenProps {

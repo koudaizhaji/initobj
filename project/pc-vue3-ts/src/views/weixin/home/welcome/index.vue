@@ -11,17 +11,17 @@
     <!-- 2. 中间部分的图表 -->
     <el-row :gutter="10">
       <el-col :span="7">
-        <chart-card>
+        <chart-card :header="titleObj.title1">
           <pie-echart :pie-data="showGoodsCategoryCount" />
         </chart-card>
       </el-col>
       <el-col :span="10">
-        <chart-card>
+        <chart-card :header="titleObj.title5">
           <map-echart :map-data="showGoodsAddressSale" />
         </chart-card>
       </el-col>
       <el-col :span="7">
-        <chart-card>
+        <chart-card :header="titleObj.title2">
           <rose-echart :rose-data="showGoodsCategoryCount" />
         </chart-card>
       </el-col>
@@ -29,14 +29,14 @@
     <!-- 3. 底部部分的图表 -->
     <el-row :gutter="10">
       <el-col :span="12">
-        <chart-card>
+        <chart-card :header="titleObj.title3">
           <!-- <line-echart :labels="showGoodsCategorySale.labels"
             :values="showGoodsCategorySale.values"/> -->
           <line-echart v-bind="showGoodsCategorySale" />
         </chart-card>
       </el-col>
       <el-col :span="12">
-        <chart-card>
+        <chart-card :header="titleObj.title4">
           <bar-echart v-bind="showGoodsCategoryFavor" />
         </chart-card>
       </el-col>
@@ -64,6 +64,15 @@ import {
 // 1.发起数据请求
 const analysisStore = useAnalysisStore()
 analysisStore.fetchAnalysisDataAction()
+
+// echarts标题
+const titleObj = {
+  title1: '商品销售统计',
+  title2: '商品销售额统计',
+  title3: '商品收藏统计折线图',
+  title4: '商品收藏统计条形图',
+  title5: '商品销售地区统计'
+}
 
 // 2.拿到store里的数据
 const { amountList, goodsCategoryCount, goodsCategorySale, goodsCategoryFavor, goodsAddressSale } =

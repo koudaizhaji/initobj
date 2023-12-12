@@ -13,24 +13,24 @@
     >
       <!-- 通过具名插槽全部自定义 -->
       <template #status="scope">
-        <el-tag :type="scope.row[scope.prop] == 1 ? 'success' : 'danger'">{{
-          scope.row[scope.prop] == 1 ? '启用' : '禁用'
+        <el-tag :type="scope.row.status == 1 ? 'success' : 'danger'">{{
+          scope.row.status == 1 ? '启用' : '禁用'
         }}</el-tag>
       </template>
       <template #role_id="scope">
         <el-tag
           :type="
-            scope.row[scope.prop] == 1
+            scope.row.role_id == 1
               ? 'success'
-              : scope.row[scope.prop] == 2
+              : scope.row.role_id == 2
                 ? ''
-                : scope.row[scope.prop] == 3
+                : scope.row.role_id == 3
                   ? 'danger'
-                  : scope.row[scope.prop] == 4
+                  : scope.row.role_id == 4
                     ? 'warning'
                     : 'info'
           "
-          >{{ getRoleName(scope.row[scope.prop]) }}</el-tag
+          >{{ getRoleName(scope.row.role_id) }}</el-tag
         >
       </template>
     </pageContent>
@@ -68,6 +68,16 @@ const { entireRoles, entireGroups } = storeToRefs(mainStore)
 console.log('拿到的角色信息1111', entireRoles.value)
 modalConfig.formItems[3].options = entireRoles.value
 modalConfig.formItems[2].options = entireGroups.value
+
+// 所属角色查询
+const getRoleName = (id: number) => {
+  console.log('拿到匹配角色的信息', id)
+  for (const item of entireRoles.value) {
+    if (item.id === id) {
+      return item.name
+    }
+  }
+}
 </script>
 
 <style scoped></style>

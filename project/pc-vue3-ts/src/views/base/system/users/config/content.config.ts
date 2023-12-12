@@ -3,7 +3,7 @@
  * type: 控制显示方式
  * timer: 时间格式化
  * handler: 操作列-编辑，删除
- * normal: 普通列，绑定也可直接slot插槽
+ * custom: 普通列，绑定也可直接slot插槽
  * 其他random：自定义列，直接v-bind="item"绑定,或不写type
  * el-table-column的属性，都可以在这里配置
  */
@@ -35,10 +35,10 @@ const contentTableConfig: pageContentTable = {
       fixed: 'left'
     },
     {
-      type: 'normal',
+      type: 'custom',
       prop: 'role_id',
       label: '所属角色',
-      width: '100',
+      width: '120',
       slotName: 'role_id'
     },
 
@@ -50,15 +50,17 @@ const contentTableConfig: pageContentTable = {
     {
       type: 'random',
       prop: 'nickname',
-      label: '微信昵称'
+      label: '微信昵称',
+      width: '120'
     },
     {
-      type: 'normal',
+      type: 'custom',
       prop: 'user_pic',
-      label: '微信头像'
+      label: '微信头像',
+      width: '120'
     },
     {
-      type: 'normal',
+      type: 'custom',
       prop: 'status',
       label: '账号状态',
       width: '90',

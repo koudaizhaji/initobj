@@ -10,7 +10,7 @@
 
 <template>
   <div class="base-echart">
-    <div ref="echartRef" class="echart" style="width: 100%; height: 350px"></div>
+    <div ref="echartRef" class="echart" style="width: 100%; height: 350px;"></div>
   </div>
 </template>
 
