@@ -106,9 +106,8 @@ const useLoginStore = defineStore('login', {
     },
     getAddRoute(userMenus: any[]): void {
       const routes = mapMenusToRoutes(userMenus)
-      console.log('routes', routes)
+      // console.log('routes', routes)
       routes.forEach((route: any) => {
-        console.log('route', urlMatch(route.path))
         // 获取根路径名称base,weixin
         const rootPath = urlMatch(route.path)
         // 动态添加路由

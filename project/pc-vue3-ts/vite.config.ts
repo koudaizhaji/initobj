@@ -51,7 +51,7 @@ export default defineConfig({
   // 配置前端服务地址和端口
   server: {
     host: '0.0.0.0',
-    port: 8080,
+    port: 5173,
     // 是否开启 https
     https: false
   },
