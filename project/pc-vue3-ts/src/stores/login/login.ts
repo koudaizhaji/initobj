@@ -32,7 +32,7 @@ const useLoginStore = defineStore('login', {
   }),
   actions: {
     async setLoginInfo(data: any) {
-      console.log(data)
+      // console.log(data)
       this.token = data.token
       console.log('拿到的信息', data, data.token, LOGIN_TOKEN)
       // 判断下如果信息不对，提示登录失败
@@ -44,7 +44,7 @@ const useLoginStore = defineStore('login', {
       localCache.setCache(USER_INFO, this.userInfo)
 
       // 从获取菜单，添加动态路由到提取权限
-      this.formMenuToPermissions()
+      await this.formMenuToPermissions()
 
       // 5.获取所有的数据,分组数据，角色数据
       const mainStore = useMainStore()
