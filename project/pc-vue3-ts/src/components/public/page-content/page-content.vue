@@ -12,7 +12,7 @@
         :border="true"
         height="calc(90%)"
         v-bind="contentConfig.childrenProps"
-        style="width: 92%;"
+        :style="getPageStyle(contentConfig.propsList)"
       >
         <template v-for="item in contentConfig.propsList" :key="item.prop">
           <template v-if="item.type === 'timer'">
@@ -125,6 +125,11 @@ console.log('对应的增删改查权限', isCreate, isDelete, isUpdate, isQuery
 // const isDelete = true
 // const isUpdate = true
 // const isQuery = true
+// 检索列表内是否存在fixed:'right'，存在返回width:92%否则返回width:100%
+function getPageStyle(pageList: any[]) {
+  const width = pageList.some((item: any) => item.fixed === 'right') ? '92%' : '100%'
+  return { width }
+}
 
 // 1.请求数据
 const systemStore = useSystemStore()

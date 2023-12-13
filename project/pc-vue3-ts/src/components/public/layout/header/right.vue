@@ -10,7 +10,7 @@
         style="color: var(--el-color-primary);"
       >
         {{ username }}
-        <el-icon class="el-icon--right">
+        <el-icon class="el-icon-right">
           <ArrowDown />
         </el-icon>
       </div>
