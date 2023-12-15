@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import Layout from '@/components/public/layout/index.vue'
+import Layout from '@/components/layout/index.vue'
 import { getRoleMenus } from '@/services/login/login'
 import { USER_MENUS } from '@/config'
 import { localCache } from '@/utils/cache'

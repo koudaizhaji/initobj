@@ -59,7 +59,7 @@ import {
   LineEchart,
   BarEchart,
   MapEchart
-} from '@/components/public/page-echarts'
+} from '@/components/pages/page-echarts'
 
 // 1.发起数据请求
 const analysisStore = useAnalysisStore()

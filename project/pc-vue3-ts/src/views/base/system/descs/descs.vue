@@ -35,11 +35,11 @@
 </template>
 
 <script lang="ts" setup name="group">
-import pageSearch from '@/components/public/page-search/page-search.vue'
+import pageSearch from '@/components/pages/page-search/page-search.vue'
 import searchConfig from './config/search.config'
-import pageContent from '@/components/public/page-content/page-content.vue'
+import pageContent from '@/components/pages/page-content/page-content.vue'
 import contentConfig from './config/content.config'
-import pageModal from '@/components/public/page-modal/page-modal.vue'
+import pageModal from '@/components/pages/page-modal/page-modal.vue'
 import modalConfig from './config/modal.config'
 import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'

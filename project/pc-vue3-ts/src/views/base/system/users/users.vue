@@ -42,19 +42,19 @@
 <script lang="ts" setup name="user">
 // computed数据有一些改变时，重新获取下
 
-import pageSearch from '@/components/public/page-search/page-search.vue'
+import pageSearch from '@/components/pages/page-search/page-search.vue'
 import searchConfig from './config/search.config'
 
-import pageContent from '@/components/public/page-content/page-content.vue'
+import pageContent from '@/components/pages/page-content/page-content.vue'
 import contentConfig from './config/content.config'
 
-import pageModal from '@/components/public/page-modal/page-modal.vue'
+import pageModal from '@/components/pages/page-modal/page-modal.vue'
 import modalConfig from './config/modal.config'
 
 import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'
 
-import useMainStore from '@/stores/base/main'
+import useMainStore from '@/stores/base/base'
 import { storeToRefs } from 'pinia'
 
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
@@ -71,7 +71,7 @@ modalConfig.formItems[2].options = entireGroups.value
 
 // 所属角色查询
 const getRoleName = (id: number) => {
-  console.log('拿到匹配角色的信息', id)
+  // console.log('拿到匹配角色的信息', id)
   for (const item of entireRoles.value) {
     if (item.id === id) {
       return item.name

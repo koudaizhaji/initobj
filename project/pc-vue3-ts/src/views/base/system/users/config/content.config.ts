@@ -12,6 +12,11 @@ import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentTableConfig: pageContentTable = {
   pageName: 'users',
+  // 只管页面请求
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'users'
+  },
   header: {
     title: '用户列表',
     btnTitle: '新建用户'

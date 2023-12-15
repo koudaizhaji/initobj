@@ -1,7 +1,7 @@
 /** 工具文件
  * 后台路径与菜单路由的映射关系
  */
-import type { LILIBreadcrumbItem } from '@/components/public/layout/breadcrumb'
+import type { LILIBreadcrumbItem } from '@/components/layout/breadcrumb'
 import type { RouteRecordRaw } from 'vue-router'
 import { urlMatch } from '@/utils/format'
 

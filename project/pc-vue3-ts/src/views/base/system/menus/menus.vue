@@ -21,30 +21,35 @@
 </template>
 
 <script lang="ts" setup name="menu">
-import pageContent from '@/components/public/page-content/page-content.vue'
+import pageContent from '@/components/pages/page-content/page-content.vue'
 import contentConfig from './config/content.config'
 
-import pageModal from '@/components/public/page-modal/page-modal.vue'
+import pageModal from '@/components/pages/page-modal/page-modal.vue'
 import modalConfig from './config/modal.config'
 
 import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'
 
+import { ElMessage } from 'element-plus'
 import type { TableColumnCtx } from 'element-plus'
+
 import useSystemStore from '@/stores/base/system/system'
 const systemStore = useSystemStore()
 
 const { contentRef } = usePageContent()
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 // 点击标签改变状态
-function elTagChange(row: any) {
+async function elTagChange(row: any) {
   console.log('elTagChange', row)
   if (row.status == '1') {
     row.status = '0'
   } else {
     row.status = '1'
   }
-  systemStore.editPageDataAction(contentConfig.pageName, row.id, row)
+  const res = await systemStore.editPageDataAction(contentConfig.pageName, row.id, row)
+  res.code === 0
+    ? ElMessage.success({ message: row.status == '1' ? '菜单【启用】成功' : '菜单【禁用】成功' })
+    : ElMessage.error({ message: res.message })
 }
 // 筛选操作
 const filterHandler = (value: string, row: any, column: TableColumnCtx<any>) => {

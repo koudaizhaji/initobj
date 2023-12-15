@@ -9,6 +9,7 @@
  */
 // 前两个是element-plus组件库table的el-table-column属性，都可以在这里配置
 // random是随机属性
+import type { IPageUrl } from '@/services/pages/types'
 type tableType = 'selection' | 'index' | 'random' | 'timer' | 'handler' | 'custom'
 
 interface tablePropList {
@@ -33,6 +34,7 @@ interface tableChildrenProps {
 }
 
 export interface pageContentTable {
+  pageUrl: IPageUrl
   pageName: string
   header: {
     title: string

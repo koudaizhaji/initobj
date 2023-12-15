@@ -1,9 +1,4 @@
 /*
- * @Author: 李立
- * @Date: 2023-10-01 16:58:56
- * @LastEditors: 李立
- * @LastEditTime: 2023-10-13 09:24:50
- * @FilePath: \apiObjectf:\pcadmin\src\stores\modules\setting.ts
  * @Description: 参考代码
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */

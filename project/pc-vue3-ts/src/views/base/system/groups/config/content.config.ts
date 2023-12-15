@@ -6,6 +6,10 @@ import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
   pageName: 'groups',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'groups'
+  },
   header: {
     title: '分组列表',
     btnTitle: '新建分组'

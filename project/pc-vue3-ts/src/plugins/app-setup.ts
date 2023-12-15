@@ -13,8 +13,7 @@ import '../styles/index.less'
 // import App from '../App.vue'
 import router from '../routers'
 import store from '../stores'
-// 引入自定义的组件布局-全局
-import PageWrapLayout from '@/components/base/page-wrap-layout/index.vue'
+
 // svg-icons注册导入，将svg图转icon
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/public/svg-icon/index.vue'
@@ -22,7 +21,6 @@ import type { App } from 'vue'
 
 export default function appSetup(app: App): void {
   app.component('svg-icon', SvgIcon)
-  app.component('PageWrapLayout', PageWrapLayout)
 
   app.use(store)
 

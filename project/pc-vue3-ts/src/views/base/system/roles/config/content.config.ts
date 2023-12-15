@@ -2,6 +2,10 @@ import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
   pageName: 'roles',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'roles'
+  },
   header: {
     title: '角色列表',
     btnTitle: '新建角色'

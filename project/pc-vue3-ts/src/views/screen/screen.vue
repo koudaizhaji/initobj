@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 // import { RouterView } from 'vue-router'
-import Layout from '@/components/public/layout'
+import Layout from '@/components/layout'
 import { localCache } from '@/utils/cache'
 import { USER_MENUS } from '@/config'
 

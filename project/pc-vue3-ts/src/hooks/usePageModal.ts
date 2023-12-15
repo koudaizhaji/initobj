@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type PageModal from '@/components/public/page-modal/page-modal.vue'
+import type PageModal from '@/components/pages/page-modal/page-modal.vue'
 
 type callbackType = (item?: any) => void
 

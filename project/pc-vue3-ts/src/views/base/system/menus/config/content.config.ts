@@ -2,6 +2,10 @@ import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
   pageName: 'menus',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'menus'
+  },
   header: {
     title: '系统菜单配置',
     btnTitle: '添加菜单'
