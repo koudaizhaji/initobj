@@ -28,7 +28,8 @@
     "svg-sprite-loader": "^6.0.11",
     "vue": "^3.3.4",
     "vue-qr": "^4.0.9",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.4",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "@iconify-json/ic": "^1.1.14",
