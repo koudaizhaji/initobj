@@ -4,12 +4,14 @@
       :search-config="searchConfig"
       @query-click="handleQueryClick"
       @reset-click="handleResetClick"
+      @exp-click="handleExportExcel"
     />
     <pageContent
       :content-config="contentConfig"
       ref="contentRef"
       @new-click="handleNewDataClick"
       @edit-click="handleEditDataClick"
+      @exp="exportExcelClick"
     >
       <!-- 通过具名插槽全部自定义 -->
       <template #status="scope">
@@ -35,6 +37,9 @@
       </template>
       <template #rightBtn>
         <el-button type="primary" size="small" icon="EditPen" @click="handleNewDataClick">
+          新增用户
+        </el-button>
+        <el-button type="primary" size="small" icon="EditPen" @click="exportExcelClick">
           导出表格
         </el-button>
       </template>
@@ -62,7 +67,7 @@ import usePageModal from '@/hooks/usePageModal'
 import useMainStore from '@/stores/base/base'
 import { storeToRefs } from 'pinia'
 
-const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
+const { contentRef, handleQueryClick, handleResetClick,handleExportExcel } = usePageContent()
 // 弹窗所需的3个操作
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 
@@ -73,7 +78,9 @@ const { entireRoles, entireGroups } = storeToRefs(mainStore)
 console.log('拿到的角色信息1111', entireRoles.value)
 modalConfig.formItems[3].options = entireRoles.value
 modalConfig.formItems[2].options = entireGroups.value
-
+const exportExcelClick=()=>{
+  handleExportExcel()
+}
 // 所属角色查询
 const getRoleName = (id: number) => {
   // console.log('拿到匹配角色的信息', id)

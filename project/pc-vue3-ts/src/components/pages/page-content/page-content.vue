@@ -32,6 +32,7 @@
         height="calc(90%)"
         v-bind="contentConfig.childrenProps"
         :style="getPageStyle(contentConfig.propsList)"
+        ref="tableRef"
       >
         <template v-for="item in contentConfig.propsList" :key="item.prop">
           <template v-if="item.type === 'timer'">
@@ -114,6 +115,7 @@
 
 <script setup lang="ts" name="content">
 import { storeToRefs } from 'pinia'
+import { exportExcelByTable } from '@/utils/xlsx';
 import pageDataStore from '@/stores/pages/pagestore'
 import type { IPageUrl } from '@/services/pages/types'
 import { utcFormat } from '@/utils/format'
@@ -136,7 +138,7 @@ interface IProps {
   }
 }
 const props = defineProps<IProps>()
-const emit = defineEmits(['newClick', 'editClick', 'filterMethod'])
+const emit = defineEmits(['newClick', 'editClick', 'filterMethod','expClick'])
 const isShowFooter = computed(() => props.contentConfig.showFooter ?? true)
 // 0.判断是否有增删改查的权限
 const isCreate = usePermission(props.contentConfig.pageName, 'create')
@@ -235,11 +237,18 @@ function pageFilterHandler(value: string, row: any, column: TableColumnCtx<any>)
   console.log('property', property, row[property], value)
   return row[property] === value
 }
+let tableRef = ref(null)
+function exportExcel(){
+  alert("okk")
+  emit('expClick')
+  exportExcelByTable(this.$refs.tableRef.$el)
+}
 
 // 暴露函数
 defineExpose({
   fetchPageListData,
-  handleResetClick
+  handleResetClick,
+  exportExcel
 })
 </script>
 

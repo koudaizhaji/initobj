@@ -11,11 +11,14 @@ function usePageContent() {
   function handleResetClick() {
     contentRef.value?.handleResetClick()
   }
-
+  function handleExportExcel() {
+    contentRef.value?.exportExcel()
+  }
   return {
     contentRef,
     handleQueryClick,
-    handleResetClick
+    handleResetClick,
+    handleExportExcel
   }
 }
 
