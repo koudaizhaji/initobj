@@ -42,7 +42,7 @@ const contentConfig: pageContentTable = {
       width: '180',
       slotName: 'handler'
     }
-  ]
+  ].map((item) => ({ ...item, visible: true }))
 }
 
 export default contentConfig

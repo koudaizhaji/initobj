@@ -24,6 +24,7 @@ interface tablePropList {
     text: string
     value: string | number
   }>
+  visible?: boolean
 }
 
 interface tableChildrenProps {
