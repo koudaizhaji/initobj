@@ -11,10 +11,6 @@
         <Header />
       </ElHeader>
       <ElMain>
-        <div class="m-b-16px">
-          <LILIBreadcrumb></LILIBreadcrumb>
-        </div>
-
         <slot v-if="route.meta.isSpecially"></slot>
         <!-- <ElCard v-else>
           <slot></slot>
@@ -41,8 +37,6 @@ import PageWrapLayout from './page-wrap-layout/index.vue'
 import Header from '@/components/layout/header'
 import MainMenu from './main-menu'
 import TopMenu from './top-menu'
-
-import LILIBreadcrumb from './breadcrumb'
 
 const props = defineProps<{
   menuList: MenuProps

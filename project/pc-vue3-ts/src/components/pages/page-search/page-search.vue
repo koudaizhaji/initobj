@@ -88,7 +88,7 @@ function handleQueryClick() {
 <style scoped lang="less">
 .search {
   background-color: #fff;
-  padding: 10px;
+  // padding: 10px;
   border-radius: 5px;
 
   .el-form-item {

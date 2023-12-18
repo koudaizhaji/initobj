@@ -1,15 +1,33 @@
-<!-- content只需要直观的展示接收的数据，不发生请求 -->
+<!-- 展示表格数据，进行基础的增删改查操作控制 -->
 <template>
   <div class="content">
     <div v-if="contentConfig.header" class="header">
       <h3 class="title">{{ contentConfig.header?.title }}</h3>
-      <el-button v-if="isCreate" type="primary" @click="handleNewData">
-        {{ contentConfig.header?.btnTitle }}
-      </el-button>
+      <div class="handerClass">
+        <div class="left-handler">
+          <el-icon class="icon" v-if="isCreate" @click="handleNewData"><Plus /></el-icon>
+          <el-icon class="icon"><Calendar /></el-icon>
+          <!-- <el-button
+            type="primary"
+            plain
+            v-if="isCreate"
+            @click="handleNewData"
+            class="handler handler-center"
+          >
+            {{ contentConfig.header?.btnTitle }}
+          </el-button> -->
+          <el-icon class="icon"><Printer /></el-icon>
+        </div>
+        <div class="right-handler">
+          <!-- <el-button type="primary"> 导出表格 </el-button> -->
+          <slot name="rightBtn"></slot>
+        </div>
+      </div>
     </div>
     <div class="table">
       <el-table
         :data="pageList"
+        stripe
         :border="true"
         height="calc(90%)"
         v-bind="contentConfig.childrenProps"
@@ -88,6 +106,7 @@
         layout="total, sizes, prev, pager, next, jumper"
         :total="pageTotalCount"
         @current-change="handleCurrentChange"
+        @size-change="handleCurrentChange"
       />
     </div>
   </div>
@@ -226,24 +245,48 @@ defineExpose({
 
 <style scoped lang="less">
 .content {
-  margin-top: 10px;
-  padding: 15px;
+  padding: 10px;
   background-color: #fff;
 
   .header {
-    display: flex;
     height: 45px;
     padding: 0 5px;
-    justify-content: space-between;
-    align-items: center;
-
+    margin-bottom: 25px;
     .title {
       font-size: 18px;
       font-weight: 700;
+      margin: 10px 0;
     }
+    .handerClass {
+      display: flex;
+      justify-content: space-between;
 
-    .handler {
-      align-items: center;
+      .left-handler {
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+      }
+
+      .icon {
+        font-size: 14px;
+        margin-right: 10px;
+        color: rgba(0, 0, 0, 0.7);
+        border: 1px solid #e6e6e6;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          color: #409eff;
+        }
+        &:active {
+          color: #fff;
+          background-color: #409eff;
+        }
+      }
+      .right-handler {
+        margin-right: 36px;
+      }
     }
   }
 

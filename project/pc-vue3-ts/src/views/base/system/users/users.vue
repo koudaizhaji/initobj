@@ -33,6 +33,11 @@
           >{{ getRoleName(scope.row.role_id) }}</el-tag
         >
       </template>
+      <template #rightBtn>
+        <el-button type="primary" size="small" icon="EditPen" @click="handleNewDataClick">
+          导出表格
+        </el-button>
+      </template>
     </pageContent>
     <!-- 弹窗 -->
     <pageModal :modal-config="modalConfig" ref="modalRef" />

@@ -6,7 +6,7 @@
     <div class="w-1px h-30px bg-#ebeef5 m-l-8px m-r-8px" />
     <el-dropdown class="m-r-8px">
       <div
-        class="el-dropdown-link cursor-pointer flex flex-items-center focus-visible-outline-0px"
+        class="el-dropdown-link cursor-pointer flex flex-items-center focus-visible-outline-0px w-90px"
         style="color: var(--el-color-primary);"
       >
         {{ username }}
