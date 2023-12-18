@@ -23,7 +23,7 @@ const contentConfig: pageContentTable = {
       label: '菜单编号',
       minWidth: 80
     },
-    { prop: 'type', label: '级别', minWidth: '60' },
+    { prop: 'type', label: '级别', minWidth: '60', visible: true },
     {
       prop: 'url',
       label: '菜单url',
@@ -80,7 +80,7 @@ const contentConfig: pageContentTable = {
       slotName: 'handler',
       fixed: 'right'
     }
-  ],
+  ].map((item) => ({ ...item, visible: true })),
 
   // 是否展开菜单
   childrenProps: {

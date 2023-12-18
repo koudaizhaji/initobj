@@ -57,7 +57,7 @@ const contentConfig: pageContentTable = {
     //   type: "custom",
     //   slotName: "menulist"
     // }
-  ]
+  ].map((item) => ({ ...item, visible: true }))
 }
 
 export default contentConfig
