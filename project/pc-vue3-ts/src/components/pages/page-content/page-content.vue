@@ -131,11 +131,12 @@
 
 <script setup lang="ts" name="content">
 import { storeToRefs } from 'pinia'
-import { exportExcelByTable } from '@/utils/xlsx';
+import { exportExcelByTable } from '@/utils/xlsx'
 import pageDataStore from '@/stores/pages/pagestore'
 import type { IPageUrl } from '@/services/pages/types'
 import { utcFormat } from '@/utils/format'
 import { ref, computed, unref, watch } from 'vue'
+import type { Ref } from 'vue'
 import usePermission from '@/hooks/usePermission'
 import type { TableColumnCtx } from 'element-plus'
 import { ElMessage } from 'element-plus'
@@ -154,7 +155,7 @@ interface IProps {
   }
 }
 const props = defineProps<IProps>()
-const emit = defineEmits(['newClick', 'editClick', 'filterMethod','expClick'])
+const emit = defineEmits(['newClick', 'editClick', 'filterMethod', 'expClick'])
 const isShowFooter = computed(() => props.contentConfig.showFooter ?? true)
 // 0.判断是否有增删改查的权限
 const isCreate = usePermission(props.contentConfig.pageName, 'create')
@@ -289,11 +290,12 @@ function pageFilterHandler(value: string, row: any, column: TableColumnCtx<any>)
   console.log('property', property, row[property], value)
   return row[property] === value
 }
-let tableRef = ref(null)
-function exportExcel(){
-  alert("okk")
+// const tableRef = ref(null)
+const tableRef = ref(null)
+function exportExcel() {
+  // alert('okk')
   emit('expClick')
-  exportExcelByTable(this.$refs.tableRef.$el)
+  exportExcelByTable(this.$refs.tableRef.$el, props.contentConfig.pageName)
 }
 
 // 暴露函数

@@ -67,7 +67,7 @@ import usePageModal from '@/hooks/usePageModal'
 import useMainStore from '@/stores/base/base'
 import { storeToRefs } from 'pinia'
 
-const { contentRef, handleQueryClick, handleResetClick,handleExportExcel } = usePageContent()
+const { contentRef, handleQueryClick, handleResetClick, handleExportExcel } = usePageContent()
 // 弹窗所需的3个操作
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 
@@ -78,7 +78,7 @@ const { entireRoles, entireGroups } = storeToRefs(mainStore)
 console.log('拿到的角色信息1111', entireRoles.value)
 modalConfig.formItems[3].options = entireRoles.value
 modalConfig.formItems[2].options = entireGroups.value
-const exportExcelClick=()=>{
+const exportExcelClick = () => {
   handleExportExcel()
 }
 // 所属角色查询
