@@ -64,7 +64,9 @@ const exportExcelBySheets = (sheets: WorkSheet[], fileName = 'example.xlsx'): vo
 
   XLSX.writeFile(workbook, fileName, { type: 'binary' })
 }
-
+const generateExcelBySheet = (sheet) => {
+  return XLSX.utils.sheet_to_html(sheet);
+};
 /**
  * 将二维数组的 sheet 数据导出 Excel 文件
  * @param {Array<Array<string | number>>} workSheetData 二维数组
@@ -102,5 +104,6 @@ export {
   exportExcelBySheets,
   convertSheetToHTML,
   exportExcelByDoubleDimensArray,
-  exportExcelByTable
+  exportExcelByTable,
+  generateExcelBySheet
 }
