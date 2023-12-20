@@ -115,8 +115,9 @@ async function handleConfirmClick() {
     ? (messageObj.message += `【${editData.value.title}】成功`)
     : (messageObj.message = res.message)
   res.code === 0 ? ElMessage.success(messageObj) : ElMessage.error(messageObj)
+  // 直接刷新页面吧，只是请求数据有点麻烦
+  window.location.reload()
 }
-
 // 新建或者编辑
 function setDialogVisible(isNew: boolean = true, data: any = {}) {
   dialogVisible.value = true

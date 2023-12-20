@@ -119,7 +119,7 @@
         v-show="isShowFooter"
         v-model:currentPage="currentPage"
         v-model:page-size="pageSize"
-        :page-sizes="[2, 3, 5]"
+        :page-sizes="pageSizeList"
         layout="total, sizes, prev, pager, next, jumper"
         :total="pageTotalCount"
         @current-change="handleCurrentChange"
@@ -213,16 +213,14 @@ function formatConfim() {
 const pageStore = pageDataStore()
 const currentPage = ref(1)
 const pageSize = ref(2)
+const pageSizeList = [2, 3, 5, 'all']
 async function fetchPageListData(queryInfo: any = {}) {
   if (!isQuery) return
-  // 1.获取offset和size
-  const size = pageSize.value
-  const offset = currentPage.value
-  console.log('请求参数2222s', offset, size, queryInfo)
+  // 请求的页面大小
   // 2.发生网络请求
   const res = await pageStore.getPageListDataAction(props.contentConfig.pageUrl, {
-    pageNum: offset,
-    pageSize: size,
+    pageNum: currentPage.value,
+    pageSize: pageSize.value,
     ...queryInfo
   })
   // ElMessage.success({ message: res.message })
@@ -241,6 +239,7 @@ pageStore.$onAction(({ name, after }) => {
     ) {
       currentPage.value = 1
       // pageSize.value = 10
+      // 重新获取数据
     }
   })
 })
@@ -250,6 +249,8 @@ const { pageList, pageTotalCount } = storeToRefs(pageStore)
 console.log('拿到的页面数据', pageList, pageTotalCount)
 // 3.绑定分页数据
 function handleCurrentChange() {
+  console.log('执行了这里', pageSize.value)
+  if (isNaN(pageSize.value)) pageSize.value = pageTotalCount.value
   fetchPageListData()
 }
 function handleResetClick() {
@@ -266,7 +267,10 @@ function handleNewData() {
 
 // 5.删除和编辑操作
 async function handleDeleteClick(id: number) {
-  const res = await pageStore.deletePageDataAction(props.contentConfig.pageUrl, id)
+  const res = await pageStore.deletePageDataAction(props.contentConfig.pageUrl, id, {
+    pageNum: currentPage.value,
+    pageSize: pageSize.value
+  })
   res.code === 0
     ? ElMessage.success({ message: res.message })
     : ElMessage.error({ message: res.message })

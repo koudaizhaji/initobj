@@ -13,8 +13,8 @@
     >
       <!-- 通过具名插槽全部自定义 -->
       <template #status="scope">
-        <el-tag :type="scope.row[scope.prop] == 1 ? 'primary' : 'danger'">{{
-          scope.row[scope.prop] == 1 ? '启用' : '禁用'
+        <el-tag :type="scope.row.status == 1 ? 'info' : 'danger'">{{
+          scope.row.status == 1 ? '启用' : '禁用'
         }}</el-tag>
       </template>
     </pageContent>

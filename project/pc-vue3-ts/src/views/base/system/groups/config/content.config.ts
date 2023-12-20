@@ -32,7 +32,13 @@ const contentConfig: pageContentTable = {
       minWidth: '180'
     },
     { type: 'random', prop: 'intro', label: '分组描述', minWidth: '260' },
-
+    {
+      type: 'custom',
+      prop: 'status',
+      label: '状态',
+      width: '120',
+      slotName: 'status'
+    },
     {
       type: 'timer',
       prop: 'createdAt',

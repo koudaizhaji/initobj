@@ -67,8 +67,6 @@ const formRef = ref<FormInstance>()
 const passwordType = ref('password')
 const loading = ref(false)
 const loginStore = useLoginStore()
-const ip = ref<any>()
-const userAgent = ref<any>()
 
 // step2:输入框验证规则
 const rules = reactive({
@@ -80,8 +78,8 @@ const rules = reactive({
 const account = reactive({
   username: '',
   password: '',
-  ip: ip,
-  userAgentId: userAgent
+  ip: '', // 初始化为空字符串
+  userAgentId: '' // 初始化为空字符串
 })
 
 // 显示密码图标
@@ -90,10 +88,9 @@ const showPwd = () => {
 }
 
 onMounted(async () => {
-  userAgent.value = navigator.userAgent.replace(/[^\w]/gi, '')
+  account.userAgentId = navigator.userAgent.replace(/[^\w]/gi, '')
   const ipObj = await getIpMsg()
-  ip.value = ipObj?.ip ? ipObj.ip : ''
-  console.log('拿到的设备信息', userAgent.value, ip.value)
+  account.ip = ipObj?.ip ? ipObj.ip : ''
 })
 // const accountRef = ref<InstanceType<typeof PanelAccount>>()
 // 这里使用ref选中的formRef.value也行

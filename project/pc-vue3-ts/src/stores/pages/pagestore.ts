@@ -30,23 +30,23 @@ const pageDatastore = defineStore('pages', {
       return pageListResult
     },
     // 删除页面数据的请求
-    async deletePageDataAction(pageUrl: IPageUrl, id: number) {
+    async deletePageDataAction(pageUrl: IPageUrl, id: number, range: any) {
       const res = await deletePageData(pageUrl, id)
       console.log('页面删除数据', res)
-      this.getPageListDataAction(pageUrl, { offset: 1, size: 10 })
+      this.getPageListDataAction(pageUrl, { pageNum: range.pageNum, pageSize: range.pageSize })
       return res
     },
     async newPageDataAction(pageUrl: IPageUrl, pageData: any) {
       const res = await newPageData(pageUrl, pageData)
       console.log(pageData)
       console.log(res)
-      this.getPageListDataAction(pageUrl, { offset: 1, size: 10 })
+      this.getPageListDataAction(pageUrl, { pageNum: 1, pageSize: 10 })
       return res
     },
     async editPageDataAction(pageUrl: IPageUrl, id: number, pageData: any) {
       const res = await editPageData(pageUrl, id, pageData)
       console.log(res)
-      this.getPageListDataAction(pageUrl, { offset: 1, size: 10 })
+      this.getPageListDataAction(pageUrl, { pageNum: 1, pageSize: 10 })
       return res
     }
   }

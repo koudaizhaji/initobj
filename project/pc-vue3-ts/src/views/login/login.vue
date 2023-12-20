@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onErrorCaptured, onMounted, computed } from 'vue'
+import { ref, onErrorCaptured } from 'vue'
 import LoginForm from './components/login-account.vue'
 // import SwitchDark from '@/components/switch-dark/index.vue'
 import LoginQrcode from './components/login-qrcode.vue'
