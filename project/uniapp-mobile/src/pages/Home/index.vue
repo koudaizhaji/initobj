@@ -44,11 +44,11 @@
       </view>
     </view>
     <!-- 轮播图 -->
-    <u-swiper
+    <!-- <u-swiper
       :circular="true"
       :list="bannerlist"
       @click="gotoDetail"
-    />
+    /> -->
 
     <!-- 卡片式 -->
     <view class="w-100% h-40 mt-4 flex flex-justify-between bg-white ">
@@ -184,10 +184,8 @@
 </template>
 
 <script>
-import aimages from 'uview-plus/libs/config/props/image';
 
 export default {
-  components: { aimages },
   data() {
     return {
       title: '首页',

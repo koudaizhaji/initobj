@@ -44,7 +44,6 @@ export default {
 
 <style lang="scss">
   /* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
-  @import "uview-plus/index";
 
   .uni-padding-top {
     padding-top: var(--status-bar-height);

@@ -2,7 +2,7 @@
 
 ## 🥇基本情况
 - 基于uniapp的移动端项目
-- uniapp+vue3+vite+unocss（原子化css）+uview
+- uniapp+vue3+vite+unocss（原子化css）
 - 一键移动端项目
 - 环境要求：
   - nodejs 14.18.1

@@ -7,11 +7,11 @@
       :style="{width: (100/tabBarList.length) + '%'}"
       @click="handleTab(item)"
     >
-      <u-icon
+      <!-- <u-icon
         :name="item.icon"
         :color="selectedIndex !== index ? '' : 'orange'"
         size="28"
-      />
+      /> -->
       <!-- <img :src="item.img"  class="w-6 h-6"  :class="{'w-8 h-8':selectedIndex === index}"/> --> <!-- 自定义图片 -->
       <text :class="{'color-orange':selectedIndex === index}">
         {{ item.text }}
