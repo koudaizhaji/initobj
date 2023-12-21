@@ -179,10 +179,7 @@
       </view>
     </view>
     <view class="h-16" />
-    <TabBar
-      :tab-bar-list="tabBarList"
-      :selected-index="0"
-    />
+    <TabBar ref="tabbar" />
   </view>
 </template>
 

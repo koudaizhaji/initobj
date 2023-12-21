@@ -21,11 +21,22 @@ import {
   transformerVariantGroup,
 } from 'unocss';
 
-console.log('unocss.config.ts');
+// console.log('unocss.config.ts');
 // import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 // 开发的时候检查样式：http://localhost:5173/__unocss
 
+// 允许的图标列表
+const safeIconList = [
+  'file-search-outline',
+  'home-silo-outline',
+  'form-select',
+  'account-tie',
+];
+const safelist = [
+  ...safeIconList.map((v) => `i-mdi-${v}`),
+];
 export default defineConfig({
+  safelist, // 安全列表，字符串组成的数组
   // 预设的别名，可以进行一些组合使用
   shortcuts: [
     ['center', 'flex items-center justify-center'],
@@ -63,5 +74,5 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
-  safelist: 'prose m-auto text-left'.split(' '),
+
 });

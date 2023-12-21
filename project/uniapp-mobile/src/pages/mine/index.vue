@@ -112,10 +112,7 @@
         客服入口
       </view>
     </view>
-    <TabBar
-      :tab-bar-list="tabBarList"
-      :selected-index="1"
-    />
+    <TabBar ref="tabbar" />
   </view>
 </template>
 

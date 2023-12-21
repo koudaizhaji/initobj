@@ -1,90 +1,122 @@
 {
-	"pages": [
-		{
-			"path": "pages/home/index",
-			"style": {
-				// #ifdef H5
-				"titleNView": true,
-				"navigationBarBackgroundColor": "#39A692",
-				"backgroundColorTop": "#39A692",
-				"backgroundColorBottom": "#ffffff",
-				"navigationBarTitleText": "首页",
-				// #endif			
-				"app-plus": {
-					"bounce": "vertical",
-					"titleNView": false
-				}				
-			}
-		},
-		{
-			"path": "pages/mine/index",
-			"style": {
-				// #ifdef H5
-				"titleNView": true,
-				"navigationBarBackgroundColor": "#39A692",
-				"backgroundColorTop": "#39A692",
-				"backgroundColorBottom": "#ffffff",
-				"navigationBarTitleText": "个人中心",
-				// #endif			
-				"app-plus": {
-					"bounce": "vertical",
-					"titleNView": false
-				}				
-			}
-		},
-		{
-			"path": "pages/login/index",
-			"style": {
-				// #ifdef H5
-				"titleNView": true,
-				"navigationBarBackgroundColor": "#39A692",
-				"backgroundColorTop": "#39A692",
-				"backgroundColorBottom": "#ffffff",
-				"navigationBarTitleText": "密码登录",
-				// #endif			
-				"app-plus": {
-					"bounce": "vertical",
-					"titleNView": false
-				}				
-			}
-		},
-		{
-			"path": "pages/login/register",
-			"style": {
-				// #ifdef H5
-				"titleNView": true,
-				"navigationBarBackgroundColor": "#39A692",
-				"backgroundColorTop": "#39A692",
-				"backgroundColorBottom": "#ffffff",
-				"navigationBarTitleText": "验证码登录",
-				// #endif			
-				"app-plus": {
-					"bounce": "vertical",
-					"titleNView": false
-				}				
-			}
-		},
-		{
-			"path": "pages/detail/index",
-			"style": {
-				// #ifdef H5
-				"titleNView": true,
-				"navigationBarBackgroundColor": "#39A692",
-				"backgroundColorTop": "#39A692",
-				"backgroundColorBottom": "#ffffff",
-				"navigationBarTitleText": "详情页",
-				// #endif			
-				"app-plus": {
-					"bounce": "vertical",
-					"titleNView": false
-				}				
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "首页",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/form/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "表单demo",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/echart/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "图表统计",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "个人中心",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/login/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "密码登录",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/login/register",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "验证码登录",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/detail/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "详情页",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
 }
