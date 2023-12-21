@@ -39,7 +39,7 @@ export default defineConfig({
       collections: {
             	// 把自己的svg文件转换为class，这里的my-icon名称随便取，使用的时候通过i-my-icon-[filename]。
         // 'my-icon': FileSystemIconLoader(
-        //    './src/assets/svg',
+        //    './src/static/svg',
         //     svg => svg.replace(/#FFF/, 'currentColor'),
         // ),
         // carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),

@@ -66,7 +66,7 @@
           <view>
             <img
               class="w-20"
-              src="../../static/images/demo/cate_08.png"
+              src="/src/static/images/demo/cate_08.png"
             >
           </view>
           <view>
@@ -121,14 +121,17 @@
             <view class="font-size-3 c-#999 mt-1">
               点击发现折扣
             </view>
-            <view class="mt-1 w-4 h-4 line-height-4 text-center bg-#DBE0DC border-rd-50% font-bold scale-80">
+            <view
+              class="mt-1 w-4 h-4 line-height-4 text-center
+            bg-#DBE0DC border-rd-50% font-bold scale-80"
+            >
               >
             </view>
           </view>
           <view class="flex flex-grow-1 flex-justify-center flex-items-center">
             <img
               class="w-10 "
-              src="../../static/images/demo/cate_09.png"
+              src="@/static/images/demo/cate_09.png"
             >
           </view>
         </view>
@@ -163,13 +166,13 @@
       <view class="flex w-100%">
         <view class="flex justify-center w-50% bg-white">
           <img
-            src="../../static/images/demo/cate_04.png"
+            src="@/static/images/demo/cate_04.png"
             alt=""
           >
         </view>
         <view class="flex justify-center w-50% bg-white">
           <img
-            src="../../static/images/demo/cate_06.png"
+            src="@/static/images/demo/cate_06.png"
             alt=""
           >
         </view>
@@ -198,22 +201,22 @@ export default {
         { id: 4, title: '筛选', icon: 'i-mdi-filter-settings-outline' },
       ],
       bannerlist: [
-        '/src/static/swiper/swiper1.png',
-        '/src/static/swiper/swiper2.png',
-        '/src/static/swiper/swiper3.png',
-        '/src/static/swiper/swiper4.png',
+        '/src/assetsswiper/swiper1.png',
+        '/src/assetsswiper/swiper2.png',
+        '/src/assetsswiper/swiper3.png',
+        '/src/assetsswiper/swiper4.png',
       ],
       categoryList: [
-        { icon: '../../static/images/demo/cate_01.png', text: '手机数码' },
-        { icon: '../../static/images/demo/cate_02.png', text: '买前必领' },
-        { icon: '../../static/images/demo/cate_03.png', text: '一起拼团' },
-        { icon: '../../static/images/demo/cate_04.png', text: '疯狂砍价' },
-        { icon: '../../static/images/demo/cate_05.png', text: '限时秒杀' },
-        { icon: '../../static/images/demo/cate_06.png', text: '分销中心' },
-        { icon: '../../static/images/demo/cate_07.png', text: '我的收藏' },
-        { icon: '../../static/images/demo/cate_08.png', text: '新闻资讯' },
-        { icon: '../../static/images/demo/cate_09.png', text: '我的订单' },
-        { icon: '../../static/images/demo/cate_01.png', text: '我的积分' },
+        { icon: '/src/static/images/demo/cate_01.png', text: '手机数码' },
+        { icon: '/src/static/images/demo/cate_02.png', text: '买前必领' },
+        { icon: '/src/static/images/demo/cate_03.png', text: '一起拼团' },
+        { icon: '/src/static/images/demo/cate_04.png', text: '疯狂砍价' },
+        { icon: '/src/static/images/demo/cate_05.png', text: '限时秒杀' },
+        { icon: '/src/static/images/demo/cate_06.png', text: '分销中心' },
+        { icon: '/src/static/images/demo/cate_07.png', text: '我的收藏' },
+        { icon: '/src/static/images/demo/cate_08.png', text: '新闻资讯' },
+        { icon: '/src/static/images/demo/cate_09.png', text: '我的订单' },
+        { icon: '/src/static/images/demo/cate_01.png', text: '我的积分' },
       ],
       cardList: [
         { title: '京东特卖', text: '京东特卖家具', icon: 'i-mdi-account-tie bg-green' },

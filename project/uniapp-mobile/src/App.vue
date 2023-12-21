@@ -43,17 +43,17 @@ export default {
 </script>
 
 <style lang="scss">
-  /* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
+/* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
 
-  .uni-padding-top {
-    padding-top: var(--status-bar-height);
-  }
+.uni-padding-top {
+  padding-top: var(--status-bar-height);
+}
 
-  uni-page-body,
+uni-page-body,
 page {
-    background-color: #fff;
+  background-color: #fff;
 
-    // background-color: #f4f4f4;
-    // overflow: auto;
-  }
+  // background-color: #f4f4f4;
+  // overflow: auto;
+}
 </style>
