@@ -49,6 +49,13 @@
       :list="bannerlist"
       @click="gotoDetail"
     /> -->
+    <view>
+      <!-- 这里是轮播图 -->
+      <!-- <card-swiper
+        class="card_swiper"
+        :card_menu="card_menu"
+      /> -->
+    </view>
 
     <!-- 卡片式 -->
     <view class="w-100% h-40 mt-4 flex flex-justify-between bg-white ">
@@ -82,13 +89,17 @@
               </view>
             </view>
             <view
-              class="ml-2 mt-2.5 text-center font-size-3.5 font-bold h-6 line-height-6 w-20 bg-black border-rd-1 c-#737D41"
+              class="ml-2 mt-2.5 text-center font-size-3.5 font-bold h-6
+              line-height-6 w-20 bg-black border-rd-1 c-#737D41"
             >
               立即换购
             </view>
           </view>
         </view>
-        <view class="position-relative pl-2 w-33 line-height-8 font-size-3 h-8 bg-#DAF6EE letter_spacing">
+        <view
+          class="position-relative pl-2 w-33 line-height-8 font-size-3
+        h-8 bg-#DAF6EE letter_spacing"
+        >
           更多品类高价卖 &nbsp;>
           <view class="triangle" />
         </view>
@@ -102,7 +113,10 @@
             <view class="font-size-3 c-#999 mt-1">
               潮品一元抢购
             </view>
-            <view class="mt-1 w-4 h-4 line-height-4 text-center bg-#DBE0DC border-rd-50% font-bold scale-80">
+            <view
+              class="mt-1 w-4 h-4 line-height-4 text-center
+            bg-#DBE0DC border-rd-50% font-bold scale-80"
+            >
               >
             </view>
           </view>
@@ -189,8 +203,26 @@ export default {
   data() {
     return {
       title: '首页',
-      activeIndex: 1,
-      tabBarList: getApp().globalData.tabBarList,
+      card_menu: [
+        {
+          img: '/src/static/swiper/swiper1.png',
+          title: '一加ACE',
+          author: '小明',
+          url: '/pages/detail/index?id=1',
+        },
+        {
+          img: '/src/static/swiper/swiper2.png',
+          title: '小米10',
+          author: '小红',
+          url: '/pages/detail/index?id=2',
+        },
+        {
+          img: '/src/static/swiper/swiper3.png',
+          title: '华为P40',
+          author: '小王',
+          url: '/pages/detail/index?id=3',
+        },
+      ],
       optionList: [
         { id: 1, title: '综合排序', icon: 'i-mdi-chevron-down' },
         { id: 2, title: '价格', icon: 'i-mdi-chevron-down' },
@@ -237,102 +269,111 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped> body {
-    font-family: Arial;
-    font-size: 14px;
-    color: #000;
+<style lang="scss" scoped>
+.card_swiper {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  height: 800rpx;
+  transform: translateY(-50%);
+}
+
+body {
+  font-family: Arial;
+  font-size: 14px;
+  color: #000;
+}
+
+.blackBox {
+  width: 12px;
+  height: 3px;
+  background-color: black;
+}
+
+.headerLogo {
+  position: relative;
+  width: 100px;
+  height: 15px;
+
+  /* background-color: #aee7ff; */
+  margin: 10px 0;
+  margin-left: 10px;
+  background-color: #bfef05;
+  border-radius: 9px;
+
+  & > view:first-child {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1px;
+    text-align: center;
+  }
+}
+
+.headerText {
+  display: flex;
+  margin-top: 5px;
+  margin-right: 10px;
+
+  & > p {
+    margin-left: 15px;
+    font-size: 12px;
   }
 
-  .blackBox {
-    width: 12px;
-    height: 3px;
-    background-color: black;
+  & > p:last-child {
+    margin-right: 5px;
+    font-size: 12px;
   }
+}
 
-  .headerLogo {
-    position: relative;
-    width: 100px;
-    height: 15px;
+.triangle {
+  position: absolute;
+  top: 0;
+  left: 8.7rem;
+  width: 0;
+  height: 0;
 
-    /* background-color: #aee7ff; */
-    margin: 10px 0;
-    margin-left: 10px;
-    background-color: #bfef05;
-    border-radius: 9px;
+  /* 底边的宽度和颜色 */
+  border-right: 2rem solid transparent;
+  border-bottom: 2rem solid #daf6ee;
 
-    & > view:first-child {
-      font-size: 19px;
-      font-weight: 600;
-      line-height: 1px;
-      text-align: center;
-    }
+  /* 左斜边的宽度和颜色 */
+}
+
+.letter_spacing {
+  letter-spacing: 1.5px;
+}
+
+.boders {
+  margin: 0 10px;
+  border: 2px solid black;
+}
+
+li {
+  list-style: none;
+}
+
+.titleActive {
+  color: orange;
+}
+
+.textActive {
+  width: 60px;
+  color: #dd7e30;
+  border-radius: 6px;
+}
+
+.threecard {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .threelist {
+    width: 120px;
+    height: 70px;
+    background-color: white;
+    border-radius: 5px;
   }
-
-  .headerText {
-    display: flex;
-    margin-top: 5px;
-    margin-right: 10px;
-
-    & > p {
-      margin-left: 15px;
-      font-size: 12px;
-    }
-
-    & > p:last-child {
-      margin-right: 5px;
-      font-size: 12px;
-    }
-  }
-
-  .triangle {
-    position: absolute;
-    top: 0;
-    left: 8.7rem;
-    width: 0;
-    height: 0;
-
-    /* 底边的宽度和颜色 */
-    border-right: 2rem solid transparent;
-    border-bottom: 2rem solid #daf6ee;
-
-    /* 左斜边的宽度和颜色 */
-  }
-
-  .letter_spacing {
-    letter-spacing: 1.5px;
-  }
-
-  .boders {
-    margin: 0 10px;
-    border: 2px solid black;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  .titleActive {
-    color: orange;
-  }
-
-  .textActive {
-    width: 60px;
-    color: #dd7e30;
-    border-radius: 6px;
-  }
-
-  .threecard {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    .threelist {
-      width: 120px;
-      height: 70px;
-      background-color: white;
-      border-radius: 5px;
-    }
-  }
+}
 </style>
