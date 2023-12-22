@@ -2,15 +2,18 @@
 export default {
   onLaunch() {
     console.log('App Launch');
-    // 把原生的tabBar先隐藏起来，同时添加一个removeStorageSync，用于移除使用的tabBar的下标。
-    uni.removeStorageSync('selectedIndex');
-    uni.hideTabBar();
   },
   onShow() {
     console.log('App Show');
   },
   onHide() {
     console.log('App Hide');
+  },
+  onExit() {
+    // 把原生的tabBar先隐藏起来，同时添加一个removeStorageSync，用于移除使用的tabBar的下标。
+    // uni.removeStorageSync('selectedIndex');
+    uni.removeStorageSync('selectedIndex');
+    uni.hideTabBar();
   },
   methods: {},
   globalData: {
