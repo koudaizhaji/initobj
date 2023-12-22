@@ -193,7 +193,9 @@
       </view>
     </view>
     <view class="h-16" />
-    <TabBar ref="tabbar" />
+    <TabBar
+      ref="tabbar"
+    />
   </view>
 </template>
 
@@ -256,6 +258,9 @@ export default {
     };
   },
   onLoad() { },
+  onShow() {
+    uni.setStorageSync('selectedIndex', 0);
+  },
   methods: {
     change(index) {
       index === 1 && this.optionList[0].icon === 'i-mdi-chevron-down' ? this.optionList[0].icon = 'i-mdi-chevron-up' : this.optionList[0].icon = 'i-mdi-chevron-down';

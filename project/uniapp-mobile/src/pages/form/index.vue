@@ -16,6 +16,9 @@ export default {
     };
   },
   onLoad() { },
+  onShow() {
+    uni.setStorageSync('selectedIndex', 1);
+  },
   methods: {
 
   },

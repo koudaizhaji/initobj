@@ -57,6 +57,12 @@
 </template>
 <script>
 export default {
+  props: {
+    // pageIndex: {
+    //   type: Number,
+    //   default: 0,
+    // },
+  },
   data() {
     return {
       selectedIndex: uni.getStorageSync('selectedIndex') || 0, // 标记

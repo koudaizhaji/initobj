@@ -180,6 +180,9 @@ export default {
       ],
     };
   },
+  onShow() {
+    uni.setStorageSync('selectedIndex', 3);
+  },
   methods: {
     login() {
       uni.navigateTo({
