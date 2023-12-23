@@ -1,13 +1,13 @@
 <template>
   <view class="form">
-    Form表单页面
+    <forms></forms>
   </view>
   <TabBar ref="tabbar" />
 </template>
 
 <script>
-
 export default {
+  
   data() {
     return {
       title: '首页',
