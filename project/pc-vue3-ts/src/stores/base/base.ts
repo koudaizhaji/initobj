@@ -22,7 +22,6 @@ const useMainStore = defineStore('main', {
       const groupResult = await getGroupData({ pageNum: 1, pageSize: 100 })
       const roleResult = await getRoleData({ pageNum: 1, pageSize: 100 })
       const menuResult = await getMenuData()
-
       this.entireGroups = groupResult.data.list
       this.entireRoles = roleResult.data.list
       this.entireMenus = menuResult.data.list

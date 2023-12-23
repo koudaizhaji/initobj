@@ -32,8 +32,9 @@
                     ? 'warning'
                     : 'info'
           "
-          >{{ getRoleName(scope.row.role_id) }}</el-tag
         >
+          {{ getRoleName(scope.row.role_id) }}
+        </el-tag>
       </template>
       <template #rightBtn>
         <el-button type="primary" size="small" icon="EditPen" @click="handleNewDataClick">
@@ -70,23 +71,23 @@ import { storeToRefs } from 'pinia'
 const { contentRef, handleQueryClick, handleResetClick, handleExportExcel } = usePageContent()
 // 弹窗所需的3个操作
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
-
 // 获取role/group数据,拿store里的数据
 const mainStore = useMainStore()
-// storeToRefs是为了保障数据的响应式
 const { entireRoles, entireGroups } = storeToRefs(mainStore)
-console.log('拿到的角色信息1111', entireRoles.value)
-modalConfig.formItems[3].options = entireRoles.value
-modalConfig.formItems[2].options = entireGroups.value
+
 const exportExcelClick = () => {
   handleExportExcel()
 }
 // 所属角色查询
 const getRoleName = (id: number) => {
-  // console.log('拿到匹配角色的信息', id)
-  for (const item of entireRoles.value) {
-    if (item.id === id) {
-      return item.name
+  console.log('拿到匹配角色的信息', id)
+  modalConfig.formItems[3].options = entireRoles.value
+  modalConfig.formItems[2].options = entireGroups.value
+  if (entireRoles.value) {
+    for (const item of entireRoles.value) {
+      if (item.id === id) {
+        return item.name
+      }
     }
   }
 }
