@@ -252,9 +252,6 @@ export default {
 	box-sizing: border-box;
 }
 
-/* .uni-forms-item{
-	width: 80% !important;
-} */
 .uni-forms-item__label {
 	width: 80px !important;
 }
@@ -269,4 +266,5 @@ export default {
 	width: 160px;
 	height: 50px;
 	border-radius: 10px;
-}</style>
+}
+</style>
