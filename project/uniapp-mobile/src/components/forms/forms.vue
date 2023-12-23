@@ -25,7 +25,8 @@
 				</uni-forms-item>
 
 				<uni-forms-item name="email" label="邮箱">
-					<uni-easyinput type="text" placeholderStyle="color: #808080" v-model="formData.email" placeholder="请输入邮箱"></uni-easyinput>
+					<uni-easyinput type="text" placeholderStyle="color: #808080" v-model="formData.email"
+						placeholder="请输入邮箱"></uni-easyinput>
 				</uni-forms-item>
 
 				<uni-forms-item name="checked" label="详细信息">
@@ -46,38 +47,41 @@
 					</uni-forms-item>
 
 					<uni-forms-item name="remarks" label="备注">
-						<uni-easyinput type="textarea" placeholderStyle="color: #808080" v-model="formData.remarks" :maxlength="20" placeholder="请输入备注"></uni-easyinput>
+						<uni-easyinput type="textarea" placeholderStyle="color: #808080" v-model="formData.remarks" :maxlength="20"
+							placeholder="请输入备注"></uni-easyinput>
 					</uni-forms-item>
 
 				</uni-group>
 			</template>
 			<!-- 校验区 -->
-			<view>
-				<button @click="submitForm('form')">校验表单</button>
-				<button size="mini" @click="validateField('form')">只校验用户名和邮箱项</button>
-				<button size="mini" @click="clearValidate('form', 'name')">移除用户名的校验结果</button>
-				<button size="mini" @click="clearValidate('form')">移除全部表单校验结果</button>
-				<button @click="resetForm">重置表单</button>
+			<view class="w100% flex mb-20px">
+				<button class="btn" type="primary" @click="submitForm('form')">提交</button>
 			</view>
+			<button class="ml-40px mr-10px" size="mini" type="primary" plain="true"
+				@click="clearValidate('form')">移除全部表单校验结果</button>
+			<button size="mini" type="warn" @click="resetForm">重置表单</button>
 		</uni-forms>
 	</view>
 </template>
  
 <script>
+// import  {rules}  from './validate';
 export default {
 	data() {
 		return {
+			// 表单数据初始化
 			formData: {
 				name: 'Test',
 				age: 30,
 				email: '',
 				sex: '0',
-				hobby: [0, 2],
-				remarks: '学习，生活',
+				hobby: [0],
+				remarks: '',
 				checked: false,
-				weight: 120,
-				birth: ''
+				weight: 0,
+				birth: '',
 			},
+			// 选项数据
 			sex: [{
 				text: '男',
 				value: '0'
@@ -87,7 +91,7 @@ export default {
 				value: '1'
 			},
 			{
-				text: '未知',
+				text: '保密',
 				value: '2'
 			}
 			],
@@ -105,6 +109,7 @@ export default {
 			}
 			],
 			show: false,
+			// 校验规则
 			rules: {
 				name: {
 					rules: [{
@@ -114,7 +119,7 @@ export default {
 					{
 						minLength: 3,
 						maxLength: 15,
-						errorMessage: '姓名长度在 {minLength} 到 {maxLength} 个字符'
+						errorMessage: '用户名长度在 {minLength} 到 {maxLength} 个字符'
 					}
 					]
 				},
@@ -128,8 +133,8 @@ export default {
 						errorMessage: '年龄必须是数字'
 					},
 					{
-						minimum: 18,
-						maximum: 30,
+						minimum: 0,
+						maximum: 100,
 						errorMessage: '年龄应该大于 {minimum} 岁，小于 {maximum} 岁'
 					}
 					]
@@ -140,8 +145,8 @@ export default {
 						errorMessage: '体重必须是数字'
 					},
 					{
-						minimum: 100,
-						maximum: 200,
+						minimum: 20,
+						maximum: 300,
 						errorMessage: '体重应该大于 {minimum} 斤，小于 {maximum} 斤'
 					}
 					]
@@ -184,8 +189,8 @@ export default {
 					},
 					{
 						validateFunction: function (rule, value, data, callback) {
-							if (value.length < 2) {
-								callback('请至少勾选两个兴趣爱好')
+							if (value.length < 1) {
+								callback('请至少勾选一个兴趣爱好')
 							}
 							return true
 						}
@@ -198,41 +203,36 @@ export default {
 	methods: {
 		change(name, value) {
 			this.formData.checked = value;
-			//下拉框值设定，可自己设定
+			//下拉框值设定
 			this.$refs.form.setValue(name, value)
 		},
+		// 表单提交
 		submitForm(form) {
 			this.$refs[form]
-				.submit()
+				.validate()
 				.then(res => {
-					console.log('表单的值：', res)
+					console.log('表单数据：', res)
 					uni.showToast({
-						title: '验证成功'
+						title: '提交成功'
 					})
 				})
 				.catch(errors => {
-					console.error('验证失败：', errors)
+					console.error('提交失败：', errors)
 				})
 		},
-
-		//重置表单 。原生的组件input组件不能重置表单
+		//重置表单
 		resetForm() {
-			this.$refs.form.resetFields()
+			this.formData.name = '';
+			this.formData.age = '';
+			this.formData.email = '';
+			this.formData.sex = '0';
+			this.formData.hobby = [0];
+			this.formData.remarks = '';
+			this.formData.checked = false;
+			this.formData.weight = 0;
+			this.formData.birth = '';
 		},
-		validateField(form) {
-			this.$refs[form]
-				.validateField(['name', 'email'])
-				.then(res => {
-					uni.showToast({
-						title: '验证成功'
-					})
-					console.log('表单的值：', res)
-				})
-				.catch(errors => {
-					console.error('验证失败：', errors)
-				})
-		},
-
+		// 清空校验
 		clearValidate(form, name) {
 			if (!name) name = []
 			this.$refs[form].clearValidate(name)
@@ -251,4 +251,22 @@ export default {
 	border-radius: 5px;
 	box-sizing: border-box;
 }
-</style>
+
+/* .uni-forms-item{
+	width: 80% !important;
+} */
+.uni-forms-item__label {
+	width: 80px !important;
+}
+
+.uni-group__content {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.btn {
+	margin: 0 auto;
+	width: 160px;
+	height: 50px;
+	border-radius: 10px;
+}</style>
