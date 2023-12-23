@@ -53,5 +53,8 @@
   "editor.tabSize": 2,
 
   // 自动补充闭合的 HTML 标签
-  "html.autoClosingTags": true
+  "html.autoClosingTags": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }
