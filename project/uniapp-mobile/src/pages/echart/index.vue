@@ -1,6 +1,11 @@
 <template>
   <view class="charts-box">
-    <li-charts />
+    <li-charts
+      :chart-type="chartType"
+      :chart-opts="chartOpts"
+      :chart-data="chartData"
+      :chart-style="chartStyle"
+    />
     <zb-table
       :show-header="true"
       :columns="column"
@@ -19,7 +24,7 @@
 </template>
 
 <script>
-import liCharts from './comp/index.vue';
+import liCharts from '@/components/charts/charts.vue';
 
 export default {
   components: {
@@ -27,7 +32,40 @@ export default {
   },
   data() {
     return {
-      chartData: {},
+      chartType: 'pie', // 控制图表类型的数据
+      chartOpts: {
+        color: ['#1890FF', '#91CB74', '#FAC858', '#EE6666', '#73C0DE', '#3CA272', '#FC8452', '#9A60B4', '#ea7ccc'],
+        padding: [5, 5, 5, 5],
+        enableScroll: false,
+        legend: {
+          show: false,
+        },
+        extra: {
+          pie: {
+            activeOpacity: 0.5,
+            activeRadius: 10,
+            offsetAngle: 0,
+            labelWidth: 5,
+            border: true,
+            borderWidth: 3,
+            borderColor: '#FFFFFF',
+            // linearType: 'custom',
+            // customColor: ['#1890FF', '#91CB74'],
+          },
+        },
+      },
+      chartData: {
+        series: [
+          {
+            data: [{ name: '一班', value: 50, labelShow: false }, { name: '二班', value: 30, labelShow: false }, { name: '三班', value: 20, labelShow: false }, { name: '四班', value: 18 }, { name: '五班', value: 8, labelShow: false }],
+            show: true,
+          },
+        ],
+      },
+      chartStyle: {
+        width: '50%',
+        height: '300px',
+      },
       column: [
         { type: 'selection', fixed: true, width: 50 },
         {
@@ -116,29 +154,11 @@ export default {
     };
   },
   onReady() {
-    this.getServerData();
   },
   onShow() {
     uni.setStorageSync('selectedIndex', 2);
   },
   methods: {
-    getServerData() {
-    // 模拟从服务器获取数据时的延时
-      const res = {
-        categories: ['2016', '2017', '2018', '2019', '2020', '2021'],
-        series: [
-          {
-            name: '目标值',
-            data: [35, 36, 31, 33, 13, 34],
-          },
-          {
-            name: '完成量',
-            data: [18, 27, 21, 24, 6, 28],
-          },
-        ],
-      };
-      this.chartData = JSON.parse(JSON.stringify(res));
-    },
     // 单击某行,第一个参数代表选中对象，参数二代表选中的index
     rowClick(row, index) {
       console.log('rowClick', row, index);
@@ -159,304 +179,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-  .body {
-    height: 100%;
-    padding-bottom: 20rpx;
-    margin: 0;
-    background-color: #560594;
 
-    li {
-      list-style-type: none;
-    }
-
-    .nav {
-      position: fixed;
-      top: 50rpx;
-      left: 20rpx;
-    }
-
-    .text_green {
-      color: #4ecdb6;
-    }
-
-    .main {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 0 10rpx;
-      margin-top: 20rpx;
-
-      .detail_list {
-        height: 700rpx;
-        overflow: auto;
-        color: #9e9e9e;
-
-        .detail_item {
-          display: flex;
-          align-items: center;
-          margin: 20rpx 0;
-
-          .icon {
-            width: 30%;
-            text-align: center;
-
-            li {
-              font-size: 80rpx;
-            }
-          }
-
-          .right_content {
-            width: 50%;
-            text-align: center;
-          }
-
-          .icon-income {
-            color: #4aabf9;
-          }
-
-          .icon-expend {
-            color: #e45521;
-          }
-
-          .money {
-            color: #000;
-          }
-        }
-      }
-
-      .extend_message {
-        display: flex;
-        margin-top: 20rpx;
-        color: #ccc;
-
-        text {
-          color: #f90;
-        }
-      }
-
-      .level_bar {
-        display: flex;
-        width: 100%;
-        height: 40rpx;
-        overflow: hidden;
-        font-size: 20rpx;
-        line-height: 40rpx;
-        color: #ccc;
-        text-align: right;
-        border-radius: 40rpx;
-
-        view {
-          position: relative;
-          border-right: 2rpx solid #fff;
-        }
-
-        .name {
-          position: absolute;
-          top: -30rpx;
-          right: -40rpx;
-        }
-
-        .range {
-          position: absolute;
-          right: -40rpx;
-          bottom: 30rpx;
-        }
-
-        .default_bar {
-          background-color: #a0dfcd;
-        }
-
-        .active_bar {
-          background-color: #02ae7a;
-        }
-      }
-
-      .right_btn {
-        display: flex;
-        float: right;
-        font-size: 22rpx;
-        color: #ccc;
-
-        view {
-          height: 50rpx;
-          margin: 0 20rpx;
-          line-height: 50rpx;
-        }
-
-        .active_btn {
-          padding: 0rpx 20rpx;
-          border: 1px solid #ccc;
-          border-radius: 40rpx;
-        }
-      }
-
-      .end_block {
-        position: relative;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 20rpx;
-        background-color: #fff;
-        border-radius: 12rpx;
-      }
-
-      .row_block {
-        position: relative;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 20rpx;
-        background-color: #fff;
-        border-radius: 12rpx;
-
-        &::after {
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 92%;
-          height: 0;
-          content: "";
-          border-top: 1px dashed #ccc;
-          transform: translateX(-50%);
-        }
-      }
-
-      .the_title {
-        display: flex;
-        align-items: center;
-
-        .left_title {
-          display: flex;
-          align-items: center;
-        }
-
-        .title_icon {
-          width: 10rpx;
-          height: 40rpx;
-          margin-right: 20rpx;
-          font-size: 16px;
-          font-weight: 600;
-          background-color: #7e7e7e;
-          border-radius: 10rpx;
-        }
-      }
-
-      .extend_rank {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 10rpx;
-        background-color: #f5f5f5;
-
-        .rank_item {
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          margin: 20rpx 0;
-          font-size: 26rpx;
-
-          image {
-            width: 10%;
-          }
-
-          text {
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-
-          .name {
-            width: 20%;
-            margin: 0 10rpx;
-            color: #7d7d7d;
-          }
-
-          .desc {
-            width: 50%;
-            color: #ccc;
-          }
-
-          .money {
-            width: 20%;
-            text-align: right;
-          }
-        }
-      }
-    }
-
-    .top_head {
-      box-sizing: border-box;
-      width: 100%;
-      height: 435rpx;
-      padding: 110rpx 10rpx 0rpx;
-      background: url("https://vkceyugu.cdn.bspapp.com/VKCEYUGU-e9420bcd-26cd-4faf-b47a-9949982f7c41/0edf7889-12cb-4151-94b7-a2c12d27108a.jpg") no-repeat center 0;
-      background-size: 100% 100%;
-
-      .top_desc {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 20rpx;
-        margin-top: 20rpx;
-        background-color: #fff;
-        border-radius: 20rpx;
-
-        .text-gray {
-          margin-right: 10rpx;
-          font-size: 28rpx;
-          color: #ccc;
-        }
-
-        .remaining {
-          font-size: 46rpx;
-        }
-
-        .flex_1 {
-          flex: 1;
-        }
-
-        .head_block {
-          margin-top: 20rpx;
-
-          .income {
-            color: #e34b5e;
-          }
-        }
-      }
-
-      .text_des {
-        position: relative;
-        height: 100rpx;
-        margin-left: 60rpx;
-        font-weight: 900;
-        color: #fff;
-
-        text {
-          display: inline-block;
-          height: 100%;
-        }
-
-        .month_num {
-          font-size: 90rpx;
-        }
-
-        .month_text {
-          font-size: 56rpx;
-        }
-
-        .month_year {
-          position: absolute;
-          top: 20rpx;
-          left: 60rpx;
-          font-size: 22rpx;
-        }
-
-        .point {
-          font-size: 40rpx;
-        }
-
-        .title {
-          font-size: 40rpx;
-        }
-      }
-    }
-  }
 </style>
