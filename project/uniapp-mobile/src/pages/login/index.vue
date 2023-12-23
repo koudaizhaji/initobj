@@ -6,7 +6,7 @@
     <p class="mb-10 font-size-3 text-center color-coolgray">
       未注册的手机号验证后自动创建账号
     </p>
-    <view class="flex flex-justify-left grid-items-center h-10 w-80% bg-white m-l-10% border-rd-5">
+    <view class="borders flex flex-justify-left grid-items-center h-10 w-80% bg-white m-l-10% border-rd-5">
       <view class="m-l-2 m-r-2">
         +86 |
       </view>
@@ -18,7 +18,7 @@
         class="w-75%"
       >
     </view>
-    <view class="flex flex-justify-left grid-items-center h-10 w-80% bg-white m-l-10% border-rd-5 mt-5">
+    <view class="borders flex flex-justify-left grid-items-center h-10 w-80% bg-white m-l-10% border-rd-5 mt-5">
       <view class="m-r-5" />
       <input
         v-model="passWord"
@@ -31,15 +31,13 @@
     <!-- <view class="flex flex-justify-center grid-items-center h-10 w-80% bg-yellow m-l-10% border-rd-5 mt-5 ">
             <p class="color-white">登录</p>
         </view> -->
-    <view class="h-10 w-80% m-l-10% border-rd-5 mt-5">
-      <u--button
-        :disabled="!validatePhoneNumAndPwd"
-        color="blue"
-        shape="circle"
+    <view class="h-10 w-80% m-l-10% border-rd-5 mt-5 flex">
+      <button
+        class="btn"      
         @click="login"
       >
         登录
-      </u--button>
+      </button>
     </view>
     <view class="flex mt-6 mb-5 m-l-10%">
       <view>
@@ -94,6 +92,9 @@ export default {
   },
   computed: {
     validatePhoneNumAndPwd() {
+      console.log('adjasnd',(Validate.phone(this.phoneNum) && Validate.password(this.passWord)));
+      console.log(Validate.phone(this.phoneNum));
+      console.log(Validate.password(this.passWord));
       return Validate.phone(this.phoneNum) && Validate.password(this.passWord);
     },
   },
@@ -132,5 +133,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
+.btn {
+  background-color: #7A7AFA;
+  border-radius: 24px;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+}
+.borders{
+  border: 1px solid rgba(128, 127, 127, 0.2);
+}
 </style>
