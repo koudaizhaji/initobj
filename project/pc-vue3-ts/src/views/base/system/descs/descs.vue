@@ -14,8 +14,10 @@
       />
 
       <!-- Table and Content -->
-      <div class="group">
+      <div class="descs">
+        <sidebar class="desc-sidebar"></sidebar>
         <pageContent
+          class="desc-content"
           :contentConfig="contentConfig"
           @new-click="handleNewDataClick"
           @edit-click="handleEditDataClick"
@@ -43,13 +45,14 @@ import pageModal from '@/components/pages/page-modal/page-modal.vue'
 import modalConfig from './config/modal.config'
 import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'
+import sidebar from './components/sidebar.vue'
 
 // 弹窗所需操作
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .page {
   display: flex;
 }
@@ -63,7 +66,14 @@ const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
   padding: 20px;
 }
 
-.group {
+.descs {
   /* Your existing styles for the group */
+  display: flex;
+  justify-content: space-around;
+
+  .desc-sidebar {
+    flex: 1;
+    width: 200px;
+  }
 }
 </style>

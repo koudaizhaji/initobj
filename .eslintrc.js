@@ -52,7 +52,11 @@ module.exports = defineConfig({
     'import/no-dynamic-require': 'off',
     // vue 允许单单词组件名
     'vue/multi-word-component-names': 'off',
-
+    // 不希望在导入语句中添加文件扩展名，你可以调整 ESLint 配置，让其允许省略扩展名
+    'import/extensions': ['error', 'ignorePackages', {
+      js: 'never',
+      ts: 'never',
+    }],
     'operator-linebreak': ['error', 'after'],
     'class-methods-use-this': 'off',
 

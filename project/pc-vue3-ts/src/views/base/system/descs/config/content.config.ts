@@ -6,13 +6,15 @@ import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
   pageName: 'descs',
+  isPermission: false,
   pageUrl: {
     rootPath: 'pcadmin',
-    pageName: 'descs'
+    pageName: 'dicts',
+    handleName: 'types/1/contents'
   },
   header: {
-    title: '分组列表',
-    btnTitle: '新建分组'
+    title: '数据字典',
+    btnTitle: '添加字典内容'
   },
   propsList: [
     {
@@ -27,12 +29,26 @@ const contentConfig: pageContentTable = {
     },
     {
       type: 'random',
-      prop: 'name',
-      label: '分组名称',
-      minWidth: '180'
+      prop: 'type_id',
+      label: '字典所属类型'
     },
-    { type: 'random', prop: 'intro', label: '分组描述', minWidth: '260' },
-
+    {
+      type: 'random',
+      prop: 'content_code',
+      label: '字典编码'
+    },
+    {
+      type: 'random',
+      prop: 'content_desc',
+      label: '字典说明'
+    },
+    { type: 'random', prop: 'content_value', label: '字典值' },
+    {
+      type: 'status',
+      prop: 'status',
+      label: '字典状态',
+      slotName: 'status'
+    },
     {
       type: 'timer',
       prop: 'createdAt',
@@ -58,7 +74,7 @@ const contentConfig: pageContentTable = {
     //   type: "custom",
     //   slotName: "menulist"
     // }
-  ]
+  ].map((item) => ({ ...item, visible: true }))
 }
 
 export default contentConfig

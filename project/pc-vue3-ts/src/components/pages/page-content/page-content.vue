@@ -145,6 +145,7 @@ interface IProps {
   contentConfig: {
     pageName: string
     pageUrl: IPageUrl
+    isPermission: boolean
     header?: {
       title: string
       btnTitle: string
@@ -155,13 +156,16 @@ interface IProps {
   }
 }
 const props = defineProps<IProps>()
+// 判断是否开启增删改查权限
+const isPermission =
+  props.contentConfig.isPermission === undefined ? true : props.contentConfig.isPermission
 const emit = defineEmits(['newClick', 'editClick', 'filterMethod', 'expClick'])
 const isShowFooter = computed(() => props.contentConfig.showFooter ?? true)
 // 0.判断是否有增删改查的权限
-const isCreate = usePermission(props.contentConfig.pageName, 'create')
-const isDelete = usePermission(props.contentConfig.pageName, 'delete')
-const isUpdate = usePermission(props.contentConfig.pageName, 'update')
-const isQuery = usePermission(props.contentConfig.pageName, 'query')
+const isCreate = isPermission ? usePermission(props.contentConfig.pageName, 'create') : true
+const isDelete = isPermission ? usePermission(props.contentConfig.pageName, 'delete') : true
+const isUpdate = isPermission ? usePermission(props.contentConfig.pageName, 'update') : true
+const isQuery = isPermission ? usePermission(props.contentConfig.pageName, 'query') : true
 console.log('对应的增删改查权限', isCreate, isDelete, isUpdate, isQuery)
 // const isCreate = true
 // const isDelete = true

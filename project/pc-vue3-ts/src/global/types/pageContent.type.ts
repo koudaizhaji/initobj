@@ -37,6 +37,7 @@ interface tableChildrenProps {
 export interface pageContentTable {
   pageUrl: IPageUrl
   pageName: string
+  isPermission?: boolean
   header: {
     title: string
     btnTitle: string

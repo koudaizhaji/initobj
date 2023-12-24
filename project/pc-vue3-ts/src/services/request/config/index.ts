@@ -22,10 +22,10 @@ let BASE_URL = ''
 // if(import.meta.env.MODE == 'production')
 if (import.meta.env.PROD) {
   // 生产环境
-  BASE_URL = 'http://idoapi.develop.idushenghuo.com/'
+  BASE_URL = 'http://idoapi.develop.idushenghuo.com'
 } else {
   // 开发环境
-  BASE_URL = 'http://idoapi.develop.idushenghuo.com/'
+  BASE_URL = 'http://idoapi.develop.idushenghuo.com'
 }
 
 console.log('当前环境是', import.meta.env.MODE, BASE_URL)
