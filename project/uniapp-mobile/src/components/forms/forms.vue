@@ -278,5 +278,74 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+::v-deep.uni-input-border {
+	padding: 0 10px;
+	height: 35px;
+	width: 100%;
+	font-size: 14px;
+	color: #666;
+	border: 1px #e5e5e5 solid;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
 
+::v-deep.uni-forms-item__label {
+	width: 80px !important;
+}
+::v-deep.uni-forms-item__content{
+	width: 80px !important;
+}
+::v-deep.uni-calendar__content-mobile{
+margin-bottom: 50px !important;
+}
+
+::v-deep.uni-calendar__content{
+	margin-bottom: 50px !important;
+}
+::v-deep.uni-group__content {
+	width: 80%;
+	margin: 0 auto;
+}
+
+li {
+	list-style: none;
+}
+
+.btn {
+	margin: 0 auto;
+	width: 160px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.btna {
+	margin: 0 auto;
+	display: flex;
+	width: 100px;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 24px;
+}
+
+.inform {
+	margin-bottom: 20px;
+	padding: 0 0 0 20px;
+
+	li {
+		font-size: 18px;
+		margin-bottom: 10px;
+		letter-spacing: 1px;
+	}
+}
+
+.popUp {
+	width: 300px;
+	height: auto;
+	margin: auto;
+	background-color: white;
+	margin-top: 90px;
+	padding-bottom: 10px;
+	border-radius: 24px;
+}
 </style>
