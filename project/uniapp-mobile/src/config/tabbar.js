@@ -1,34 +1,27 @@
-export default [ // 自定义底部tabbar
-  {
-    icon: 'home-silo-outline', // tabBar图标
-    img: '../../static/tabbarImg/home.png', // 自定义图片
-    text: '首页', // 显示的提示文字
-    pagePath: '/pages/home/index', // 点击某一个item时，跳转的路径，此路径必须是pagees.json中tabBar字段中定义的路径
-    customIcon: false, // 如果使用自定义扩展的图标库字体，需配置此值为true
-    midButton: false, // 如果是凸起按钮项，需配置此值为true
-  },
-  {
-    icon: 'file-search-outline',
-    img: '../../static/tabbarImg/find.png',
-    text: '发现',
-    midButton: false,
-    pagePath: '/pages/form/index',
-    customIcon: false,
-  },
-  {
-    icon: 'form-select',
-    img: '../../static/tabbarImg/find.png',
-    text: '统计',
-    midButton: false,
-    pagePath: '/pages/echart/index',
-    customIcon: false,
-  },
-  {
-    icon: 'account-tie',
-    img: '../../static/tabbarImg/my.png',
-    text: '个人中心',
-    customIcon: false,
-    pagePath: '/pages/mine/index',
-    customIcon: false,
-  },
+export default [{
+  pagePath: 'pages/home/index',
+  iconMdi: 'home-silo-outline',
+  // iconPath: '/static/tabIcon/icon1.png',
+  // selectedIconPath: '/static/tabIcon/icon2.png',
+  text: '首页',
+}, {
+  pagePath: 'pages/form/index',
+  iconMdi: 'file-search-outline',
+  iconPath: '/static/tabIcon/icon3.png',
+  selectedIconPath: '/static/tabIcon/icon4.png',
+  text: '团队',
+}, {
+  pagePath: 'pages/echart/index',
+  iconMdi: 'form-select',
+  iconPath: '/static/tabIcon/icon5.png',
+  selectedIconPath: '/static/tabIcon/icon6.png',
+  text: '推广',
+},
+{
+  pagePath: 'pages/mine/index',
+  iconMdi: 'account-tie',
+  iconPath: '/static/tabIcon/icon7.png',
+  selectedIconPath: '/static/tabIcon/icon8.png',
+  text: '我的',
+},
 ];

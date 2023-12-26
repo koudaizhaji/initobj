@@ -15,7 +15,7 @@
             class="warpper"
           >
             <view
-              v-for="(item,index) in tabBar.list"
+              v-for="(item,index) in tabBar"
               ref="navItem"
               :key="item.pagePath"
               class="navigator-item"
@@ -56,6 +56,8 @@
   </uni-transition>
 </template>
 <script>
+import tabbarList from '@/config/tabbar.js';
+
 export default {
   props: {
     // pageIndex: {
@@ -66,44 +68,16 @@ export default {
   data() {
     return {
       selectedIndex: uni.getStorageSync('selectedIndex') || 0, // 标记
-      tabBar: {
-        list: [{
-          pagePath: 'pages/home/index',
-          iconMdi: 'home-silo-outline',
-          // iconPath: '/static/tabIcon/icon1.png',
-          // selectedIconPath: '/static/tabIcon/icon2.png',
-          text: '首页',
-        }, {
-          pagePath: 'pages/form/index',
-          iconMdi: 'file-search-outline',
-          iconPath: '/static/tabIcon/icon3.png',
-          selectedIconPath: '/static/tabIcon/icon4.png',
-          text: '团队',
-        }, {
-          pagePath: 'pages/echart/index',
-          iconMdi: 'form-select',
-          iconPath: '/static/tabIcon/icon5.png',
-          selectedIconPath: '/static/tabIcon/icon6.png',
-          text: '推广圈',
-        },
-        {
-          pagePath: 'pages/mine/index',
-          iconMdi: 'account-tie',
-          iconPath: '/static/tabIcon/icon7.png',
-          selectedIconPath: '/static/tabIcon/icon8.png',
-          text: '我的',
-        },
-        ],
-      },
+      tabBar: tabbarList,
     };
   },
   methods: {
     switchTab(item, index) {
       const url = `/${item.pagePath}`;
-      console.log('拿到的路径', url);
+      // console.log('拿到的路径', url, index);
       const pagePath = url;
       uni.navigateTo({ url });
-      this.tabBar.list.forEach((v, i) => {
+      this.tabBar.forEach((v, i) => {
         if (item.pagePath === v.pagePath) {
           uni.setStorageSync('selectedIndex', index);
         }
@@ -127,7 +101,7 @@ export default {
   }
 
   .navigator {
-    width: 85%;
+    width: 100%;
     padding: 20rpx;
     margin: 0 auto;
     overflow: hidden;
@@ -135,7 +109,7 @@ export default {
 
   .warpper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: auto;
     transition-timing-function: ease-out;
   }

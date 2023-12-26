@@ -20,7 +20,7 @@
       @toggle-all-selection="toggleAllSelection"
     />
   </view>
-  <TabBar ref="tabbar" />
+  <TabBar/>
 </template>
 
 <script>
@@ -154,8 +154,10 @@ export default {
   },
   onReady() {
   },
+  onLoad() {
+    getApp().globalData.saveSelectIndex();
+  },
   onShow() {
-    uni.setStorageSync('selectedIndex', 2);
   },
   methods: {
     // 单击某行,第一个参数代表选中对象，参数二代表选中的index

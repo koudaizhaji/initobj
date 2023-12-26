@@ -1,23 +1,23 @@
 <template>
   <view class="form">
-    <forms></forms>
+    <forms />
   </view>
-  <TabBar ref="tabbar" />
+  <TabBar/>
 </template>
 
 <script>
 export default {
-  
+
   data() {
     return {
       title: '首页',
       activeIndex: 1,
-      tabBarList: getApp().globalData.tabBarList,
     };
   },
-  onLoad() { },
+  onLoad() {
+    getApp().globalData.saveSelectIndex();
+  },
   onShow() {
-    uni.setStorageSync('selectedIndex', 1);
   },
   methods: {
 

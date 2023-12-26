@@ -193,9 +193,7 @@
       </view>
     </view>
     <view class="h-16" />
-    <TabBar
-      ref="tabbar"
-    />
+    <TabBar />
   </view>
 </template>
 
@@ -257,9 +255,11 @@ export default {
       ],
     };
   },
-  onLoad() { },
+  onLoad() {
+    getApp().globalData.saveSelectIndex();
+  },
   onShow() {
-    uni.setStorageSync('selectedIndex', 0);
+
   },
   methods: {
     change(index) {
