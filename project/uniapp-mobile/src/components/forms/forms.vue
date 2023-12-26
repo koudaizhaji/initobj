@@ -55,12 +55,34 @@
 			</template>
 			<!-- 校验区 -->
 			<view class="w100% flex mb-20px">
-				<button class="btn" type="primary" @click="submitForm('form')">提交</button>
+				<button class="btn" type="primary" @click="open('form')">提交</button>
 			</view>
 			<button class="ml-40px mr-10px" size="mini" type="primary" plain="true"
 				@click="clearValidate('form')">移除全部表单校验结果</button>
 			<button size="mini" type="warn" @click="resetForm">重置表单</button>
 		</uni-forms>
+		<!-- 弹出层 -->
+		<uni-popup ref="popup" type="center">
+			<view class="popUp">
+				<view class="pt-20px mb-20px font-size-6 text-center">确认信息</view>
+				<view class="w100%">
+					<ul class="inform">
+						<li v-show="formData.name">姓名&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ formData.name }}</li>
+						<li v-show="formData.age">年龄&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ formData.age }}</li>
+						<li v-show="formData.email">邮箱&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ formData.email }}</li>
+						<li v-show="formData.birth">生日&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ formData.birth }}</li>
+						<li v-show="formData.weight">体重&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ formData.weight }}</li>
+						<li v-show="formData.sex">性别&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ sex[formData.sex].text }}</li>
+						<li v-show="formData.remarks">留言&nbsp;<span style="font-weight: 700;">：</span>&nbsp;{{ formData.remarks }}
+						</li>
+					</ul>
+				</view>
+				<view class="w100% flex mb-20px">
+					<button class="btna" style="background-color:#67C23A " type="primary" @click="close">修改</button>
+					<button class="btna" type="primary" @click="submitForm('form')">提交</button>
+				</view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
  
@@ -212,6 +234,7 @@ export default {
 				.validate()
 				.then(res => {
 					console.log('表单数据：', res)
+					this.close()
 					uni.showToast({
 						title: '提交成功'
 					})
@@ -236,35 +259,24 @@ export default {
 		clearValidate(form, name) {
 			if (!name) name = []
 			this.$refs[form].clearValidate(name)
+		},
+		// 弹出框
+		open(form) {
+			this.$refs[form]
+				.validate()
+				.then(res => {
+					this.$refs.popup.open('top')
+				})
+				.catch(errors => {
+					console.error('提交失败：', errors)
+				})
+		},
+		close() {
+			this.$refs.popup.close('top')
 		}
 	}
 }
 </script>
-<style>
-.uni-input-border {
-	padding: 0 10px;
-	height: 35px;
-	width: 100%;
-	font-size: 14px;
-	color: #666;
-	border: 1px #e5e5e5 solid;
-	border-radius: 5px;
-	box-sizing: border-box;
-}
+<style lang="scss" scoped>
 
-.uni-forms-item__label {
-	width: 80px !important;
-}
-
-.uni-group__content {
-	width: 80%;
-	margin: 0 auto;
-}
-
-.btn {
-	margin: 0 auto;
-	width: 160px;
-	height: 50px;
-	border-radius: 10px;
-}
 </style>
