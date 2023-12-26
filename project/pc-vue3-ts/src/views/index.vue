@@ -3,7 +3,7 @@
  * @Date: 2023-11-19 18:41:53
  * @LastEditors: 李立
  * @LastEditTime: 2023-12-04 11:29:01
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\views\index.vue
+ initobj\project\pc-vue3-ts\src\views\index.vue
  * @Description:
  * 相关开发文件头自动添加：联系微信huaiplayboy
 -->

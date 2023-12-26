@@ -3,7 +3,7 @@
  * @Date: 2023-11-19 18:41:53
  * @LastEditors: 李立
  * @LastEditTime: 2023-12-04 12:49:20
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\routers\index.ts
+ initobj\project\pc-vue3-ts\src\routers\index.ts
  * @Description:
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */

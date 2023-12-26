@@ -3,7 +3,7 @@
  * @Date: 2023-12-02 22:27:50
  * @LastEditors: 李立
  * @LastEditTime: 2023-12-04 15:31:17
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\global\types\pageContent.type.ts
+ initobj\project\pc-vue3-ts\src\global\types\pageContent.type.ts
  * @Description:
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */

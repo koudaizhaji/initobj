@@ -3,7 +3,7 @@
  * @Date: 2023-10-12 20:12:56
  * @LastEditors: 李立
  * @LastEditTime: 2023-12-03 20:19:48
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\plugins\app-setup.ts
+ initobj\project\pc-vue3-ts\src\plugins\app-setup.ts
  * @Description: 用于处理应用程序的初始化和全局设置，已被引入main.ts里使用
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */

@@ -1,12 +1,3 @@
-/*
- * @Author: 李立
- * @Date: 2023-12-09 23:35:03
- * @LastEditors: 李立
- * @LastEditTime: 2023-12-10 16:01:14
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\stores\weixin\home\home.ts
- * @Description:
- * 相关开发文件头自动添加：联系微信huaiplayboy
- */
 import { defineStore } from 'pinia'
 import { getAmountListData } from '@/services/weixin/home/home'
 

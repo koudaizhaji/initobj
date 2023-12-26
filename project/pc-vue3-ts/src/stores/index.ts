@@ -1,12 +1,3 @@
-/*
- * @Author: 李立
- * @Date: 2023-09-30 23:23:29
- * @LastEditors: 李立
- * @LastEditTime: 2023-12-03 20:22:12
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\project\pc-vue3-ts\src\stores\index.ts
- * @Description: 数据共享的pinia入口
- * 相关开发文件头自动添加：联系微信huaiplayboy
- */
 import { defineStore, createPinia } from 'pinia'
 import type { App } from 'vue'
 // 引入持久化插件
