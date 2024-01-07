@@ -1,23 +1,26 @@
 <template>
   <view class="userInfo">
     <view class="info">
-      <view class="flex">
-        <view class="ml-4">
+      <view
+        class="flex"
+        @click="iconHandler"
+      >
+        <view
+          class="ml-4"
+        >
           <img
             class="b-5rpx b-rd-100% w-18"
             src="/src/static/avter.jpg"
-            @click="login"
           >
         </view>
-        <view class="ml-3 w-30 h-20 mt-2">
+        <view class="h-20 mt-2">
           <view
-            class="font-size-4.5 font-semibold mb-1"
-            @click="login"
+            class="font-size-4.5 font-semibold mb-1 ml-2.5"
           >
             {{ name }}
           </view>
           <view
-            class="flex bg-#F1C16C w-18 h-6 scale-80
+            class="flex bg-#F1C16C  h-6 scale-80 px-10px
           b-rd-6 flex-items-center flex-justify-center"
           >
             <view>
@@ -33,7 +36,7 @@
         </view>
       </view>
       <view class="flex mt-2">
-        <view>
+        <view @click="goSetView">
           <!-- <img
             class="h-7 w-7"
             src="/src/static/mine/xiaoxitixing.png"
@@ -53,6 +56,7 @@
 </template>
 
 <script setup lang="ts">
+const emits = defineEmits(['goLogin']);
 defineProps({
   name: {
     type: String,
@@ -77,9 +81,14 @@ defineProps({
     }],
   },
 });
-const login = () => {
+
+const iconHandler = () => {
+  emits('goLogin');
+};
+
+const goSetView = () => {
   uni.navigateTo({
-    url: '/pages/login/index',
+    url: '/pages/mine/set/index',
   });
 };
 </script>

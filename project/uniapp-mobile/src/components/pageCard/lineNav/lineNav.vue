@@ -1,13 +1,20 @@
 <template>
   <view class="lineNav">
     <!-- <login-panel /> -->
+    <!-- 添加跳转 -->
     <view
       v-for="item in optionList"
       :key="item.id"
       class="flex flex-justify-between bg-#ffffff flex-items-center h-10 active borders"
+      @click="navigateToLink(item)"
     >
-      <view class="flex ml-4">
-        <view class="mr-2">
+      <view
+        class="flex ml-4"
+      >
+        <view
+          class="
+        mr-2"
+        >
           <img
             :src="item.icon"
             class="h-5 w-5"
@@ -25,19 +32,42 @@
 </template>
 
 <script setup lang="ts">
+
 defineProps({
   optionList: {
     type: Array,
     default: () => [],
   },
 });
+const navigateToLink = (item) => {
+  if ((item.click === 'noClick' || item.link === 'noLink')) {
+    uni.showToast({
+      title: '暂无,技术在更新',
+      icon: 'none',
+    });
+    return;
+  }
+  if (item.click) {
+    item.click();
+    return;
+  }
+  if (item.link) {
+    uni.navigateTo({
+      url: item.link,
+    });
+    return;
+  }
+  uni.showToast({
+    title: '暂无,技术在更新',
+    icon: 'none',
+  });
+};
+
 </script>
 
 <style lang="scss" scoped>
 .lineNav {
   height: auto;
-  padding-top: 10px;
-  margin-top: 40rpx;
   background-color: #f4f4f4;
 
   & > view {

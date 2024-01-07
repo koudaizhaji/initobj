@@ -1,6 +1,6 @@
-import { get, post } from '@/request/request.js';
+import api from './request';
 
-const Home = {
+class Home {
 
-};
-export default Home;
+}
+export default new Home();

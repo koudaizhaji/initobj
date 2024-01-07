@@ -2,9 +2,10 @@
   <view
     class="memberCard"
   >
-    <view class="ml-3">
-      <view class="flex">
+    <view class="ml-3 ">
+      <view class="flex pb-1">
         <img
+          v-show="isLeftIcon"
           class="h-7 w-7"
           src="/src/static/mine/VIP.png"
         >
@@ -35,6 +36,10 @@ defineProps({
   title: {
     type: String,
     default: 'ETC会员',
+  },
+  isLeftIcon: {
+    type: Boolean,
+    default: true,
   },
   direct: {
     type: String,

@@ -1,6 +1,6 @@
-import { get, post } from '@/request/request.js';
+import api from './request';
 
-const Find = {
+class Find {
 
-};
-export default Find;
+}
+export default new Find();
