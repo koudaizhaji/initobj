@@ -89,51 +89,53 @@ export default {
 };
 </script>
 <style>
-  .tabbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-    width: 100%;
-    height: 100rpx;
-    background: #f5f5f5;
-    border-top: 2rpx solid #eee;
-  }
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100rpx;
+  background: #f5f5f5;
+  border-top: 2rpx solid #eee;
+}
 
-  .navigator {
-    width: 100%;
-    padding: 20rpx;
-    margin: 0 auto;
-    overflow: hidden;
-  }
+.navigator {
+  width: 100%;
+  padding: 20rpx;
+  margin: auto 0;
+  overflow: hidden;
 
-  .warpper {
-    display: flex;
-    justify-content: space-around;
-    width: auto;
-    transition-timing-function: ease-out;
-  }
+  /* background-color: blue; */
+}
 
-  .navigator-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50rpx;
-    height: 100%;
-  }
+.warpper {
+  display: flex;
+  justify-content: space-around;
+  width: auto;
+  transition-timing-function: ease-out;
+}
 
-  .item-text {
-    margin-top: 6rpx;
-    font-size: 24rpx;
-    color: #777e86;
-  }
+.navigator-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rpx;
+  height: 100%;
+}
 
-  .text-active {
-    color: #2e92fd !important;
-  }
+.item-text {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #777e86;
+}
 
-  .icon {
-    width: 20px;
-    height: 20px;
-  }
+.text-active {
+  color: #2e92fd !important;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
 </style>

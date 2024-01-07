@@ -1,58 +1,59 @@
 <template>
-  <view class="container">
-    <!-- 信息页 -->
-    <user-info
-      v-bind="userInfoObj"
-      @goLogin="goLogin"
-      @click="openVconsole"
-    />
-    <!-- 卡片页 -->
-    <member-card
-      v-bind="memberObj"
-    />
-    <!-- 选项页 -->
-    <!-- <icon-nav :option-list="iconNavList" /> -->
-    <!-- 列表页 -->
-
+  <view class="setView">
     <line-nav
       class="lineNav"
       :option-list="lineNavList"
     />
     <!-- footer -->
-    <!-- <view class="h-23 bg-#f4f4f4 flex flex-justify-center">
+    <view class="h-23 bg-#fff flex flex-justify-center">
       <view class="bg-white b-rd-1 w-90px h-30px text-center line-height-30px mt-10 font-size-3.5">
         客服入口
       </view>
-    </view> -->
-    <echartView />
+    </view>
     <TabBar />
   </view>
 </template>
 
 <script>
 import { uni } from '@dcloudio/uni-h5';
-import VConsole from 'vconsole';
-import iconNav from '@/components/pageCard/iconNav/iconNav.vue';
-import lineNav from '@/components/pageCard/lineNav/lineNav.vue';
-import memberCard from '@/components/pageCard/memberCard/memberCard.vue';
-import userInfo from './component/userInfo';
-import { iconNavList, lineNavList } from './data';
-import echartView from '../echart/index';
 import { isLogin } from '@/utils/public.js';
+import lineNav from '@/components/pageCard/lineNav/lineNav.vue';
 
 export default {
   components: {
-    iconNav,
     lineNav,
-    memberCard,
-    userInfo,
-    echartView,
   },
   data() {
     return {
       title: '首页',
-      iconNavList,
-      lineNavList,
+      lineNavList: [
+        // {
+        //   id: 1,
+        //   title: '安全中心',
+        //   text: '修改手机号和密码',
+        //   icon: '/src/static/mine/anquanzhongxin.png',
+        //   link: 'noLink',
+        // },
+        {
+          id: 2,
+          title: '关于我们',
+          text: '当前版本V3.0.0',
+          icon: '/src/static/mine/guanyuwomen.png',
+        },
+        {
+          id: 3,
+          title: '退出登录',
+          text: '退出当前帐号',
+          icon: '/src/static/mine/tixing.png',
+          click: () => {
+            uni.removeStorageSync('userInfo');
+            console.log('退出登录');
+            uni.navigateTo({
+              url: '/pages/login/index',
+            });
+          },
+        },
+      ],
       vconsoleCount: 0, // 调试工具
       vConsole: null,
       // 会员卡信息
@@ -86,7 +87,7 @@ export default {
   onShow() {
     console.log('首页显示');
     if (isLogin()) {
-      this.getUserInfo();
+      // this.getUserInfo();
     }
   },
   methods: {
@@ -129,31 +130,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "PingFang SC", "PingFang SC-Regular";
-  background-color: #fff;
-}
+.setView {
+  width: 100%;
+  height: 100%;
 
-.container {
-  position: relative;
-  margin-bottom: 25px;
-}
-
-.lineNav {
-  padding-top: 10px;
-  margin-top: 20px;
-}
-
-.active:hover {
-  background-color: #def0fe;
-}
-
-.borders {
-  width: 96%;
-  margin: auto;
-  border-bottom: 1px solid #f0f0f0;
+  .lineNav {
+    margin-top: 50px;
+    background-color: #fff;
+  }
 }
 
 </style>
