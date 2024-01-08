@@ -26,11 +26,15 @@
               <template v-if="item.type === 'date-picker'">
                 <el-date-picker
                   type="daterange"
-                  range-separator="-"
-                  start-placeholder="开始时间"
-                  end-placeholder="结束时间"
+                  v-bind="item.otherOptions"
                   v-model="searchForm[item.prop]"
+                  unlink-panels
+                  :shortcuts="shortcuts"
+                  :default-value="[new Date(2010, 9, 1), new Date(2030, 10, 1)]"
                 />
+                <!-- range-separator="-"
+                  start-placeholder="开始时间"
+                  end-placeholder="结束时间" -->
               </template>
             </el-form-item>
           </el-col>
@@ -55,6 +59,7 @@ import { utcFormat } from '@/utils/format'
 interface IProps {
   searchConfig: {
     pageName: string
+    pageUrl: any[]
     formItems: any[]
   }
 }
@@ -67,7 +72,36 @@ for (const item of props.searchConfig.formItems) {
   initialForm[item['prop']] = item['initialValue'] ?? ''
 }
 const searchForm = reactive(initialForm)
-
+// 时间的选项卡
+const shortcuts = [
+  {
+    text: '最近一周',
+    value: () => {
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+      return [start, end]
+    }
+  },
+  {
+    text: '最近一个月',
+    value: () => {
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+      return [start, end]
+    }
+  },
+  {
+    text: '最近3个月',
+    value: () => {
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+      return [start, end]
+    }
+  }
+]
 // 2.监听按钮的点击
 const formRef = ref<InstanceType<typeof ElForm>>()
 function handleResetClick() {
@@ -81,7 +115,7 @@ function handleQueryClick() {
   dataList.push(utcFormat(searchForm.createdAt[1]))
   // console.log('拿到的搜索信息',dataList)
   searchForm.createdAt = dataList
-  emit('queryClick', searchForm)
+  emit('queryClick', props.searchConfig.pageUrl, searchForm)
 }
 </script>
 

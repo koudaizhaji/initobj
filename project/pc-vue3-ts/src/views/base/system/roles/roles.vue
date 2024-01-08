@@ -100,6 +100,7 @@ const { entireMenus } = storeToRefs(mainStore)
 // 弹窗所需操作
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal(
+  [],
   newCallback,
   editCanllback
 )

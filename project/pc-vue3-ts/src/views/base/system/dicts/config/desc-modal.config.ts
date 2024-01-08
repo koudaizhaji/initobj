@@ -1,26 +1,51 @@
 import type { PageModalConfigType } from '@/global/types/pageModal.type'
 
 const modalConfig: PageModalConfigType = {
-  title: '添加分组',
+  title: '添加字典',
   // newtitle: "添加分组",
-  editTitle: '修改分组',
-  pageName: 'groups',
+  // edittitle: "修改分组",
+  pageName: 'dicts',
   pageUrl: {
     rootPath: 'pcadmin',
-    pageName: 'groups'
+    pageName: 'dicts'
+  },
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'dicts'
   },
   formItems: [
     {
       prop: 'name',
       type: 'input',
-      label: '分组名称',
-      placeholder: '请输入分组名称'
+      label: '字典名',
+      placeholder: '请输入分组名称',
+      rules: [
+        {
+          required: true,
+          message: '不能为空',
+          trigger: 'blur'
+        }
+      ]
     },
+
     {
       prop: 'intro',
       type: 'input',
-      label: '分组描述',
+      label: '字典描述',
       placeholder: '请对分组进行描述'
+    },
+    {
+      prop: 'source',
+      type: 'input',
+      label: '字典来源',
+      placeholder: '请输入来源',
+      rules: [
+        {
+          required: true,
+          message: '不能为空',
+          trigger: 'blur'
+        }
+      ]
     },
     {
       prop: 'status',

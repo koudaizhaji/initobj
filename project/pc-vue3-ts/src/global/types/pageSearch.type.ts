@@ -1,3 +1,4 @@
+import type { IPageUrl } from '@/services/pages/types'
 type LILIFormType =
   | 'input'
   | 'password'
@@ -13,7 +14,7 @@ type LILIFormType =
   | 'custom'
 
 export interface LILIFormItem {
-  field: string
+  prop: string
   type: LILIFormType
   label: string
   rules?: any[]
@@ -28,6 +29,7 @@ export interface LILIFormItem {
 
 export interface LILIFormConfig {
   pageName: string
+  pageUrl?: IPageUrl
   formItems: LILIFormItem[]
   labelWidth?: string
   colLayout?: any

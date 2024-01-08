@@ -1,10 +1,4 @@
 /*
- * @Author: 李立
- * @Date: 2023-11-19 18:41:53
- * @LastEditors: 李立
- * @LastEditTime: 2023-12-04 12:49:20
- initobj\project\pc-vue3-ts\src\routers\index.ts
- * @Description:
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
 
@@ -62,6 +56,11 @@ const router = createRouter({
       path: '/template',
       name: 'template',
       component: () => import('@/views/template/template.vue')
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: () => import('@/views/order/order.vue')
     },
     {
       path: '/:pathMatch(.*)*',

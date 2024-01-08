@@ -16,4 +16,5 @@ export interface ISystemState {
 
   pageList: any[]
   pageTotalCount: number
+  dictTree: any[]
 }

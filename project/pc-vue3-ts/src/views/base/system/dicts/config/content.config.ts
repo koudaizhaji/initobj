@@ -5,12 +5,12 @@
 import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
-  pageName: 'descs',
+  pageName: 'dicts',
   isPermission: false,
   pageUrl: {
     rootPath: 'pcadmin',
     pageName: 'dicts',
-    handleName: 'types/1/contents'
+    handleName: '/types/all/contents'
   },
   header: {
     title: '数据字典',
@@ -27,26 +27,28 @@ const contentConfig: pageContentTable = {
       label: '序号',
       width: 60
     },
+    // {
+    //   type: 'random',
+    //   prop: 'type_id',
+    //   label: '字典所属类型'
+    // },
     {
       type: 'random',
-      prop: 'type_id',
-      label: '字典所属类型'
+      prop: 'label',
+      label: '显示文字',
+      width: '140'
     },
     {
       type: 'random',
-      prop: 'content_code',
-      label: '字典编码'
+      prop: 'desc',
+      label: '字典说明',
+      width: '180'
     },
+    { type: 'random', prop: 'value', label: '字典值' },
     {
-      type: 'random',
-      prop: 'content_desc',
-      label: '字典说明'
-    },
-    { type: 'random', prop: 'content_value', label: '字典值' },
-    {
-      type: 'status',
+      type: 'custom',
       prop: 'status',
-      label: '字典状态',
+      label: '内容状态',
       slotName: 'status'
     },
     {

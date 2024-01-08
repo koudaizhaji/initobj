@@ -1,12 +1,25 @@
 <template>
   <div class="import-excel">
-    <el-upload ref="upload" class="upload-demo" action="#" multiple :limit="3" :before-upload="beforeExcelUpload"
-      :on-preview="handlePreview" :on-remove="handleRemove" :on-exceed="handleOnExceed" :file-list="fileList"
-      :auto-upload="true" :http-request="handleHttpRequest">
+    <el-upload
+      ref="upload"
+      class="upload-demo"
+      action="#"
+      multiple
+      :limit="3"
+      :before-upload="beforeExcelUpload"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :on-exceed="handleOnExceed"
+      :file-list="fileList"
+      :auto-upload="true"
+      :http-request="handleHttpRequest"
+    >
       <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
     </el-upload>
     <el-button size="small" type="success" @click="analyseUpload">读取数据</el-button>
-    <el-button style="margin-left: 10px" size="small" type="success" @click="exportExcel">导出文件</el-button>
+    <el-button style="margin-left: 10px;" size="small" type="success" @click="exportExcel"
+      >导出文件</el-button
+    >
     <div ref="container" class="container"></div>
   </div>
 </template>
@@ -18,13 +31,15 @@ let result = []
 let { proxy } = getCurrentInstance()
 let container = ref(null)
 async function analyseUpload() {
-  if (!fileList.length) { return }
+  if (!fileList.length) {
+    return
+  }
   proxy.$refs.container.innerHTML = ''
   const promises = fileList.map(({ file }) => analyseExcelToJson(file))
   const results = await Promise.all(promises)
   result = results
   result.forEach((workbook) => {
-    console.log(workbook);
+    console.log(workbook)
     workbook.forEach((sheet) => {
       proxy.$refs.container.innerHTML += generateExcelBySheet(sheet)
     })

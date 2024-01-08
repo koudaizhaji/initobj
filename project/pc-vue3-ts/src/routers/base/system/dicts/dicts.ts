@@ -1,7 +1,7 @@
-const descs = () => import('@/views/base/system/descs/descs.vue')
+const dicts = () => import('@/views/base/system/descs/dicts.vue')
 export default {
   path: '/base/system/descs',
   name: 'base-system-descs',
-  component: descs,
+  component: dicts,
   children: []
 }

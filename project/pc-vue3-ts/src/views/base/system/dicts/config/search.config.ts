@@ -8,14 +8,20 @@ const searchConfig: LILIFormConfig = {
   labelWidth: '120px',
   // itemStyle: { padding: "10px 40px" },
   // colLayout: { span: 8 },
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'dicts',
+    handleName: '/types/all/contents'
+  },
   formItems: [
-    {
-      prop: 'id',
-      type: 'input',
-      label: 'id',
-      rules: [],
-      placeholder: '请输入id'
-    },
+    // {
+    //   prop: 'id',
+    //   type: 'input',
+    //   label: 'id',
+    //   rules: [],
+    //   placeholder: '请输入id',
+    //   initialValue: ''
+    // },
     {
       prop: 'name',
       type: 'input',

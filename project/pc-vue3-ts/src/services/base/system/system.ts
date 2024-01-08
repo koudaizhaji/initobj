@@ -54,3 +54,28 @@ export function getMenuData() {
     url: '/pcadmin/menus/list'
   })
 }
+
+/**
+ * 获取字典树请求
+ */
+export function getDictTreeData(pageName: string, dataInfo: any) {
+  return liliRequest.post({
+    url: `/pcadmin/${pageName}`,
+    data: dataInfo
+  })
+}
+
+// 导入excel操作
+export function importExcelData(position: string, data: { excelBody: string }) {
+  return liliRequest.post({
+    url: `/pcadmin/set/excel/${position}`,
+    data: data
+  })
+}
+
+// 获取下载文件链接
+export function getDownloadUrlData(fileName: string = 'all') {
+  return liliRequest.get({
+    url: `/pcadmin/set/download/${fileName}`
+  })
+}

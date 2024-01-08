@@ -15,19 +15,27 @@ import type { LILIFormConfig } from '@/global/types/pageSearch.type'
 
 const searchConfig: LILIFormConfig = {
   pageName: 'users',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'users'
+  },
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'users'
+  },
   labelWidth: '120px',
   itemStyle: 'padding: 10px 40px',
   // colLayout: { span: 8 },
   // 下列数据要保持跟接口一致
   formItems: [
-    {
-      prop: 'id',
-      type: 'input',
-      label: 'id',
-      rules: [],
-      placeholder: '请输入id',
-      initialValue: '' // 默认值，初始化的值
-    },
+    // {
+    //   prop: 'id',
+    //   type: 'input',
+    //   label: 'id',
+    //   rules: [],
+    //   placeholder: '请输入id',
+    //   initialValue: '' // 默认值，初始化的值
+    // },
     {
       prop: 'username',
       type: 'input',

@@ -16,16 +16,20 @@ import type { LILIFormConfig } from '@/global/types/pageSearch.type'
 const searchConfig: LILIFormConfig = {
   pageName: 'groups',
   labelWidth: '120px',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'groups'
+  },
   // itemStyle: { padding: "10px 40px" },
   // colLayout: { span: 8 },
   formItems: [
-    {
-      prop: 'id',
-      type: 'input',
-      label: 'id',
-      rules: [],
-      placeholder: '请输入id'
-    },
+    // {
+    //   prop: 'id',
+    //   type: 'input',
+    //   label: 'id',
+    //   rules: [],
+    //   placeholder: '请输入id'
+    // },
     {
       prop: 'name',
       type: 'input',

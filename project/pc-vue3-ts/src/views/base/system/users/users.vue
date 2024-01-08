@@ -33,13 +33,10 @@
                     : 'info'
           "
         >
-          {{ getRoleName(scope.row.role_id) }}
+          {{ getRoleTag(scope.row.role_id) }}
         </el-tag>
       </template>
       <template #rightBtn>
-        <el-button type="primary" size="small" icon="EditPen" @click="handleNewDataClick">
-          新增用户
-        </el-button>
         <el-button type="primary" size="small" icon="EditPen" @click="exportExcelClick">
           导出表格
         </el-button>
@@ -67,22 +64,56 @@ import usePageModal from '@/hooks/usePageModal'
 
 import useMainStore from '@/stores/base/base'
 import { storeToRefs } from 'pinia'
+import { mapOptions } from '@/utils/dict-options'
 
 const { contentRef, handleQueryClick, handleResetClick, handleExportExcel } = usePageContent()
 // 弹窗所需的3个操作
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 // 获取role/group数据,拿store里的数据
 const mainStore = useMainStore()
-const { entireRoles, entireGroups } = storeToRefs(mainStore)
 
 const exportExcelClick = () => {
   handleExportExcel()
 }
+
+const getRoleGroupMenuList = async () => {
+  await mainStore.fetchEntireDataAction()
+}
+
+getRoleGroupMenuList()
+const { entireGroups, entireRoles, entireMenus } = storeToRefs(mainStore)
+const roleGroupMenuList = [
+  ...entireGroups.value.map((item) => ({
+    prop: 'group_id',
+    ...item
+  })),
+  ...entireRoles.value.map(
+    (item) =>
+      (item.prop = {
+        prop: 'role_id',
+        ...item
+      })
+  ),
+  {
+    prop: 'status',
+    id: 1,
+    name: '启用',
+    value: 1
+  },
+  {
+    prop: 'status',
+    id: 0,
+    name: '禁用',
+    value: 0
+  }
+]
+console.log('结果', roleGroupMenuList)
+
+mapOptions(modalConfig.formItems, roleGroupMenuList)
 // 所属角色查询
-const getRoleName = (id: number) => {
-  console.log('拿到匹配角色的信息', id)
-  modalConfig.formItems[3].options = entireRoles.value
-  modalConfig.formItems[2].options = entireGroups.value
+const getRoleTag = (id: number) => {
+  if (!id) return '未匹配'
+  // console.log('拿到匹配角色的信息', id)
   if (entireRoles.value) {
     for (const item of entireRoles.value) {
       if (item.id === id) {

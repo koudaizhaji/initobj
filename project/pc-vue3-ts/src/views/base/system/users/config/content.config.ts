@@ -34,6 +34,12 @@ const contentTableConfig: pageContentTable = {
     // },
     {
       type: 'random',
+      prop: 'id',
+      label: '用户ID',
+      fixed: 'left'
+    },
+    {
+      type: 'random',
       prop: 'username',
       label: '登录账号',
       width: '100',
@@ -89,7 +95,8 @@ const contentTableConfig: pageContentTable = {
       type: 'handler',
       label: '操作',
       width: '150',
-      slotName: 'handler'
+      slotName: 'handler',
+      fixed: 'right'
     }
   ].map((item) => ({ ...item, visible: true }))
 }

@@ -5,6 +5,10 @@ const modalConfig: PageModalConfigType = {
   // newtitle: "新增用户",
   editTitle: '编辑用户',
   pageName: 'users',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'users'
+  },
   formItems: [
     {
       prop: 'username',
@@ -43,18 +47,7 @@ const modalConfig: PageModalConfigType = {
       type: 'select',
       label: '状态',
       placeholder: '请选择状态',
-      options: [
-        {
-          id: 1,
-          name: '启用',
-          value: 1
-        },
-        {
-          id: 0,
-          name: '禁用',
-          value: 0
-        }
-      ]
+      options: []
     }
   ]
 }

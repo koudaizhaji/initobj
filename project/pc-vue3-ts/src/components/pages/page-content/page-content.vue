@@ -156,6 +156,11 @@ interface IProps {
   }
 }
 const props = defineProps<IProps>()
+// 从专门的页面store进行数据操作
+const pageStore = pageDataStore()
+const currentPage = ref(1)
+const pageSize = ref(10)
+const pageSizeList = [10, 30, 50, 'all']
 // 判断是否开启增删改查权限
 const isPermission =
   props.contentConfig.isPermission === undefined ? true : props.contentConfig.isPermission
@@ -195,7 +200,7 @@ watch(checkList, (newVal, oldVal) => {
   // 在这里你可以处理 checkList 变化后的逻辑
   updateVisibility()
 })
-
+// fetchPageListData()
 function handleFormatData() {
   unref(popoverRef).popperRef?.delayHide?.()
 }
@@ -207,22 +212,18 @@ const updateVisibility = () => {
 }
 // 筛选确认,请求数据和隐藏popover
 function formatConfim() {
-  fetchPageListData()
+  fetchPageListData(props.contentConfig.pageUrl)
   // unref(popoverRef).popperRef?.hide?.()
   unref(popoverRef).hide?.()
 }
 // 筛选操作处理 end
 
 // 1.请求数据
-const pageStore = pageDataStore()
-const currentPage = ref(1)
-const pageSize = ref(2)
-const pageSizeList = [2, 3, 5, 'all']
-async function fetchPageListData(queryInfo: any = {}) {
+async function fetchPageListData(url: IPageUrl, queryInfo: any = {}) {
   if (!isQuery) return
   // 请求的页面大小
   // 2.发生网络请求
-  const res = await pageStore.getPageListDataAction(props.contentConfig.pageUrl, {
+  const res = await pageStore.getPageListDataAction(url, {
     pageNum: currentPage.value,
     pageSize: pageSize.value,
     ...queryInfo
@@ -232,7 +233,7 @@ async function fetchPageListData(queryInfo: any = {}) {
     ElMessage.error({ message: res.message })
   }
 }
-fetchPageListData()
+
 // 监听pageStore里的actions被执行
 pageStore.$onAction(({ name, after }) => {
   after(() => {
@@ -255,12 +256,12 @@ console.log('拿到的页面数据', pageList, pageTotalCount)
 function handleCurrentChange() {
   console.log('执行了这里', pageSize.value)
   if (isNaN(pageSize.value)) pageSize.value = pageTotalCount.value
-  fetchPageListData()
+  fetchPageListData(props.contentConfig.pageUrl)
 }
 function handleResetClick() {
   currentPage.value = 1
   pageSize.value = 10
-  fetchPageListData()
+  fetchPageListData(props.contentConfig.pageUrl)
 }
 
 // 4.新建数据的处理
@@ -271,6 +272,7 @@ function handleNewData() {
 
 // 5.删除和编辑操作
 async function handleDeleteClick(id: number) {
+  console.log('删除的id', id)
   const res = await pageStore.deletePageDataAction(props.contentConfig.pageUrl, id, {
     pageNum: currentPage.value,
     pageSize: pageSize.value
@@ -305,6 +307,7 @@ function exportExcel() {
   emit('expClick')
   exportExcelByTable(this.$refs.tableRef.$el, props.contentConfig.pageName)
 }
+fetchPageListData(props.contentConfig.pageUrl)
 
 // 暴露函数
 defineExpose({

@@ -6,7 +6,10 @@ import {
   deletePageData,
   editPageData,
   getPageListData,
-  newPageData
+  newPageData,
+  getDictTreeData,
+  importExcelData,
+  getDownloadUrlData
 } from '@/services/base/system/system'
 import { defineStore } from 'pinia'
 import type { ISystemState } from './type'
@@ -16,7 +19,8 @@ const useSystemStore = defineStore('system', {
     usersTotalCount: 0,
     usersList: [],
     pageList: [],
-    pageTotalCount: 0
+    pageTotalCount: 0,
+    dictTree: []
   }),
   actions: {
     // 页面的网络请求
@@ -48,6 +52,27 @@ const useSystemStore = defineStore('system', {
       const res = await editPageData(pageName, id, pageData)
       console.log(res)
       this.getPageListDataAction(pageName, { offset: 1, size: 10 })
+      return res
+    },
+    // 获取字典树请求
+    async getDescTree(pageName: string, queryInfo: any) {
+      const res = await getDictTreeData(pageName, queryInfo)
+      // console.log('请求结果111', res)
+      if (res.code === 0) {
+        this.dictTree = res.data.list
+      }
+      return res
+    },
+    // 导入excel操作
+    async importExcel(position: string, data: { excelBody: string }) {
+      const res = await importExcelData(position, data)
+      console.log('导入excel', res)
+      return res
+    },
+    // 获取下载链接
+    async getDownloadUrl(fileName: string) {
+      const res = await getDownloadUrlData(fileName)
+      console.log('下载链接', res)
       return res
     }
   }

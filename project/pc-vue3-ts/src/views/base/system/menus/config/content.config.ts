@@ -2,6 +2,10 @@ import type { pageContentTable } from '@/global/types/pageContent.type'
 
 const contentConfig: pageContentTable = {
   pageName: 'menus',
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'menus'
+  },
   pageUrl: {
     rootPath: 'pcadmin',
     pageName: 'menus'

@@ -4,10 +4,10 @@ import type PageContent from '@/components/page-content/page-content.vue'
 function usePageContent() {
   const contentRef = ref<InstanceType<typeof PageContent>>()
   // 搜索
-  function handleQueryClick(searchInfo: any) {
+  function handleQueryClick(url: any, searchInfo?: any) {
     console.log('拿到的搜索111', searchInfo)
     // 调用content页面里的fetchPageListData方法
-    contentRef.value?.fetchPageListData(searchInfo)
+    contentRef.value?.fetchPageListData(url, searchInfo)
   }
   // 重置
   function handleResetClick() {

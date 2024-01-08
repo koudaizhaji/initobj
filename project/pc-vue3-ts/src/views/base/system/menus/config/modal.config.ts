@@ -14,6 +14,14 @@ const modalConfig: PageModalConfigType = {
   // newtitle: "添加菜单",
   editTitle: '编辑菜单',
   pageName: 'menus',
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'menus'
+  },
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'menus'
+  },
   formItems: [
     {
       prop: 'sort',
@@ -35,22 +43,22 @@ const modalConfig: PageModalConfigType = {
       options: [
         {
           id: 1,
-          name: '一级菜单',
+          label: '一级菜单',
           value: 1
         },
         {
           id: 2,
-          name: '二级菜单',
+          label: '二级菜单',
           value: 2
         },
         {
           id: 3,
-          name: '三级页面',
+          label: '三级页面',
           value: 3
         },
         {
           id: 4,
-          name: '四级权限',
+          label: '四级权限',
           value: 4
         }
       ]
@@ -87,12 +95,12 @@ const modalConfig: PageModalConfigType = {
       options: [
         {
           id: 1,
-          name: '启用',
+          label: '启用',
           value: 1
         },
         {
           id: 0,
-          name: '禁用',
+          label: '禁用',
           value: 0
         }
       ]

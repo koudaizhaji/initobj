@@ -4,6 +4,10 @@ const modalConfig: PageModalConfigType = {
   title: '新增角色',
   editTitle: '编辑角色',
   pageName: 'roles',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'roles'
+  },
   formItems: [
     {
       prop: 'name',
@@ -26,12 +30,12 @@ const modalConfig: PageModalConfigType = {
       options: [
         {
           id: 1,
-          name: '启用',
+          label: '启用',
           value: 1
         },
         {
           id: 0,
-          name: '禁用',
+          label: '禁用',
           value: 0
         }
       ]

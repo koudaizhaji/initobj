@@ -7,7 +7,14 @@
       center
     >
       <div class="form">
-        <el-form :model="formData" label-width="80px" size="large">
+        <el-form
+          :model="formData"
+          label-width="100px"
+          size="large"
+          status-icon
+          :rules="rules"
+          ref="ruleFormRef"
+        >
           <template v-for="item in modalConfig.formItems" :key="item.prop">
             <el-form-item :label="item.label" :prop="item.prop">
               <template v-if="item.type === 'input'">
@@ -27,10 +34,20 @@
                   style="width: 100%;"
                 >
                   <template v-for="value in item.options" :key="value.id">
-                    <el-option :value="value.id" :label="value.name" />
+                    <el-option :value="value.value" :label="value.label" />
                   </template>
                 </el-select>
               </template>
+			  <template v-if="item.type === 'timer'">
+                <el-date-picker
+                  v-model="formData[item.prop]"
+                  type="datetime"
+                  :placeholder="item.placeholder"
+                />
+              </template>
+              <template v-if="item.type === 'number'">
+                <el-input-number v-model="formData[item.prop]" v-bind="item.otherConfig"
+              /></template>
               <template v-if="item.type === 'date-picker'">
                 <el-date-picker
                   type="daterange"
@@ -49,8 +66,8 @@
       </div>
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="dialogVisible = false">取消</el-button>
-          <el-button type="primary" @click="handleConfirmClick">确定</el-button>
+          <el-button @click="handleCannelClick(ruleFormRef)">取消</el-button>
+          <el-button type="primary" @click="handleConfirmClick(ruleFormRef)">确定</el-button>
         </span>
       </template>
     </el-dialog>
@@ -58,14 +75,18 @@
 </template>
 
 <script setup lang="ts" name="modal">
-import useSystemStore from '@/stores/base/system/system'
+// import useSystemStore from '@/stores/base/system/system'
+import pageDataStore from '@/stores/pages/pagestore'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import type { FormInstance, FormRules } from 'element-plus'
 
 // 定义props
 interface IProps {
   modalConfig: {
     pageName: string
+    pageUrl: any
+    editUrl: any
     title: string
     editTitle: string
     formItems: any[]
@@ -74,10 +95,11 @@ interface IProps {
 }
 
 const props = defineProps<IProps>()
-
+const ruleFormRef = ref<FormInstance>()
 const dialogVisible = ref(false)
 const isEdit = ref(false) // 是否编辑
 const editData = ref()
+const rules = reactive<FormRules>({})
 
 // 部门和角色的数据
 // const mainStore = useMainStore()
@@ -87,13 +109,31 @@ const editData = ref()
 const initialForm: any = {}
 for (const item of props.modalConfig.formItems) {
   initialForm[item.prop] = item.initialValue ?? ''
+  if (item.rules) {
+    rules[item.prop] = item.rules
+  }
 }
 const formData = reactive(initialForm)
 
 // 点击确定
-const systemStore = useSystemStore()
+// const systemStore = useSystemStore()
+const pageStore = pageDataStore()
 // 确认添加
-async function handleConfirmClick() {
+function handleConfirmClick(formEl: FormInstance | undefined) {
+  console.log('formEl', formEl)
+  if (!formEl) return
+  formEl.validate(async (valid) => {
+    if (valid) {
+      console.log('submit!')
+      await clickConfirmBtn()
+    } else {
+      console.log('error submit!')
+      return false
+    }
+  })
+}
+// 点击确定按钮的一系列操作
+async function clickConfirmBtn() {
   dialogVisible.value = false
 
   let data = { ...formData }
@@ -104,10 +144,20 @@ async function handleConfirmClick() {
   let res
   const messageObj = { message: '' }
   if (!isEdit.value) {
-    res = await systemStore.newPageDataAction(props.modalConfig.pageName, data)
+    res = await pageStore.newPageDataAction(props.modalConfig.pageUrl, data)
     messageObj.message = '新增'
+    const getDataRes = await pageStore.getPageListDataAction(props.modalConfig.editUrl, {
+      pageNum: 1,
+      pageSize: 10
+    })
   } else {
-    res = await systemStore.editPageDataAction(props.modalConfig.pageName, editData.value.id, data)
+    res = await pageStore.editPageDataAction(props.modalConfig.pageUrl, editData.value.id, data)
+    console.log('编辑确认')
+    const getDataRes = await pageStore.getPageListDataAction(props.modalConfig.editUrl, {
+      pageNum: 1,
+      pageSize: 10
+    })
+
     messageObj.message = '编辑'
   }
   console.log('修改删除', editData.value)
@@ -116,7 +166,14 @@ async function handleConfirmClick() {
     : (messageObj.message = res.message)
   res.code === 0 ? ElMessage.success(messageObj) : ElMessage.error(messageObj)
   // 直接刷新页面吧，只是请求数据有点麻烦
-  window.location.reload()
+  // window.location.reload()
+}
+
+// 点击取消
+function handleCannelClick(formEl: FormInstance | undefined) {
+  if (!formEl) return
+  dialogVisible.value = false
+  formEl.resetFields()
 }
 // 新建或者编辑
 function setDialogVisible(isNew: boolean = true, data: any = {}) {
@@ -133,7 +190,8 @@ function setDialogVisible(isNew: boolean = true, data: any = {}) {
 }
 
 defineExpose({
-  setDialogVisible
+  setDialogVisible,
+  dialogVisible
 })
 </script>
 
