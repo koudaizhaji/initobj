@@ -3,7 +3,7 @@
  * @Date: 2023-11-10 09:15:06
  * @LastEditors: 李立
  * @LastEditTime: 2023-11-19 13:17:00
- * @FilePath: \apiObjectc:\Users\Farben\Desktop\initobj\scripts\dts-mv.ts
+ initobj\scripts\dts-mv.ts
  * @Description:
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
