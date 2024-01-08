@@ -1,5 +1,6 @@
 <template>
   <view>
+    <!-- 需要抽离 -->
     <uni-forms
       ref="form"
       :rules="rules"
