@@ -208,7 +208,7 @@ const handleSubmit = async () => {
           proxy.$refs.container.innerHTML = ''
           proxy.$refs.uploadRef.clearFiles()
           // vue3跳转vue指定页面
-          window.location.href = '/#/order/setting/joinField'
+          window.location.href = '/#/base/'
         }
       }
     })

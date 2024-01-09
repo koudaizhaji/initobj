@@ -57,11 +57,11 @@ const router = createRouter({
       name: 'template',
       component: () => import('@/views/template/template.vue')
     },
-    {
-      path: '/order',
-      name: 'order',
-      component: () => import('@/views/order/order.vue')
-    },
+    // {
+    //   path: '/order',
+    //   name: 'order',
+    //   component: () => import('@/views/order/order.vue')
+    // },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
@@ -71,6 +71,11 @@ const router = createRouter({
       path: '/403',
       name: '403',
       component: () => import('../views/public/err-page/403-view.vue')
+    },
+    {
+      path: '/admin/install',
+      name: 'superadmin-install',
+      component: () => import('../views/base/install/install.vue')
     }
   ]
 })
