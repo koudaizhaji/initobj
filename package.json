@@ -50,6 +50,7 @@
     "vue-tsc": "^1.8.5"
   },
   "dependencies": {
+    "md-editor-v3": "^4.10.0",
     "vue": "^3.3.4"
   }
 }
