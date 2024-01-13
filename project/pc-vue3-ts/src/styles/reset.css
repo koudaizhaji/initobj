@@ -14,20 +14,16 @@ dd {
   padding: 0;
   margin: 0;
 }
-
 /* a元素重置 */
 a {
   text-decoration: none;
   color: #333;
 }
-
 /* img的vertical-align重置 */
 img {
   vertical-align: top;
 }
-
 /* ul, ol, li重置 */
-
 /* 对斜体元素重置 */
 i,
 em {
