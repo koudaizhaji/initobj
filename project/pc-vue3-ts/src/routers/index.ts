@@ -57,6 +57,12 @@ const router = createRouter({
       name: 'template',
       component: () => import('@/views/template/template.vue')
     },
+        {
+            path: '/test/mdread',
+            name: 'mdread',
+            component: () => import('../views/template/form/mdread/mdread.vue')
+          },
+      
     // {
     //   path: '/order',
     //   name: 'order',
