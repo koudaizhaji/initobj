@@ -32,9 +32,9 @@ module.exports = {
       ]
     },
   ],
-  '/03.技术杂谈/': [
+  '/03.开发极客分享杂谈/': [
     {
-      title: '技术杂谈',
+      title: '开发极客分享杂谈',
       collapsable: false, //是否可折叠，可选的，默认true
       sidebarDepth: 2, // 深度，可选的, 默认值是 1
       children: [

@@ -17,6 +17,10 @@ const contentTableConfig: pageContentTable = {
     rootPath: 'pcadmin',
     pageName: 'users'
   },
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'users'
+  },
   header: {
     title: '用户列表',
     btnTitle: '新建用户'

@@ -13,7 +13,7 @@ export function getPageListData(pageName: string, queryInfo: any) {
 }
 // 删除页面数据
 export function deletePageData(pageName: string, id: number) {
-  return liliRequest.delete({
+  return liliRequest.post({
     url: `/pcadmin/${pageName}/${id}`
   })
 }
@@ -26,7 +26,7 @@ export function newPageData(pageName: string, dataInfo: any) {
 }
 // 编辑页面数据
 export function editPageData(pageName: string, id: number, dataInfo: any) {
-  return liliRequest.patch({
+  return liliRequest.post({
     url: `/pcadmin/${pageName}/${id}`,
     data: dataInfo
   })

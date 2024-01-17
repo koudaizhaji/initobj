@@ -14,7 +14,7 @@
 import { computed, defineProps } from 'vue'
 import type { PropType } from 'vue'
 import type { LILIBreadcrumbItem } from './types'
-import useLoginStore from '@/stores/login/login'
+import useLoginStore from '@/stores/public/login/login'
 import { useRoute } from 'vue-router'
 import { pathMapBreadcrumbs } from '@/utils/map-menus'
 

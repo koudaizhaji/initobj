@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/login/login.vue')
+      component: () => import('@/views/public/login/login.vue')
     },
     {
       path: '/base',
@@ -28,46 +28,30 @@ const router = createRouter({
       component: () => import('@/views/base/base.vue')
     },
     {
-      path: '/weixin',
-      name: 'weixin',
-      component: () => import('@/views/weixin/weixin.vue')
-    },
-    {
-      path: '/screen',
-      name: 'screen',
-      component: () => import('@/views/screen/screen.vue')
-    },
-    {
-      path: '/study',
-      name: 'study',
-      component: () => import('@/views/study/study.vue')
-    },
-    {
-      path: '/chat',
-      name: 'chat',
-      component: () => import('@/views/chat/chat.vue')
-    },
-    {
-      path: '/shop',
-      name: 'shop',
-      component: () => import('@/views/shop/shop.vue')
-    },
-    {
       path: '/template',
       name: 'template',
       component: () => import('@/views/template/template.vue')
     },
-        {
-            path: '/test/mdread',
-            name: 'mdread',
-            component: () => import('../views/template/form/mdread/mdread.vue')
-          },
-      
-    // {
-    //   path: '/order',
-    //   name: 'order',
-    //   component: () => import('@/views/order/order.vue')
-    // },
+    {
+      path: '/unit',
+      name: 'unit',
+      component: () => import('@/views/unit/unit.vue')
+    },
+    {
+      path: '/plan',
+      name: 'plan',
+      component: () => import('@/views/plan/plan.vue')
+    },
+    {
+      path: '/test/mdread',
+      name: 'mdread',
+      component: () => import('../views/template/form/mdread/mdread.vue')
+    },
+    {
+      path: '/admin/install',
+      name: 'install',
+      component: () => import('../views/public/install/home.vue')
+    },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
@@ -77,11 +61,6 @@ const router = createRouter({
       path: '/403',
       name: '403',
       component: () => import('../views/public/err-page/403-view.vue')
-    },
-    {
-      path: '/admin/install',
-      name: 'superadmin-install',
-      component: () => import('../views/base/install/install.vue')
     }
   ]
 })
@@ -116,12 +95,6 @@ router.beforeEach((to, from, next) => {
   if (Object.keys(firstMenu).includes(to.path)) {
     return next(firstMenu[to.path])
   }
-  // if(to.path =='/base'){
-  // if(token && to.path == urlMatch(firstMenu?.path,true)){
-  // console.log('Redirecting to:', firstMenu?.path);
-  // 异步获取菜单信息
-  // return next(firstMenu?.path);
-  // }
 
   // 如果已经在登录页，正常导航
   console.log('Already on login page, proceeding with navigation')

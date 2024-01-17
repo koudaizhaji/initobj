@@ -24,7 +24,7 @@ const useSystemStore = defineStore('system', {
   }),
   actions: {
     // 页面的网络请求
-    async getPageListDataAction(pageName: string, queryInfo: any) {
+    async getPageListDataAction(pageName: string, queryInfo?: any = {}) {
       console.log('发起请求的参数', pageName, queryInfo)
       // 1.请求用户列表数据
       const pageListResult = await getPageListData(pageName, queryInfo)
@@ -74,6 +74,17 @@ const useSystemStore = defineStore('system', {
       const res = await getDownloadUrlData(fileName)
       console.log('下载链接', res)
       return res
+    },
+    // 获取menuList
+    async getMenuList(pageName: string, queryInfo?: any) {
+      const pageListResult = await getPageListData(pageName, (queryInfo = {}))
+      console.log('pageListResult', pageListResult)
+      if (pageListResult.code != 0) {
+        console.log('请求出错了', pageListResult.code)
+        return []
+      }
+      console.log('qingqi结果', pageListResult.data)
+      return pageListResult.data
     }
   }
 })

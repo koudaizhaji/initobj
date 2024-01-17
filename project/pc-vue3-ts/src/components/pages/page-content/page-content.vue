@@ -132,7 +132,7 @@
 <script setup lang="ts" name="content">
 import { storeToRefs } from 'pinia'
 import { exportExcelByTable } from '@/utils/xlsx'
-import pageDataStore from '@/stores/pages/pagestore'
+import pageDataStore from '@/stores/public/pages/pagestore'
 import type { IPageUrl } from '@/services/pages/types'
 import { utcFormat } from '@/utils/format'
 import { ref, computed, unref, watch } from 'vue'

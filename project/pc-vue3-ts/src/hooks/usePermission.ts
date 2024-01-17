@@ -1,4 +1,4 @@
-import useLoginStore from '@/stores/login/login'
+import useLoginStore from '@/stores/public/login/login'
 //用户权限拼接
 function usePermission(pageName: string, handleName: string) {
   const queryPermission = `${pageName}:${handleName}`

@@ -18,7 +18,11 @@
           <template v-for="item in modalConfig.formItems" :key="item.prop">
             <el-form-item :label="item.label" :prop="item.prop">
               <template v-if="item.type === 'input'">
-                <el-input v-model="formData[item.prop]" :placeholder="item.placeholder" />
+                <el-input
+                  v-model="formData[item.prop]"
+                  :placeholder="item.placeholder"
+                  :disabled="item.disabled ? item.disabled : false"
+                />
               </template>
               <template v-if="item.type === 'password'">
                 <el-input
@@ -38,7 +42,7 @@
                   </template>
                 </el-select>
               </template>
-			  <template v-if="item.type === 'timer'">
+              <template v-if="item.type === 'timer'">
                 <el-date-picker
                   v-model="formData[item.prop]"
                   type="datetime"
@@ -76,7 +80,7 @@
 
 <script setup lang="ts" name="modal">
 // import useSystemStore from '@/stores/base/system/system'
-import pageDataStore from '@/stores/pages/pagestore'
+import pageDataStore from '@/stores/public/pages/pagestore'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
@@ -157,7 +161,7 @@ async function clickConfirmBtn() {
       pageNum: 1,
       pageSize: 10
     })
-
+    console.log('编辑后的请求列表结果', getDataRes)
     messageObj.message = '编辑'
   }
   console.log('修改删除', editData.value)

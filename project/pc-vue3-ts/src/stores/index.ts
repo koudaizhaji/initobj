@@ -2,7 +2,7 @@ import { defineStore, createPinia } from 'pinia'
 import type { App } from 'vue'
 // 引入持久化插件
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import useLoginStore from './login/login'
+import useLoginStore from './public/login/login'
 export const Store = defineStore({
   // id: 必须的，在所有 Store 中唯一
   id: 'globalState',

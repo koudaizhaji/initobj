@@ -8,6 +8,10 @@ const modalConfig: PageModalConfigType = {
     rootPath: 'pcadmin',
     pageName: 'roles'
   },
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'roles'
+  },
   formItems: [
     {
       prop: 'name',

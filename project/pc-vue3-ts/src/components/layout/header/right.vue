@@ -17,7 +17,7 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item divided @click="clearLocal">清除缓存</el-dropdown-item>
-          <el-dropdown-item disabled>个人信息</el-dropdown-item>
+          <el-dropdown-item divided @click="goUserInfo">修改密码</el-dropdown-item>
           <el-dropdown-item disabled>样式切换</el-dropdown-item>
           <el-dropdown-item divided @click="logout">登出</el-dropdown-item>
         </el-dropdown-menu>
@@ -31,7 +31,7 @@ import { computed } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import useLoginStore from '@/stores/login/login'
+import useLoginStore from '@/stores/public/login/login'
 import { USER_MENUS } from '@/config'
 
 const loginStore = useLoginStore()
@@ -62,5 +62,10 @@ const clearLocal = async () => {
   setTimeout(() => {
     location.reload()
   }, 1000)
+}
+
+const goUserInfo = () => {
+  console.log('点击了跳转个人信息')
+  // router.push('/user/info')
 }
 </script>

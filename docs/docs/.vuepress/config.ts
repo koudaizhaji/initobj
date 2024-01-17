@@ -18,8 +18,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: "initObj mdCenter",
-      description: 'web前端技术博客,高效技术开发交流地。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。',
+      title: "开发极客分享",
+      description: 'web前端开发极客分享,高效技术开发交流地。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。',
     }
   },
   // base: '/', // 默认'/'。如果你想将你的网站部署到如 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/",（否则页面将失去样式等文件）
@@ -120,7 +120,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       },
     ],
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
-    logo: '/img/logo.png', // 导航栏logo
+    // logo: '/img/logo.png', // 导航栏logo
     // repo: 'koudaizhaji/vuepress-theme-vdoing', // 导航栏右侧生成Github链接
     repo:'koudaizhaji',
     searchMaxSuggestions: 10, // 搜索结果显示最大数
@@ -206,8 +206,10 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     // 页脚信息
     footer: {
       createYear: 2019, // 博客创建年份
-      copyrightInfo:''
-      //   'Evan Xu | <a href="https://github.com/koudaizhaji/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a>', // 博客版权信息、备案信息等，支持a标签或换行标签</br>
+      copyrightInfo:
+      `
+      ©2024 网站仅供技术学习 | <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023009892号</a>
+      `, // 博客版权信息、备案信息等，支持a标签或换行标签</br>
     },
 
     // 扩展自动生成frontmatter。（当md文件的frontmatter不存在相应的字段时将自动添加。不会覆盖已有的数据。）
@@ -229,7 +231,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       'meta',
       {
         name: 'keywords',
-        content: '前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown',
+        content: '前端博客,个人开发极客分享,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown',
       },
     ],
     ['meta', { name: 'baidu-site-verification', content: '7F55weZDDc' }], // 百度统计的站长验证（你可以去掉）
