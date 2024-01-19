@@ -43,11 +43,6 @@ const router = createRouter({
       component: () => import('@/views/plan/plan.vue')
     },
     {
-      path: '/test/mdread',
-      name: 'mdread',
-      component: () => import('../views/template/form/mdread/mdread.vue')
-    },
-    {
       path: '/admin/install',
       name: 'install',
       component: () => import('../views/public/install/home.vue')
