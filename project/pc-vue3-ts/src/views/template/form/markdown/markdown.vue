@@ -1,19 +1,23 @@
 <template>
   <div class="sendMd">
-    <div class="inp">
+    <!-- <div class="inp">
       <input type="text" placeholder="请输入文章标题" v-model="title">
       <input type="text" placeholder="请输入文章描述" v-model="desc">
-    </div>
-    <button @click="addMsg">添加文章</button>
-    <button @click="getMd">查询</button>
+    </div> -->
+    <PopUp @click="addMsg">添加文章</PopUp>
+    <PopUp @click="addClass">添加分类</PopUp>
+    <!-- <PopUp @click="getMd">查询</PopUp> -->
+    <!-- <button >添加文章</button> -->
+    <!-- <button @click="getMd">查询</button> -->
   </div>
-  <div class="sendMd">
+  <!-- <div class="sendMd">
     <div class="inp">
       <input type="text" placeholder="请输入分类标题" v-model="classTitle">
       <input type="text" placeholder="请输入分类描述" v-model="classDesc">
     </div>
+    <PopUp @click="addClass">添加分类</PopUp>
     <button @click="addClass">添加分类</button>
-  </div>
+  </div> -->
   <div class="markdow-page">
     <MdEditor v-model="content" />
   </div>
@@ -27,9 +31,12 @@
 */
 import { ref } from 'vue';
 import { MdEditor } from 'md-editor-v3';
+import PopUp from './component/PopUp.vue'
+// import pageModal from '@/components/pages/page-modal/page-modal.vue'
+// import modalConfig from './config/modal.config.ts'
+// import usePageModal from '@/hooks/usePageModal'
 import { addMd, addMdClass } from '@/services/markdown/markdown'
 import 'md-editor-v3/lib/style.css';
-
 let content = ref('');
 let title = ref('');
 let desc = ref('');
@@ -109,15 +116,15 @@ li {
 
 .sendMd {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   margin: 10px 0;
 
   button {
-    width: 100px;
-    background-color: skyblue;
+    padding: 10px 20px;
     color: #fff;
-    border-radius: 24px;
+    background-color: #1d7dfa;
     border: none;
+    border-radius: 2px;
   }
 
   .inp {
@@ -136,6 +143,5 @@ li {
       width: 50%;
     }
   }
-
 }
 </style>
