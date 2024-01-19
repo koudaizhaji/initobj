@@ -3,7 +3,7 @@
     <!-- 信息页 -->
     <user-info
       v-bind="userInfoObj"
-      @goLogin="goLogin"
+      @go-login="goLogin"
       @click="openVconsole"
     />
     <!-- 卡片页 -->
@@ -31,7 +31,7 @@
 
 <script>
 import { uni } from '@dcloudio/uni-h5';
-import VConsole from 'vconsole';
+// import VConsole from 'vconsole';
 import iconNav from '@/components/pageCard/iconNav/iconNav.vue';
 import lineNav from '@/components/pageCard/lineNav/lineNav.vue';
 import memberCard from '@/components/pageCard/memberCard/memberCard.vue';

@@ -1,14 +1,14 @@
 {
   "pages": [
     {
-      "path": "pages/mine/index",
+      "path": "pages/home/index",
       "style": {
         // #ifdef H5
         "titleNView": true,
         "navigationBarBackgroundColor": "#39A692",
         "backgroundColorTop": "#39A692",
         "backgroundColorBottom": "#ffffff",
-        "navigationBarTitleText": "泓鑫耀教育统计移动版",
+        "navigationBarTitleText": "首页",
         // #endif
         "app-plus": {
           "bounce": "vertical",
@@ -32,15 +32,16 @@
         }
       }
     },
+
     {
-      "path": "pages/home/index",
+      "path": "pages/mine/index",
       "style": {
         // #ifdef H5
         "titleNView": true,
         "navigationBarBackgroundColor": "#39A692",
         "backgroundColorTop": "#39A692",
         "backgroundColorBottom": "#ffffff",
-        "navigationBarTitleText": "首页",
+        "navigationBarTitleText": "泓鑫耀教育统计移动版",
         // #endif
         "app-plus": {
           "bounce": "vertical",

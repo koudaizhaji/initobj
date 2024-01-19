@@ -3,7 +3,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import 'virtual:uno.css';
 import tabBar from '@/components/tabBar.vue';
-import { isWeixinMobile } from '@/utils/public';
+// import { isWeixinMobile } from '@/utils/public';
 
 const app = createSSRApp(App);
 
@@ -15,20 +15,20 @@ app.use(pinia);
 // Assuming MinRequest is a Vue plugin, you can use it like this:
 
 export function createApp() {
-  if (!isWeixinMobile()) {
-    // If not in WeChat, you can show a message or redirect here
-    uni.showToast({
-      title: 'ÇëÊ¹ÓÃÊÖ»úÎ¢ĞÅ´ò¿ª±¾ÏµÍ³',
-      icon: 'none', // 'none'±íÊ¾ÎŞÍ¼±ê
-      duration: 50000, // ÏÔÊ¾Ê±¼ä2Ãë
-    });
+  // if (!isWeixinMobile()) {
+  //   // If not in WeChat, you can show a message or redirect here
+  //   uni.showToast({
+  //     title: 'å½“å‰ç¯å¢ƒï¼Œéæ‰‹æœºå¾®ä¿¡',
+  //     icon: 'none', // 'none'æ— å›¾æ ‡
+  //     duration: 50000, // 5s
+  //   });
 
-    // Optionally, you can exit the app
-    // uni.exit();
-    window.location.href = 'http://www.baidu.com';
-    // You can also redirect to another page
-    // window.location.href = 'https://yourRedirectUrl.com';
-    return null; // Return null to prevent the app from rendering
-  }
+  //   // Optionally, you can exit the app
+  //   // uni.exit();
+  //   window.location.href = 'http://www.baidu.com';
+  //   // You can also redirect to another page
+  //   // window.location.href = 'https://yourRedirectUrl.com';
+  //   return null; // Return null to prevent the app from rendering
+  // }
   return { app };
 }

@@ -1,14 +1,18 @@
 <template>
   <view class="uni-padding-top">
     <!-- hedaer -->
-    <view class="pt-5 flex flex-justify-between bg-white" v-for="item in navigationbarDataList" :key="item.id">
+    <view
+      v-for="item in navigationbarDataList"
+      :key="item.id"
+      class="pt-5 flex flex-justify-between bg-white"
+    >
       <view class="headerLogo">
-        <view>{{item.title}}</view>
+        <view>{{ item.title }}</view>
       </view>
       <view class="headerText">
-        <p> {{item.qualityText}}</p>
-        <p> {{item.warrantyText}}</p>
-        <p> {{item.goodsReturn}}</p>
+        <p> {{ item.qualityText }}</p>
+        <p> {{ item.warrantyText }}</p>
+        <p> {{ item.goodsReturn }}</p>
         <p class="font-bold">
           >
         </p>
@@ -17,7 +21,7 @@
     <!-- Search 搜索组件页 -->
     <pagesSearch />
     <!-- 分类页 -->
-    <pagesSort :sortlist="sortDataList"/>
+    <pagesSort :sortlist="sortDataList" />
     <!-- 轮播图 -->
     <!-- <u-swiper
       :circular="true"
@@ -35,25 +39,26 @@
     <!-- 卡片式 -->
     <pagesCart />
     <!-- 商品列表 -->
-    <pagesGoods :optionList="optionList"/> 
-    
+    <pagesGoods :option-list="optionList" />
+
     <view class="h-16" />
     <TabBar />
   </view>
 </template>
 
 <script>
-import { navigationbarDataList,sortDataList,optionList } from './data';
+import { navigationbarDataList, sortDataList, optionList } from './data';
 import pagesSearch from '@/pages/Home/component/pages-search/pages-search.vue';
 import pagesSort from '@/pages/Home/component/pages-sort/pages-sort.vue';
 import pagesGoods from '@/pages/Home/component/pages-goods/pages-goods.vue';
 import pagesCart from '@/pages/Home/component/pages-cart/pages-cart.vue';
+
 export default {
   components: {
     pagesSearch,
     pagesSort,
     pagesGoods,
-    pagesCart
+    pagesCart,
   },
   data() {
     return {
@@ -81,14 +86,14 @@ export default {
           url: '/pages/detail/index?id=3',
         },
       ],
-    
+
       bannerlist: [
         '/src/assetsswiper/swiper1.png',
         '/src/assetsswiper/swiper2.png',
         '/src/assetsswiper/swiper3.png',
         '/src/assetsswiper/swiper4.png',
       ],
-     
+
       cardList: [
         { title: '京东特卖', text: '京东特卖家具', icon: 'i-mdi-account-tie bg-green' },
         { title: '京东邮件', text: '京东邮件发送', icon: 'i-mdi-account-supervisor bg-red' },
@@ -103,7 +108,7 @@ export default {
 
   },
   methods: {
-    
+
   },
 };
 </script>
