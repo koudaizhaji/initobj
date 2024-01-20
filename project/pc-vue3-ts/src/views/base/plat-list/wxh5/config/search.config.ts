@@ -1,12 +1,3 @@
-/*
- * @Author: 李立
- * @Date: 2023-12-04 17:15:00
- * @LastEditors: 李立
- * @LastEditTime: 2023-12-04 17:39:30
- initobj\project\pc-vue3-ts\src\views\base\system\users\config\search.config.ts
- * @Description:
- * 相关开发文件头自动添加：联系微信huaiplayboy
- */
 /** @description: 用户管理-搜索配置
  * 所有的配置，都在一个文件当中，以后使用表单时就可以通过各种配置文件来直接完成项目
  */

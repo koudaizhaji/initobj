@@ -4,7 +4,7 @@ import liliRequest from '../../index'
 
 export function getInitMenuJson() {
   return liliRequest.post({
-    url: '/pcadmin/getInitJson',
+    url: '/pcadmin/getInitJson/list',
     data: ''
   })
 }

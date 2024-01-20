@@ -1,4 +1,4 @@
-import type { IPageUrl } from '@/services/pages/types'
+import type { IPageUrl } from '@/services/public/pages/types'
 type LILIFormType =
   | 'input'
   | 'password'

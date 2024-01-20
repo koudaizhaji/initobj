@@ -44,7 +44,7 @@ import 'bytemd/dist/index.css'
 import 'juejin-markdown-themes/dist/juejin.min.css' // IDo同款样式
 import { findIndex } from 'lodash'
 import sidebar from './components/sidebar.vue'
-import { findMdListById, findMdClass } from '@/services/markdown/markdown'
+import { findMdListById,findMdClass } from '@/services/markdown/markdown'
 import mockData from './data/mock.js'
 let treeList = ref([]);
 let Article = ref({})
@@ -238,6 +238,7 @@ const scrollHandle = () => {
     line-height: 1em;
     color: #4a4a4a;
     background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
 
     &::-webkit-scrollbar {
@@ -252,30 +253,6 @@ const scrollHandle = () => {
     overflow: auto;
     font-size: 16px;
     line-height: 1.8em;
-    color: #4a4a4a;
-    background-color: #fff;
-
-    .authorInfo {
-      width: 100%;
-      height: auto;
-      margin: 30px 0 20px;
-
-      .title {
-        margin-bottom: 30px;
-        font-size: 36px;
-        font-weight: 600;
-        text-align: center;
-      }
-
-      .info {
-        display: flex;
-        justify-content: space-between;
-
-        .name {}
-
-        .time {}
-      }
-    }
 
     :deep() {
       .bytemd {

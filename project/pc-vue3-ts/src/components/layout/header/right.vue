@@ -66,6 +66,6 @@ const clearLocal = async () => {
 
 const goUserInfo = () => {
   console.log('点击了跳转个人信息')
-  // router.push('/user/info')
+  router.push('/userInfo')
 }
 </script>

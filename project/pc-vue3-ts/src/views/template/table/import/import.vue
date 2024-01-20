@@ -26,7 +26,7 @@
         class="upload-demo pl-25px"
         action="#"
         multiple
-        :limit="3"
+        :limit="10"
         :before-upload="beforeExcelUpload"
         :on-preview="handlePreview"
         :on-remove="handleRemove"

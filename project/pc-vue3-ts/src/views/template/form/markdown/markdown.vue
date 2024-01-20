@@ -17,13 +17,13 @@
 import { ref } from 'vue';
 import { MdEditor } from 'md-editor-v3';
 import PopUp from './component/PopUp.vue'
-import { addMd, addMdClass } from '@/services/markdown/markdown'
+import { addMd, addMdClass } from '@/services/template/markdown/markdown'
 import {markdown,classtype} from './config/model.config.js'
 import 'md-editor-v3/lib/style.css';
 let content = ref('');
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .markdow-page {
   width: 100%;
   height: 100%;

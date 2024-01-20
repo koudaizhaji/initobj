@@ -81,7 +81,38 @@
         }
       }
     },
-
+    {
+      "path": "pages/detail/index",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "商品详情",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
+    {
+      "path": "pages/form/file-upload",
+      "style": {
+        // #ifdef H5
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#39A692",
+        "backgroundColorTop": "#39A692",
+        "backgroundColorBottom": "#ffffff",
+        "navigationBarTitleText": "文件上传",
+        // #endif
+        "app-plus": {
+          "bounce": "vertical",
+          "titleNView": false
+        }
+      }
+    },
     {
       "path": "pages/login/index",
       "style": {

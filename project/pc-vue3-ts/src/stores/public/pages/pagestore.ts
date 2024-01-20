@@ -7,8 +7,8 @@ import {
   editPageData,
   getPageListData,
   newPageData
-} from '@/services/pages/page-service'
-import type { IPageUrl } from '@/services/pages/types'
+} from '@/services/public/pages/page-service'
+import type { IPageUrl } from '@/services/public/pages/types'
 import { defineStore } from 'pinia'
 import type { IPageState } from './type'
 

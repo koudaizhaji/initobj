@@ -1,4 +1,4 @@
-import type { IPageUrl } from '@/services/pages/types'
+import type { IPageUrl } from '@/services/public/pages/types'
 interface modalFormItemsType {
   prop?: string
   type?: string

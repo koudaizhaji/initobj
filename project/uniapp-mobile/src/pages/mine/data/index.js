@@ -23,31 +23,31 @@ export const iconNavList = [
 ];
 // 个人中心竖向导航
 export const lineNavList = [
-  // {
-  //   id: 1,
-  //   title: '安全中心',
-  //   text: '修改手机号和密码',
-  //   icon: '/src/static/mine/anquanzhongxin.png',
-  //   link: 'noLink',
-  // },
-  // {
-  //   id: 2,
-  //   title: '推送设置',
-  //   text: '订阅信息推送',
-  //   icon: '/src/static/mine/tixing.png',
-  // },
-  // {
-  //   id: 3,
-  //   title: '关于我们',
-  //   text: '当前版本V3.0.0',
-  //   icon: '/src/static/mine/guanyuwomen.png',
-  // },
-  // {
-  //   id: 4,
-  //   title: '帮助反馈',
-  //   text: '常见问题和咨询',
-  //   icon: '/src/static/mine/xiaoxi.png',
-  // },
+  {
+    id: 1,
+    title: '安全中心',
+    text: '修改手机号和密码',
+    icon: '/src/static/mine/anquanzhongxin.png',
+    link: 'noLink',
+  },
+  {
+    id: 2,
+    title: '推送设置',
+    text: '订阅信息推送',
+    icon: '/src/static/mine/tixing.png',
+  },
+  {
+    id: 3,
+    title: '关于我们',
+    text: '当前版本V3.0.0',
+    icon: '/src/static/mine/guanyuwomen.png',
+  },
+  {
+    id: 4,
+    title: '帮助反馈',
+    text: '常见问题和咨询',
+    icon: '/src/static/mine/xiaoxi.png',
+  },
   {
     id: 5,
     title: '添加来源渠道',

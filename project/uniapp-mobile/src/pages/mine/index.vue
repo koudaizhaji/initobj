@@ -11,7 +11,7 @@
       v-bind="memberObj"
     />
     <!-- 选项页 -->
-    <!-- <icon-nav :option-list="iconNavList" /> -->
+    <icon-nav :option-list="iconNavList" />
     <!-- 列表页 -->
 
     <line-nav
@@ -24,7 +24,6 @@
         客服入口
       </view>
     </view> -->
-    <echartView />
     <TabBar />
   </view>
 </template>

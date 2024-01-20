@@ -49,6 +49,7 @@
 
 <script lang="ts" setup name="user">
 // computed数据有一些改变时，重新获取下
+import { storeToRefs } from 'pinia'
 
 import pageSearch from '@/components/pages/page-search/page-search.vue'
 import searchConfig from './config/search.config'
@@ -63,7 +64,6 @@ import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'
 
 import useMainStore from '@/stores/base/base'
-import { storeToRefs } from 'pinia'
 import { mapOptions } from '@/utils/dict-options'
 
 const { contentRef, handleQueryClick, handleResetClick, handleExportExcel } = usePageContent()

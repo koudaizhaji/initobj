@@ -2,14 +2,9 @@
  * @Description: 获取全部的数据：分组数据，菜单数据与角色数据，用于添加时动态选项
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
-import { getGroupData, getMenuData, getRoleData } from '@/services/base/system/system'
 import { defineStore } from 'pinia'
-
-interface IMainState {
-  entireGroups: any[]
-  entireRoles: any[]
-  entireMenus: any[]
-}
+import { getGroupData, getMenuData, getRoleData } from '@/services/base/system/system'
+import type { IMainState } from './type'
 
 const useMainStore = defineStore('main', {
   state: (): IMainState => ({

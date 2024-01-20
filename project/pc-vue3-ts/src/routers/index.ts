@@ -25,7 +25,14 @@ const router = createRouter({
     {
       path: '/base',
       name: 'base',
-      component: () => import('@/views/base/base.vue')
+      component: () => import('@/views/base/base.vue'),
+      children: [
+        {
+          path: '/userInfo',
+          name: 'userInfo',
+          component: () => import('../views/base/public/userinfo/userinfo.vue')
+        }
+      ]
     },
     {
       path: '/template',
@@ -47,6 +54,7 @@ const router = createRouter({
       name: 'install',
       component: () => import('../views/public/install/home.vue')
     },
+
     {
       path: '/:pathMatch(.*)*',
       name: '404',

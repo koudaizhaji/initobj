@@ -23,7 +23,7 @@
               <p class="before">装饰分类排名</p>
               <p>更多>></p>
             </div>
-            <el-table :data="tableData" style="width: 100%">
+            <el-table :data="tableData" style="width: 100%;">
               <el-table-column prop="date" label="排名" width="100" />
               <el-table-column prop="name" label="分类" width="100" />
               <el-table-column prop="address" label="浏览量" />

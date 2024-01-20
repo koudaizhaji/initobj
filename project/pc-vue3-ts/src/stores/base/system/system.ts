@@ -2,6 +2,7 @@
  * @Description: 系统相关的store
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
+import { defineStore } from 'pinia'
 import {
   deletePageData,
   editPageData,
@@ -11,7 +12,6 @@ import {
   importExcelData,
   getDownloadUrlData
 } from '@/services/base/system/system'
-import { defineStore } from 'pinia'
 import type { ISystemState } from './type'
 
 const useSystemStore = defineStore('system', {

@@ -6,3 +6,9 @@ export interface IDepartment {
   updateAt: string
   leader: string
 }
+
+export interface IMainState {
+  entireGroups: any[]
+  entireRoles: any[]
+  entireMenus: any[]
+}

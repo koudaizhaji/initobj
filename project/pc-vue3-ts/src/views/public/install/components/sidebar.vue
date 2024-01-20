@@ -21,7 +21,8 @@
       default-expand-all
       :filter-node-method="filterNode"
       @node-click="handleNodeClick"
-    />
+    >
+    </el-tree>
   </div>
 </template>
 

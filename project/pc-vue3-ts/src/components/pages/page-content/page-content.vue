@@ -133,7 +133,7 @@
 import { storeToRefs } from 'pinia'
 import { exportExcelByTable } from '@/utils/xlsx'
 import pageDataStore from '@/stores/public/pages/pagestore'
-import type { IPageUrl } from '@/services/pages/types'
+import type { IPageUrl } from '@/services/public/pages/types'
 import { utcFormat } from '@/utils/format'
 import { ref, computed, unref, watch } from 'vue'
 import type { Ref } from 'vue'
@@ -382,3 +382,4 @@ defineExpose({
   }
 }
 </style>
+@/services/public/pages/types

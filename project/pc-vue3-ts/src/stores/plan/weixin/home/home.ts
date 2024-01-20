@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getAmountListData } from '@/services/weixin/home/home'
+import { getAmountListData } from '@/services/template/ui/ui'
 
 interface IAnalysisState {
   amountList: any[]

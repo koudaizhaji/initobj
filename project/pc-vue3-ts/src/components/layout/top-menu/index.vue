@@ -13,8 +13,8 @@
         :class="`m-t-8px cursor-pointer p-t-8px p-b-8px hover-bg-#45505D ${getMenuItemClass(item)}`"
         @click="setActive(item, index)"
       >
-        <el-icon size="20">
-          <component :is="getIcon(item.icon)" />
+        <el-icon size="20" v-if="item.icon">
+          <component :is="item.icon" />
           <!-- <el-icon><ChatLineRound /></el-icon> -->
         </el-icon>
         <div>{{ item.title }}</div>
@@ -76,10 +76,7 @@ const getMenuItemClass = (item: MenuItemProps) => {
   if (active.value === item.id) return 'c-#70B2F6'
   return 'c-#FEFEFE'
 }
-const getIcon = (icon: string) => {
-  // console.log('拿到的图标','i-ep-'+icon)
-  return icon
-}
+
 const logout = () => {
   new Promise((resolve) => {
     setTimeout(() => {

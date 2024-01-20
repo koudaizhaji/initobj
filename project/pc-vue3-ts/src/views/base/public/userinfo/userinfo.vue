@@ -1,15 +1,16 @@
 <template>
-  <div class="templateHome">
-    <pageSidebar></pageSidebar>
+  <div class="userInfo">
+    <!-- <login-panel /> -->
+    <h2>userInfo</h2>
   </div>
 </template>
 
 <script setup lang="ts">
-import pageSidebar from './components/page-sidebar.vue'
+// import LoginPanel from "./c-cpns/login-panel.vue"
 </script>
 
 <style lang="less" scoped>
-.templateHome {
+.userInfo {
   @apply flex flex-justify-center flex-items-center w-100\% h-100\% bg-center bg-no-repeat bg-cover;
 }
 </style>

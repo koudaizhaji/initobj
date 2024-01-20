@@ -20,7 +20,7 @@ const useInstallStore = defineStore('install', {
       if (res.code == 0) {
         this.initMenu = res.data
       }
-      return res
+      return this.initMenu
     }
   }
 })

@@ -54,7 +54,7 @@ import modalConfig from './config/modal.config'
 import usePageContent from '@/hooks/usePageContent'
 import usePageModal from '@/hooks/usePageModal'
 
-import platWXh5Store from '@/stores/base/plat-list/wxh5.ts'
+import platWXh5Store from '@/stores/base/plat-list/wxh5'
 import { storeToRefs } from 'pinia'
 
 const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
@@ -62,7 +62,7 @@ const { contentRef, handleQueryClick, handleResetClick } = usePageContent()
 const { modalRef, handleNewDataClick, handleEditDataClick } = usePageModal()
 
 // 获取role/group数据,拿store里的数据
-const mainStore = platWXh5Store()
+const wxH5Store = platWXh5Store()
 </script>
 
 <style scoped></style>
