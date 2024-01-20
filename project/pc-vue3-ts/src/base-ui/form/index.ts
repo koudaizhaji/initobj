@@ -1,5 +1,5 @@
-import LILIForm from './src/form.vue'
+import liliForm from './src/form.vue'
 
 export * from './types'
 
-export default LILIForm
+export default liliForm

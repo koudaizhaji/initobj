@@ -23,20 +23,66 @@
         </el-dropdown-menu>
       </template>
     </el-dropdown>
+    <!-- 抽屉 -->
+    <page-drawer ref="drawerRef" :drawerConfig="drawerConfig">
+      <template #content>
+        <pageTags :tabConfig="tabConfig" :tabList="tabList">
+          <template #user>
+            <lili-form :modalConfig="modalConfig" ref="liliFormRef">
+              <template #footer>
+                  <button class="el-button el-button--primary" @click="changePassword">修改密码</button>
+              </template>
+            </lili-form>
+          </template>
+        </pageTags>
+      </template>
+    </page-drawer>
+    <!-- 抽屉 end -->
   </div>
 </template>
 <script setup lang="ts">
 import { localCache } from '@/utils/cache'
-import { computed } from 'vue'
+import { computed,ref } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import useLoginStore from '@/stores/public/login/login'
 import { USER_MENUS } from '@/config'
-
+import pageDrawer from "@/components/pages/page-drawer/page-drawer.vue"
+import pageTags from "@/components/pages/page-tags/page-tags.vue"
+import {tabConfigObj,tabListConfig} from "./config/right-config"
+import liliForm from '@/base-ui/form'
+import modalConfig from "@/components/layout/header/config/modal.config"
+const liliFormRef = ref(null)
 const loginStore = useLoginStore()
 const router = useRouter()
 const username = computed(() => localCache.getCache('user_info').username)
+const drawerConfig = ref()
+const tabConfig = ref(tabConfigObj)
+const tabList = ref(tabListConfig)
+const tableData = [
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+]
+
 const logout = () => {
   new Promise((resolve) => {
     setTimeout(() => {
@@ -63,9 +109,24 @@ const clearLocal = async () => {
     location.reload()
   }, 1000)
 }
-
+const drawerRef = ref(null)
 const goUserInfo = () => {
   console.log('点击了跳转个人信息')
-  router.push('/userInfo')
+  drawerRef.value?.setDialogVisible()
+}
+
+
+const changePassword = () => {
+  console.log('点击了修改密码',liliFormRef.value.handleConfirmClick(liliFormRef.value.ruleFormRef))
+  // if (!formEl) return
+  // formEl.validate(async (valid) => {
+  //   if (valid) {
+  //     console.log('submit!')
+  //     await clickConfirmBtn()
+  //   } else {
+  //     console.log('error submit!')
+  //     return false
+  //   }
+  // })
 }
 </script>

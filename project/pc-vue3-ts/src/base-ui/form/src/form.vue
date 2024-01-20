@@ -1,121 +1,109 @@
 <template>
   <div class="lili-form">
-    <!-- 搜索表头部 -->
-    <div class="header">
-      <slot name="header"></slot>
-    </div>
-    <el-form :label-width="labelWidth">
-      <el-row>
-        <el-col v-for="item in formItems" :key="item.label" v-bind="colLayout">
-          <el-form-item
-            v-if="!item.isHidden"
-            :label="item.label"
-            :rules="item.rules"
-            :style="itemStyle"
-          >
-            <!-- 如果是输入框或密码 -->
-            <!-- <template v-if="item.type === 'input' || item.type === 'password'">
-              <el-input
-                :placeholder="item.placeholder"
-                v-bind="item.otherOptions"
-                :show-password="item.type === 'password'"
-                :model-value="modelValue[`${item.field}`]"
-                @update:modelValue="handleValueChange($event, item.field)"
-              />
-            </template> -->
-            <template v-if="item.type === 'input' || item.type === 'password'">
-              <el-input
-                :placeholder="item.placeholder"
-                v-bind="item.otherOptions"
-                :show-password="item.type === 'password'"
-                v-model="formData[`${item.field}`]"
-              />
-            </template>
-            <!-- 如果是选择器 -->
-            <template v-else-if="item.type === 'select'">
-              <el-select
-                :placeholder="item.placeholder"
-                v-bind="item.otherOptions"
-                v-model="formData[`${item.field}`]"
-              >
-                <el-option
-                  v-for="option in item.options"
-                  :key="option.value"
-                  :label="option.label"
-                  :value="option.value"
-                ></el-option>
-              </el-select>
-            </template>
-            <!-- 如果是时间 -->
-            <template v-else-if="item.type === 'datepicker'">
-              <el-date-picker v-bind="item.otherOptions" v-model="formData[`${item.field}`]" />
-            </template>
-          </el-form-item>
-        </el-col>
-      </el-row>
+    <el-form :model="formData" label-width="100px" size="large" status-icon :rules="rules" ref="ruleFormRef">
+      <template v-for="item in modalConfig.formItems" :key="item.prop">
+        <el-form-item :label="item.label" :prop="item.prop">
+          <template v-if="item.type === 'input'">
+            <el-input v-model="formData[item.prop]" :placeholder="item.placeholder"
+              :disabled="item.disabled ? item.disabled : false" />
+          </template>
+          <template v-if="item.type === 'password'">
+            <el-input show-password v-model="formData[item.prop]" :placeholder="item.placeholder" />
+          </template>
+          <template v-if="item.type === 'select'">
+            <el-select v-model="formData[item.prop]" :placeholder="item.placeholder" style="width: 100%;">
+              <template v-for="value in item.options" :key="value.id">
+                <el-option :value="value.value" :label="value.label" />
+              </template>
+            </el-select>
+          </template>
+          <template v-if="item.type === 'timer'">
+            <el-date-picker v-model="formData[item.prop]" type="datetime" :placeholder="item.placeholder" />
+          </template>
+          <template v-if="item.type === 'number'">
+            <el-input-number v-model="formData[item.prop]" v-bind="item.otherConfig" /></template>
+          <template v-if="item.type === 'date-picker'">
+            <el-date-picker type="daterange" range-separator="-" start-placeholder="开始时间" end-placeholder="结束时间"
+              v-model="formData[item.prop]" />
+          </template>
+          <template v-if="item.type === 'custom'">
+            <slot :name="item.slotName"></slot>
+          </template>
+        </el-form-item>
+      </template>
     </el-form>
-    <div class="footer">
-      <slot name="footer"></slot>
-    </div>
+    <slot name="footer">
+      <el-button @click="handleCannelClick(ruleFormRef)">取消</el-button>
+      <el-button type="primary" @click="handleConfirmClick(ruleFormRef)">确定</el-button>
+    </slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { PropType, defineProps, defineEmits, ref, watch } from 'vue'
-import { LILIFormItem } from '../types'
-
-const props = defineProps({
-  /** 在这里写，就表明这个组件是可以通过外界参数信息进行控制的
-   * formItems这里的数组类型，是一个对象数组并且是确定的，例对象中有label、prop、value
-   * 如果是数组或对象，这里的默认值一定是一个箭头函数，否则会报错
-   */
-  // modalValue: {
-  //   type: Object as PropType<Record<string, any>>,
-  //   required: true
-  // },
-  formItems: {
-    type: Array as PropType<LILIFormItem[]>,
-    default: () => []
-  },
-  labelWidth: {
-    type: String,
-    default: '100px'
-  },
-  itemStyle: {
-    type: Object,
-    default: () => ({ padding: '5px 30px' })
-  },
-
-  colLayout: {
-    type: Object,
-    default: () => ({
-      xs: 24,
-      sm: 24,
-      md: 12,
-      lg: 8,
-      xl: 6
-    })
+import { reactive, ref,defineExpose } from 'vue'
+import type { FormInstance, FormRules } from 'element-plus'
+// 定义props
+interface IProps {
+  modalConfig: {
+    pageName: string
+    pageUrl: any
+    editUrl: any
+    title: string
+    editTitle: string
+    formItems: any[]
   }
-})
+  otherInfo?: any
+}
 
-// const emit = defineEmits(["update:modalValue"])
-// 第二种写法，自定义v-model语法糖
-// const handleValueChange = (value: any, field: string) => {
-//   emit("update:modalValue", { ...props.modalValue, [field]: value })
-// }
-/** 将props.modelValue里的内容全部取出放到formData里
- * 如果直接赋值，还是违反单向数据流的原则，所以要用ref，并结构赋值
- * 这里对应上面输入表单的v-model=formData[]写法
- */
-const formData = ref({ ...props.formItems }) // 在通过父组件浅拷贝
-// watch(
-//   formData,
-//   (newVal) => {
-//     console.log("formData的newVal", newVal)
-//     emit("update:modalValue", newVal) // 想父组件派发更新
-//   },
-//   { deep: true }
-// )
+const props = defineProps<IProps>()
+const rules = reactive<FormRules>({})
+const ruleFormRef = ref<FormInstance>()
+
+// 定义数据绑定
+const initialForm: any = {}
+for (const item of props.modalConfig.formItems) {
+  initialForm[item.prop] = item.initialValue ?? ''
+  if (item.rules) {
+    rules[item.prop] = item.rules
+  }
+}
+const formData = reactive(initialForm)
+const dialogVisible = ref(false)
+// 确认添加
+function handleConfirmClick(formEl: FormInstance | undefined) {
+  console.log('formEl', formEl)
+  if (!formEl) return
+  formEl.validate(async (valid) => {
+    // console.log('submit!',valid,formData)
+    if (valid) {
+      if(formData.newPassword!==formData.confirmPassword){
+        alert('两次密码不一致')
+        return
+      }
+      if(formData.newPassword==formData.oldPassword){
+          alert('新老密码一致，请重新修改')
+          return
+      }
+      alert('密码一致，提交修改，并退出')
+      // await clickConfirmBtn()
+    } else {
+      console.log('error submit!')
+      return false
+    }
+  })
+}
+// 点击取消
+function handleCannelClick(formEl: FormInstance | undefined) {
+  if (!formEl) return
+  dialogVisible.value = false
+  formEl.resetFields()
+}
+defineExpose({
+   handleConfirmClick,
+   handleCannelClick,
+   dialogVisible,
+   ruleFormRef
+})
 </script>
 
 <style lang="less">
