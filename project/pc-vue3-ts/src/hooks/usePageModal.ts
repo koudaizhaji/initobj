@@ -16,7 +16,7 @@ function usePageModal(
   const modalRef = refList[0]
   function handleNewDataClick(index: number = 0) {
     const currentRef = refList[index]
-    // console.log('点了新建handleNewDataClick')
+    console.log('点了新建handleNewDataClick',currentRef)
     currentRef.value?.setDialogVisible()
     if (newCallback) newCallback()
   }

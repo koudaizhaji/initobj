@@ -28,10 +28,10 @@
 
 <script lang="ts" setup>
 import { reactive, ref , defineProps,onMounted } from 'vue'
-import {findMdClass,addMd, addMdClass} from '@/services/markdown/markdown'
-let mdType=[]
+import { findMdClass,addMd, addMdClass } from '@/services/template/markdown/markdown'
+const mdType=[{}]
 onMounted(async()=>{
-  let res=await findMdClass('1','10')
+  let res=await findMdClass()
   for(let i=0;i<res.data.length;i++){
       mdType.push({
         id:res.data[i].id,

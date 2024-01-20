@@ -44,8 +44,9 @@ import 'bytemd/dist/index.css'
 import 'juejin-markdown-themes/dist/juejin.min.css' // IDo同款样式
 import { findIndex } from 'lodash'
 import sidebar from './components/sidebar.vue'
-import { findMdListById,findMdClass } from '@/services/markdown/markdown'
+import useMarkdownStore from '@/stores/template/markdown/markdown'
 import mockData from './data/mock.js'
+const markdownStore = useMarkdownStore()
 let treeList = ref([]);
 let Article = ref({})
 const pluginsList = [gfm(), gemoji(), highlight(), frontmatter(), mediumZoom(), breaks()]
@@ -66,9 +67,10 @@ const state = reactive({
 const { anchor, value, plugins, zh, markDownRef, cateList } = toRefs(state)
 
 onMounted(async () => {
-  let res = await findMdClass('1', '10')
-  treeList.value = res.data
-  Article=res.data[0].children[0]
+  let res = await markdownStore.getMdClassAction()
+  console.log('拿到的md分类',res)
+  treeList.value = res
+  Article = res[0].children[0]
   // let res=await findMdListById('1','10','2')
   console.log('treeList', treeList.value);
   // let test='# Hi，欢迎使用爱度IDo项目的新老朋友\n\n\n## 我是谁\n`熟悉IDo的朋友`可能知道，IDo的浏览器插件中有一个笔记的功能，该功能自2021年10月上线以来，深受众多IDo友喜爱，期间也收到了不少IDo友的反馈，比如此前页面抽屉式的交互不方便、没有web版、App里也找不到入口等等。这些反馈产品经理一直有认真记录整理，终于到今天，**我以全新的姿态来和你见面啦**！\n\n我是一款专门为IDo友打造的学习记录工具，旨在帮助IDo友在社区或其他学习场景下便捷记录学习内容，同时**支持内容的多端同步**，助力大家随时随地实现记录笔记的需求。\n\n## 如何使用\n\n### 浏览器插件端\n\n**1. 安装IDo浏览器插件后，点击浏览器右上角的icon，面板中即包含笔记入口**\n\n\n\n**2. 打开IDo浏览器插件，切换到「工具模式」，点击「快捷工具」版块即可看到「笔记入口」**\n\n**3. 阅读内容时，选中需要记录/引用的内容，即可出现笔记的气泡提示（该入口支持在插件设置中关闭）**\n\n\n\n\n**4. 在网页中点击鼠标右键弹出的面板中也支持快捷记录**\n\n\n\n**5. 在任意网页双击「jj」快捷键，唤出快捷搜索框，输入「note」即可快速唤出笔记**\n\n\n\n## Web端\n点击IDo主站头像，在下拉菜单中即可看到「IDo笔记」入口；\n\n### App端\n打开IDoApp，点击「我」页面，在「更多功能」版块即可看到「IDo笔记」入口；\n\n ## 更多\n\n笔记在支持纯文本的基础上，支持切换到Markdown模式，例如常见的标题、加粗、斜体等文本格式，例如：\n\n# 一级标题\n## 二级标题\n### 三级标题\n#### 四级标题\n##### 五级标题\n###### 六级标题\n\n**这是一段字体加粗演示**\n\n*这是一段文本斜体演示* \n\n~~这是一段文本删除线演示~~\n\n> 这是一段引用内容演示\n\n ## 测试回显\n```\n* 无序列表项1\n* 无序列表项2\n* 无序列表项3\n\n1. 有序列表项1\n2. 有序列表项2\n3. 有序列表项3\n\n- [ ] todo1\n- [ ] todo2\n\n\n| 标题展示 |  |\n| --- | --- |\n|  表格内容展示  |\n\n\n---\n\n此外每条笔记支持用户自主添加标签，用于对内容进行归类筛选，插件、web、app三端内容云同步，满足大家在多场景的笔记需求；\n\n\n## 传送门\n更多功能欢迎大家体验❤\n* 浏览器插件，点击链接下载：https://juejin.cn/extension?utm_source=flash_note_web\n* App（扫码下载安装）：\n\n'
@@ -217,7 +219,7 @@ const scrollHandle = () => {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .MdPreview {
   display: flex;
   height: 100%;
@@ -254,11 +256,9 @@ const scrollHandle = () => {
     font-size: 16px;
     line-height: 1.8em;
 
-    :deep() {
-      .bytemd {
-        height: calc(100vh - 200px);
-      }
-    }
+    &:deep(.bytemd) {
+    height: calc(100vh - 200px);
+  }
 
     .grid-wapper {
       display: flex;

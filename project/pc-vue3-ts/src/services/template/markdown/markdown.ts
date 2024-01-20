@@ -3,7 +3,7 @@
  * @Date: 2024-01-13
  * @Description: markdown模块前端接口
  */
-import liliRequest from '../../request/index'
+import liliRequest from '@/services'
 // 添加markdown
 export function addMd(formdata: object) {
   return liliRequest.post({
