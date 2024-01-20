@@ -4,8 +4,8 @@
     <PopUp :content="content" :options="classtype" Atype="2">添加分类</PopUp> -->
     <button class="btn btn-primary mr-20px" @click="newArticleClick">添加文章</button>
     <button class="btn btn-primary" @click="newClassClick" ref="newClassRef">添加分类</button>
-    <pageModal :modal-config="modalConfig" ref="newArticleRef" />
-    <pageModal :modal-config="classModalConfig" ref="newClassRef" />
+    <pageModal :modal-config="MdConfig" ref="newArticleRef" />
+    <pageModal :modal-config="ClassConfig" ref="newClassRef" />
   </div>
   <div class="markdow-page">
     <MdEditor v-model="content" />
@@ -26,8 +26,7 @@ import 'md-editor-v3/lib/style.css';
 import { addMd, addMdClass } from '@/services/template/markdown/markdown'
 import usePageModal from '@/hooks/usePageModal'
 import pageModal from '@/components/pages/page-modal/page-modal.vue'
-import modalConfig from './config/modal.config'
-import classModalConfig from "./config/class-modal.config.ts"
+import {MdConfig,ClassConfig} from './config/modal.config'
 // 弹窗所需的3个操作
 const { modalRef,refList, handleNewDataClick, handleEditDataClick } = usePageModal(['newClassRef', 'newArticleRef'])
 const newClassRef = refList[0]

@@ -1,59 +1,45 @@
 import type { PageModalConfigType } from '@/global/types/pageModal.type'
 
-const modalConfig: PageModalConfigType = {
-  title: '新增用户',
-  // newtitle: "新增用户",
-  editTitle: '编辑用户',
-  pageName: 'users',
-  pageUrl: {
-    rootPath: 'pcadmin',
-    pageName: 'users'
-  },
-  editUrl: {
-    rootPath: 'pcadmin',
-    pageName: 'users'
-  },
+export const MdConfig: PageModalConfigType = {
+  title: '添加文章',
+  pageName: 'md',
   formItems: [
     {
-      prop: 'username',
+      prop: 'title',
       type: 'input',
-      label: '用户名',
-      placeholder: '请输入用户名'
+      label: '文章标题',
+      placeholder: '请输入文章标题'
     },
     {
-      prop: 'password',
+      prop: 'desc',
       type: 'input',
-      label: '密码',
-      placeholder: '请输入设置的密码',
-      isHidden: false
+      label: '文章简介',
+      placeholder: '请输入文章简介',
     },
     {
-      prop: 'group_id',
+      prop: 'types',
       type: 'select',
-      label: '所属组',
-      placeholder: '请选择所属组',
-      options: []
-    },
-    {
-      prop: 'role_id',
-      type: 'select',
-      label: '角色',
-      placeholder: '请选择角色',
-      options: []
-    },
-    {
-      prop: 'remark',
-      type: 'input',
-      label: '备注'
-    },
-    {
-      prop: 'status',
-      type: 'select',
-      label: '状态',
-      placeholder: '请选择状态',
-      options: []
+      label: '文章分类',
+      placeholder: '请选择文章分类',
+      options: ['分类1','分类2']
     }
   ]
 }
-
-export default modalConfig
+export const ClassConfig: PageModalConfigType = {
+  title: '提交分类',
+  pageName: 'class',
+  formItems: [
+    {
+      prop: 'title',
+      type: 'input',
+      label: '分类名称',
+      placeholder: '请输入分类名称'
+    },
+    {
+      prop: 'desc',
+      type: 'input',
+      label: '分类描述',
+      placeholder: '请输入分类描述',
+    }
+  ]
+}

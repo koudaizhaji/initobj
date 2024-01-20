@@ -17,6 +17,7 @@ const useInstallStore = defineStore('install', {
   actions: {
     async getMdClassAction(pageNum:string,pageSize:string) {
       const res = await findMdClass(pageNum,pageSize)
+      console.log('pageSize',pageNum,pageSize);
       console.log('获取安装数据', res )
       if (res.code == 0) {
         this.classList = res.data
