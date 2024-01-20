@@ -144,6 +144,17 @@
           "titleNView": false
         }
       }
+    },
+    {
+      "path": "pages/order/index",
+      "style": {
+        "titleNView": true,
+        "navigationBarBackgroundColor": "#E63350",
+        "backgroundColorTop": "#E63350",
+        "backgroundColorBottom": "#E63350",
+        "navigationBarTitleText": "我的订单",
+        "navigationBarTextStyle":"white"
+      }
     }
   ],
   "globalStyle": {

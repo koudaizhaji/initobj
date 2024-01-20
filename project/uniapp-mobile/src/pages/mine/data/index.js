@@ -4,21 +4,25 @@ export const iconNavList = [
     img: '/src/static/mine/qianbao.png',
     title: '钱包',
     style: 'width:28px;',
+    methods:''
   },
   {
     img: '/src/static/mine/qiche.png',
     title: '爱车',
     style: 'width:23px;',
+    methods:''
   },
   {
     img: '/src/static/mine/dingdan.png',
     title: '订单',
     style: 'width:25px;',
+    methods:'toOrder'
   },
   {
     img: '/src/static/mine/jifenguanli.png',
     title: '积分',
     style: 'width:22px;',
+    methods:''
   },
 ];
 // 个人中心竖向导航

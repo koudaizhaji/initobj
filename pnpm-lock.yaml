@@ -223,6 +223,15 @@ importers:
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.7
+      '@vue-office/docx':
+        specifier: ^1.6.0
+        version: 1.6.0(vue-demi@0.13.11)(vue@3.3.11)
+      '@vue-office/pdf':
+        specifier: ^1.6.1
+        version: 1.6.1(vue-demi@0.13.11)(vue@3.3.11)
+      '@vue/reactivity':
+        specifier: ^3.4.15
+        version: 3.4.15
       axios:
         specifier: ^1.5.1
         version: 1.6.2
@@ -277,6 +286,9 @@ importers:
       vue:
         specifier: ^3.3.4
         version: 3.3.11(typescript@5.2.2)
+      vue-demi:
+        specifier: ^0.13.11
+        version: 0.13.11(vue@3.3.11)
       vue-qr:
         specifier: ^4.0.9
         version: 4.0.9
@@ -487,6 +499,8 @@ importers:
   project/uniapp-mobile/src/uni_modules/uni-datetime-picker: {}
 
   project/uniapp-mobile/src/uni_modules/uni-easyinput: {}
+
+  project/uniapp-mobile/src/uni_modules/uni-file-picker: {}
 
   project/uniapp-mobile/src/uni_modules/uni-forms: {}
 
@@ -5611,6 +5625,36 @@ packages:
       path-browserify: 1.0.1
     dev: true
 
+  /@vue-office/docx@1.6.0(vue-demi@0.13.11)(vue@3.3.11):
+    resolution: {integrity: sha512-OKEapOPq223uszA8mRSOWPhdfBchJa6sIqP46eMrMMe5RSUrG9m3QE/o0JBIaMgxDrtNd7aI9CvF2kDvb7G2hw==}
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.7.1
+      vue: ^2.0.0 || >=3.0.0
+      vue-demi: ^0.14.6
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.3.11(typescript@5.2.2)
+      vue-demi: 0.13.11(vue@3.3.11)
+    dev: false
+
+  /@vue-office/pdf@1.6.1(vue-demi@0.13.11)(vue@3.3.11):
+    resolution: {integrity: sha512-De6Gisw/esloZPvh2HaIltycxrNL2825+iN2mjH8vdBVyuGoTiQyo2V0HIdD4vODGPKmlPJxuC5XAlKFqJ6UOA==}
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.7.1
+      vue: ^2.0.0 || >=3.0.0
+      vue-demi: ^0.14.6
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.3.11(typescript@5.2.2)
+      vue-demi: 0.13.11(vue@3.3.11)
+    dev: false
+
   /@vue/babel-helper-vue-jsx-merge-props@1.4.0:
     resolution: {integrity: sha512-JkqXfCkUDp4PIlFdDQ0TdXoIejMtTHP67/pvxlgeY+u5k3LEdKuWZ3LK6xkxo52uDoABIVyRwqVkfLQJhk7VBA==}
     dev: true
@@ -6014,6 +6058,12 @@ packages:
     dependencies:
       '@vue/shared': 3.3.11
 
+  /@vue/reactivity@3.4.15:
+    resolution: {integrity: sha512-55yJh2bsff20K5O84MxSvXKPHHt17I2EomHznvFiJCAZpJTNW8IuLj1xZWMLELRhBK3kkFV/1ErZGHJfah7i7w==}
+    dependencies:
+      '@vue/shared': 3.4.15
+    dev: false
+
   /@vue/runtime-core@3.3.11:
     resolution: {integrity: sha512-g9ztHGwEbS5RyWaOpXuyIVFTschclnwhqEbdy5AwGhYOgc7m/q3NFwr50MirZwTTzX55JY8pSkeib9BX04NIpw==}
     dependencies:
@@ -6050,6 +6100,10 @@ packages:
 
   /@vue/shared@3.3.11:
     resolution: {integrity: sha512-u2G8ZQ9IhMWTMXaWqZycnK4UthG1fA238CD+DP4Dm4WJi5hdUKKLg0RMRaRpDPNMdkTwIDkp7WtD0Rd9BH9fLw==}
+
+  /@vue/shared@3.4.15:
+    resolution: {integrity: sha512-KzfPTxVaWfB+eGcGdbSf4CWdaXcGDqckoeXUh7SB3fZdEtzPCK2Vq9B/lRRL3yutax/LWITz+SwvgyOxz5V75g==}
+    dev: false
 
   /@vue/test-utils@2.4.3(vue@3.3.11):
     resolution: {integrity: sha512-F4K7mF+ad++VlTrxMJVRnenKSJmO6fkQt2wpRDiKDesQMkfpniGWsqEi/JevxGBo2qEkwwjvTUAoiGJLNx++CA==}
@@ -6347,7 +6401,7 @@ packages:
       '@types/web-bluetooth': 0.0.16
       '@vueuse/metadata': 9.13.0
       '@vueuse/shared': 9.13.0(vue@3.3.11)
-      vue-demi: 0.14.6(vue@3.3.11)
+      vue-demi: 0.13.11(vue@3.3.11)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -6360,7 +6414,7 @@ packages:
   /@vueuse/shared@9.13.0(vue@3.3.11):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
     dependencies:
-      vue-demi: 0.14.6(vue@3.3.11)
+      vue-demi: 0.13.11(vue@3.3.11)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -15699,7 +15753,7 @@ packages:
       '@vue/devtools-api': 6.5.1
       typescript: 5.3.3
       vue: 3.3.11(typescript@5.3.3)
-      vue-demi: 0.14.6(vue@3.3.11)
+      vue-demi: 0.13.11(vue@3.3.11)
     dev: false
 
   /pinia@2.1.7(typescript@5.2.2)(vue@3.3.11):
@@ -19866,6 +19920,21 @@ packages:
   /vue-component-type-helpers@1.8.25:
     resolution: {integrity: sha512-NCA6sekiJIMnMs4DdORxATXD+/NRkQpS32UC+I1KQJUasx+Z7MZUb3Y+MsKsFmX+PgyTYSteb73JW77AibaCCw==}
     dev: true
+
+  /vue-demi@0.13.11(vue@3.3.11):
+    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.3.11(typescript@5.2.2)
+    dev: false
 
   /vue-demi@0.14.6(vue@3.3.11):
     resolution: {integrity: sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==}
