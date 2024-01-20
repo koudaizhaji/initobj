@@ -14,7 +14,6 @@
         <div class="title">
           <span :class="styleFn(node.data)">{{ node.label }}</span>
           <div v-if="node.data.desc" class="desc" :class="styleName(node.data)">
-            {{ node.data.desc }}
           </div>
         </div>
       </template>
@@ -23,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, onMounted } from 'vue'
+import { computed, ref, watch, onMounted,toRaw } from 'vue'
 import { ElTree } from 'element-plus'
 const emits = defineEmits(['nodeClick', 'newDescClick', 'newDescTypeClick'])
 const props = defineProps({
@@ -36,21 +35,30 @@ const props = defineProps({
     default: 4
   }
 })
+let dataList=ref([])
 onMounted(() => {
   console.log('onMounted')
   // 在这里执行你的代码
-  calculativeWidth()
+  // calculativeWidth()
 })
-
+watch(props, (newValue, oldValue) => {
+  let res=toRaw(newValue.treeList)
+  res.map((item)=>{
+      item.title=item.name
+      delete item.name
+  })
+  dataList.value=res
+    // console.log('更新了', res);
+});
 const dataFormat = computed(() => {
-  return props.treeList.map((item) => formatData(item, 1)) // 从层级0开始
+  return dataList.value.map((item) => formatData(item, 1)) // 从层级0开始
 })
 
 const formatData = (item: any, level: number) => {
-  console.log('item===🚀===>', item)
+  // console.log('item===🚀===>', item)
   return {
     id: item.id,
-    label: `${item.name}`,
+    label: `${item.title}`,
     children:
       level < props.showLevel && item.children
         ? item.children.map((child: any) => formatData(child, level + 1))
@@ -66,31 +74,6 @@ const styleFn = (node: any) => {
 }
 const styleName = (node: any) => {
   return node.level === 1 ? 'first' : node.level === 2 ? 'second' : 'third'
-}
-const calculativeWidth = () => {
-  let sidebar = document.getElementsByClassName('sidebar')
-  let domF = document.getElementsByClassName('firstLevel')
-  let domS = document.getElementsByClassName('secondLevel')
-  let domT = document.getElementsByClassName('thirdLevel')
-
-  let F = document.querySelectorAll('.first')
-  let S = document.querySelectorAll('.second')
-  let T = document.querySelectorAll('.third')
-
-  let sidebarDom = sidebar[0].getBoundingClientRect().right
-  let leftF = domF[0].getBoundingClientRect().left
-  let leftS = domS[0].getBoundingClientRect().left
-  let leftT = domT[0].getBoundingClientRect().left
-
-  Array.from(F).forEach((element: Element) => {
-    ;(element as HTMLElement).style.width = sidebarDom - leftF - 10 + 'px'
-  })
-  Array.from(S).forEach((element: Element) => {
-    ;(element as HTMLElement).style.width = sidebarDom - leftS - 10 + 'px'
-  })
-  Array.from(T).forEach((element: Element) => {
-    ;(element as HTMLElement).style.width = sidebarDom - leftT - 10 + 'px'
-  })
 }
 
 const data: Tree[] = dataFormat
@@ -118,18 +101,40 @@ const filterNode = (value: string, data: Tree) => {
 
 // 节点被点击触发
 const handleNodeClick = (value: any) => {
-  // console.log('handleNodeClick', value)
+  console.log('handleNodeClick', value)
   // 给对应的节点添加颜色
   emits('nodeClick', value)
+}
+const calculativeWidth = () => {
+  let sidebar = document.getElementsByClassName('sidebar')
+  let domF = document.getElementsByClassName('firstLevel')
+  let domS = document.getElementsByClassName('secondLevel')
+  let domT = document.getElementsByClassName('thirdLevel')
+
+  let F = document.querySelectorAll('.first')
+  let S = document.querySelectorAll('.second')
+  let T = document.querySelectorAll('.third')
+
+  let sidebarDom = sidebar[0].getBoundingClientRect().right
+  let leftF = domF[0].getBoundingClientRect().left
+  let leftS = domS[0].getBoundingClientRect().left
+  let leftT = domT[0].getBoundingClientRect().left
+
+  Array.from(F).forEach((element: Element) => {
+    ;(element as HTMLElement).style.width = sidebarDom - leftF - 10 + 'px'
+  })
+  Array.from(S).forEach((element: Element) => {
+    ;(element as HTMLElement).style.width = sidebarDom - leftS - 10 + 'px'
+  })
+  Array.from(T).forEach((element: Element) => {
+    ;(element as HTMLElement).style.width = sidebarDom - leftT - 10 + 'px'
+  })
 }
 </script>
 
 <style lang="less" scoped>
 .sidebar {
   position: relative;
-  :v-deep(.el-tree-node__content)  {
-    height: 32px;
-  }
   .desc {
     font-size: 10px;
     color: #bbb;
@@ -139,14 +144,15 @@ const handleNodeClick = (value: any) => {
   }
   .firstLevel {
     color: #183e41;
-    font-size: 16px;
+    font-size: 18px;
   }
+
   .secondLevel {
-    color: #4ca6d3;
-    font-size: 14px;
+    color: #555;
+    font-size: 15px;
   }
   .thirdLevel {
-    color: #9fd5c7;
+    color: #999;
     font-size: 12px;
   }
   .input-search {
@@ -178,4 +184,7 @@ const handleNodeClick = (value: any) => {
   }
   // 选中的tree添加高亮
 }
+/deep/ .el-tree-node__content  {
+    height: 32px !important;
+  }
 </style>
