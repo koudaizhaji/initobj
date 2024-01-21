@@ -195,7 +195,8 @@ function setDialogVisible(isNew: boolean = true, data: any = {}) {
 
 defineExpose({
   setDialogVisible,
-  dialogVisible
+  dialogVisible,
+  formData
 })
 </script>
 

@@ -68,6 +68,7 @@ const state = reactive({
 
 const { anchor, value, plugins, zh, markDownRef, cateList } = toRefs(state)
 
+
 onMounted(async () => {
   let res = await markdownStore.getMdClassAction()
   classList.value = res
@@ -75,6 +76,7 @@ onMounted(async () => {
   state.Article = toRef(res[0].children[0])
   state.value =state.Article.content
   getCataLogData()
+  console.log('cateList',cateList)
   nextTick(() => {
     transformToId()
     // 获取内容的所有锚点距离顶部的距离
@@ -116,6 +118,7 @@ const getCataLogData = () => {
             console.log('asjdbhasbdhasbdhasd',tree);
             if (tree && tree.children.length) {
               // console.log('111',tree)
+              console.log('11111',tree)
               createCataLog(tree)
             }
           }),
@@ -129,7 +132,7 @@ const createCataLog = tree => {
   tree.children
     .filter(v => v.type == 'element')
     .forEach(node => {
-      if (node.tagName === 'h2' && node.children.length > 0) {
+      if (node.tagName !== 'h3' && node.children.length > 0) {
         items.push({
           tagName: node.tagName,
           text: stringifyHeading(node),

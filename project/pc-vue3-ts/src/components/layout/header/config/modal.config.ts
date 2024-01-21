@@ -35,6 +35,7 @@ const modalConfig: PageModalConfigType = {
       placeholder: '请在此输入新密码',
       rules:[
         { required: true, message: '请再次输入新密码', trigger: 'blur' },
+
       ]
     }
   ]

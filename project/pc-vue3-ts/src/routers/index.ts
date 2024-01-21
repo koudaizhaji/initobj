@@ -54,7 +54,11 @@ const router = createRouter({
       name: 'install',
       component: () => import('../views/public/install/home.vue')
     },
-
+    {
+      path: '/md/read',
+      name: 'mdread',
+      component: () => import('../views/template/form/mdread/mdread.vue')
+    },
     {
       path: '/:pathMatch(.*)*',
       name: '404',

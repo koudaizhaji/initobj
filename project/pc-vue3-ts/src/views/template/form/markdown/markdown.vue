@@ -2,8 +2,8 @@
   <div class="sendMd">
     <!-- <PopUp :content="content" :options="markdown" Atype="1">添加文章</PopUp>
     <PopUp :content="content" :options="classtype" Atype="2">添加分类</PopUp> -->
-    <button class="btn btn-primary mr-20px" @click="newArticleClick">添加文章</button>
-    <button class="btn btn-primary" @click="newClassClick" ref="newClassRef">添加分类</button>
+    <button class="btn btn-primary mr-20px" @click="newArticleClick('article')">添加文章</button>
+    <button class="btn btn-primary" @click="newClassClick('class')" ref="newClassRef">添加分类</button>
     <pageModal :modal-config="MdConfig" ref="newArticleRef" />
     <pageModal :modal-config="ClassConfig" ref="newClassRef" />
   </div>
@@ -27,20 +27,35 @@ import usePageModal from '@/hooks/usePageModal'
 import pageModal from '@/components/pages/page-modal/page-modal.vue'
 import {MdConfig,ClassConfig} from './config/modal.config'
 // 弹窗所需的3个操作
-const { modalRef,refList, handleNewDataClick, handleEditDataClick } = usePageModal(['newClassRef', 'newArticleRef'])
+const { modalRef,refList, handleNewDataClick, handleEditDataClick } = usePageModal(['newClassRef', 'newArticleRef'],add)
 const newClassRef = refList[0]
 const newArticleRef = refList[1]
 let content = ref('');
-const  newClassClick = ()=>{
+
+const  newClassClick = (type)=>{
   console.log("点击了newClassClick")
-  handleNewDataClick(0)
+  // handleNewDataClick(0)
+  add(type)
 }
-const newArticleClick = ()=>{
+const newArticleClick = (type)=>{
   console.log("点击了newArticleClick")
-  handleNewDataClick(1)
+  // handleNewDataClick(1)
+  add(type)
+}
+
+const newCallBack = async (type, data) => {
+  console.log('type,data',type,data)
 }
 // 封装函数
-let add = async (type) => {
+async function add (type) {
+  if(type=='class'){
+    console.log('newClassRef.value',newClassRef.value.formData)
+  }else{
+    console.log('newClassRef.value',newArticleRef.value.dialogVisible,
+    newClassRef.value.formData,
+    newArticleRef.value.setDialogVisible(false,{}))
+  }
+  return
   // 判断需要文章还是分类接口
   let flag=type==='1'?'文章':'分类'
   if (form.title.trim() === '') {

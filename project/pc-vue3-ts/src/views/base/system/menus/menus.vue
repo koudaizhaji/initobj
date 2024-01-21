@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <pageContent
-      :content-config="contentConfig"
+      :contentConfig="contentConfig"
       ref="contentRef"
       @new-click="handleNewDataClick"
       @edit-click="handleEditDataClick"
@@ -16,7 +16,7 @@
       </template>
     </pageContent>
 
-    <pageModal :modal-config="modalConfig" ref="modalRef"></pageModal>
+    <pageModal :modalConfig="modalConfig" ref="modalRef"></pageModal>
   </div>
 </template>
 
