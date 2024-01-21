@@ -132,13 +132,13 @@ const createCataLog = tree => {
   tree.children
     .filter(v => v.type == 'element')
     .forEach(node => {
-      if (node.tagName !== 'h3' && node.children.length > 0) {
+      if (node.tagName === 'h1' && node.children.length > 0) {
         items.push({
           tagName: node.tagName,
           text: stringifyHeading(node),
         })
       }
-      if (node.tagName === 'h1' && node.children.length > 0) {
+      if (node.tagName === 'h2' && node.children.length > 0) {
         items.push({
           tagName: node.tagName,
           text: stringifyHeading(node),

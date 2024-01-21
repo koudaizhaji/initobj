@@ -5,7 +5,7 @@ let mdType=[]
   for(let i=0;i<res.data.length;i++){
       mdType.push({
         id:res.data[i].id,
-        value:res.data[i].name,
+        value:res.data[i].id,
         label:res.data[i].name
       })
   }
@@ -14,7 +14,7 @@ export const MdConfig: PageModalConfigType = {
   pageName: 'md',
   pageUrl: {
     rootPath: 'pcadmin',
-    pageName: 'md'
+    pageName: 'set/markdown'
   },
   formItems: [
     {
@@ -41,6 +41,10 @@ export const MdConfig: PageModalConfigType = {
 export const ClassConfig: PageModalConfigType = {
   title: '提交分类',
   pageName: 'class',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'set/markdownClass'
+  },
   formItems: [
     {
       prop: 'title',
