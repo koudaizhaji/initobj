@@ -1,8 +1,21 @@
 import type { PageModalConfigType } from '@/global/types/pageModal.type'
-
+import { findMdClass,addMd, addMdClass } from '@/services/template/markdown/markdown'
+let mdType=[]
+  let res=await findMdClass()
+  for(let i=0;i<res.data.length;i++){
+      mdType.push({
+        id:res.data[i].id,
+        value:res.data[i].name,
+        label:res.data[i].name
+      })
+  }
 export const MdConfig: PageModalConfigType = {
   title: '添加文章',
   pageName: 'md',
+  pageUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'md'
+  },
   formItems: [
     {
       prop: 'title',
@@ -17,11 +30,11 @@ export const MdConfig: PageModalConfigType = {
       placeholder: '请输入文章简介',
     },
     {
-      prop: 'types',
+      prop: 'classId',
       type: 'select',
       label: '文章分类',
       placeholder: '请选择文章分类',
-      options: ['分类1','分类2']
+      options: mdType
     }
   ]
 }

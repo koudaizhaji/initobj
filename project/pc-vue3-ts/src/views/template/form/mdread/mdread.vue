@@ -65,14 +65,15 @@ const state = reactive({
   anchor: 0,
   Article:{}
 })
+
 const { anchor, value, plugins, zh, markDownRef, cateList } = toRefs(state)
 
 onMounted(async () => {
   let res = await markdownStore.getMdClassAction()
   classList.value = res
   // 默认加载第一条数据
-  // state.Article = toRef(res[0].children[0])
-  // state.value =state.Article.content
+  state.Article = toRef(res[0].children[0])
+  state.value =state.Article.content
   getCataLogData()
   nextTick(() => {
     transformToId()
@@ -96,6 +97,7 @@ const handleNodeClick = (node) => {
       if(list[i].children[j].id==node.id){
         state.Article=list[i].children[j]
         state.value =state.Article.content
+        getCataLogData()
       }
     }
   }
@@ -111,8 +113,9 @@ const getCataLogData = () => {
       {
         rehype: p =>
           p.use(() => tree => {
+            console.log('asjdbhasbdhasbdhasd',tree);
             if (tree && tree.children.length) {
-              console.log(tree)
+              // console.log('111',tree)
               createCataLog(tree)
             }
           }),
@@ -132,7 +135,32 @@ const createCataLog = tree => {
           text: stringifyHeading(node),
         })
       }
+      if (node.tagName === 'h1' && node.children.length > 0) {
+        items.push({
+          tagName: node.tagName,
+          text: stringifyHeading(node),
+        })
+      }
+      if (node.tagName === 'h3' && node.children.length > 0) {
+        items.push({
+          tagName: node.tagName,
+          text: stringifyHeading(node),
+        })
+      }
+      if (node.tagName === 'h4' && node.children.length > 0) {
+        items.push({
+          tagName: node.tagName,
+          text: stringifyHeading(node),
+        })
+      }
+      if (node.tagName === 'h5' && node.children.length > 0) {
+        items.push({
+          tagName: node.tagName,
+          text: stringifyHeading(node),
+        })
+      }
     })
+  // console.log('222',items);
   state.cateList = items
 }
 
@@ -156,7 +184,7 @@ const transformToId = () => {
   if (children.length > 0) {
     for (let i = 0; i < children.length; i += 1) {
       const tagName = children[i].tagName
-      if (tagName === 'H1' || tagName === 'H2' || tagName === 'H3') {
+      if (tagName === 'H1' || tagName === 'H2' || tagName === 'H3'|| tagName === 'H4'|| tagName === 'H5') {
         const index = findIndex(state.cateList, v => v.text === children[i].textContent)
         if (index >= 0) {
           children[i].setAttribute('id', `head-${index}`)
@@ -181,8 +209,9 @@ const getCalcLateTop = () => {
   const mainEl = document.querySelector('#main')
   state.offsetTopList = state.cateList.map((item, index) => {
     const element = document.querySelector(`#head-${index}`)
+    let top = element?element.offsetTop:0
     return {
-      offsetTop: index === 0 ? mainEl.offsetTop : element.offsetTop,
+      // offsetTop: index === 0 ? mainEl.offsetTop : top,
       anchor: index,
     }
   })
@@ -236,7 +265,7 @@ function formatTime(timeString) {
   }
 
   .boxLeft {
-    width: 20%;
+    width: 200px;
     height: 95%;
     padding: 20px 10px 10px;
     margin: 20px;
@@ -255,6 +284,7 @@ function formatTime(timeString) {
 
   .boxCenter {
     width: 60%;
+    height: 100vh;
     padding: 20px;
     margin: 10px 0;
     overflow: auto;
@@ -303,15 +333,40 @@ function formatTime(timeString) {
   }
 
   .boxRight {
-    width: 20%;
-    height: 100%;
+    width: 320px;
+    height: 100vh;
     padding: 20px;
     overflow: auto;
     font-size: 16px;
     line-height: 1.8em;
     color: #4a4a4a;
     background-color: #f5f7fa;
+    &::-webkit-scrollbar { /* WebKit 浏览器 */
+    width: 0.5px; /* 设置滚动条宽度 */
+  }
 
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* 设置滚动条背景颜色 */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #fff; /* 设置滚动条的颜色 */
+  }
+    .marker-item.h1-class{
+      padding-left: 0px !important;
+    }
+    .marker-item.h2-class{
+      padding-left: 8px !important;
+    }
+    .marker-item.h3-class{
+      padding-left: 16px !important;
+    }
+    .marker-item.h4-class{
+      padding-left: 24px !important;
+    }
+    .marker-item.h5-class{
+      padding-left: 32px !important;
+    }
     .catalog {
       height: auto;
       padding: 0 15px 20px;
@@ -335,7 +390,7 @@ function formatTime(timeString) {
 
       .titleBox {
         height: auto;
-        padding-left: 30px;
+        padding-left: 5px;
         margin-top: 20px;
         overflow: auto scroll;
       }

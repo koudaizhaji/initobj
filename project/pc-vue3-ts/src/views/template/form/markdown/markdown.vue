@@ -21,7 +21,6 @@
 import { ref } from 'vue';
 import { MdEditor } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-
 // import PopUp from './component/PopUp.vue'
 import { addMd, addMdClass } from '@/services/template/markdown/markdown'
 import usePageModal from '@/hooks/usePageModal'
@@ -31,6 +30,7 @@ import {MdConfig,ClassConfig} from './config/modal.config'
 const { modalRef,refList, handleNewDataClick, handleEditDataClick } = usePageModal(['newClassRef', 'newArticleRef'])
 const newClassRef = refList[0]
 const newArticleRef = refList[1]
+let content = ref('');
 const  newClassClick = ()=>{
   console.log("点击了newClassClick")
   handleNewDataClick(0)
@@ -39,7 +39,62 @@ const newArticleClick = ()=>{
   console.log("点击了newArticleClick")
   handleNewDataClick(1)
 }
-let content = ref('');
+// 封装函数
+let add = async (type) => {
+  // 判断需要文章还是分类接口
+  let flag=type==='1'?'文章':'分类'
+  if (form.title.trim() === '') {
+    alert(`${flag}的标题不能为空`)
+    return
+  }
+  if (form.desc.trim() === '') {
+    alert(`${flag}的描述不能为空`)
+    return
+  }
+  // 文章接口上传
+  if(type==='1'){
+    if (props.content.trim() === '') {
+    alert('文章的内容不能为空')
+    return
+  }
+  // 数据格式化
+  let formData = {
+    title: form.title,
+    author: '？？？',
+    desc: form.desc,
+    content: props.content,
+    classId: form.type
+  }
+  try {
+    // 存数据，清空表单
+    let res = await addMd(formData)
+    form.title = ''
+    form.desc = ''
+    console.log('文章存储结果', res);
+  } catch (error) {
+    console.log('err', error);
+  }
+  }
+  // 分类接口上传
+  else{
+    let formData = {
+    name: form.title,
+    desc: form.desc,
+    status:'1',
+    type:'1',
+    userId: '2'
+  }
+  // console.log('formData', formData);
+  try {
+    let res = await addMdClass(formData)
+    form.title = ''
+    form.desc = ''
+    console.log('分类存储结果', res);
+  } catch (error) {
+    console.log('err', error);
+  }
+  }
+}
 </script>
 
 <style lang="less" scoped>
