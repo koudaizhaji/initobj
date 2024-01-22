@@ -1,34 +1,43 @@
 // 头部导航信息
-export const navigationbarDataList = [
+ const tabs = [
   {
     id: 1,
     title: '全部',
-    componentName: 'whole'
+    data:[]
   },
   {
     id: 2,
     title: '待付款',
-    componentName: 'obligation'
+     data:[]
   },
   {
     id: 3,
     title: '待发货',
-    componentName: 'tobeshipped'
+     data:[]
   },
   {
     id: 4,
     title: '待收货',
-    componentName: 'tobereceived'
+     data:[]
   },
   {
     id: 5,
     title: '待评价',
-    componentName: 'tobeevaluated'
+     data:[]
   },
   {
     id: 6,
     title: '已过期',
-    componentName: 'expired'
+     data:[]
   },
+  
 
 ];
+
+function refresh(){
+ return ''
+}
+export {
+  tabs,
+  refresh
+}

@@ -3,19 +3,18 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import 'virtual:uno.css';
 import tabBar from '@/components/tabBar.vue';
-// import { isWeixinMobile } from '@/utils/public';
-import selfRoll from '@/uni_modules/scrollView/components/self-roll/roll.vue'
-import nodata from '@/uni_modules/scrollView/components/no-data/bottom.vue';
-import noview from '@/uni_modules/scrollView/components/no-data/back-view.vue';
-import scrollView from '@/uni_modules/scrollView/components/scroll-view/scroll-view.vue';
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import { Lazyload } from 'vant';
 const app = createSSRApp(App);
 
 app.component('TabBar', tabBar);
-app.component('selfRoll', selfRoll)
-app.component('nodata', nodata)
-app.component('noview', noview)
-app.component('scrollView', scrollView)
+app.use(Vant);
+  app.use(Lazyload, {
+    lazyComponent: true,
+  });
 const pinia = createPinia();
+
 app.use(pinia);
 
 // Assuming MinRequest is a Vue plugin, you can use it like this:
