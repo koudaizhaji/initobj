@@ -1,11 +1,10 @@
 <template>
   <div class="templateHome">
-    <pageSidebar></pageSidebar>
+    基础样板
   </div>
 </template>
 
 <script setup lang="ts">
-import pageSidebar from './components/page-sidebar.vue'
 </script>
 
 <style lang="less" scoped>

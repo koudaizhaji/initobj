@@ -11,17 +11,7 @@ export function addMd(formdata: object) {
     data: formdata
   })
 }
-// 查询md内容列表
-export function findMdListById(pageNum: string, pageSize: string, classId: string) {
-  return liliRequest.post({
-    url: '/pcadmin/set/markdown/list',
-    data: {
-      pageNum,
-      pageSize,
-      classId
-    }
-  })
-}
+
 // 添加md的分类
 export function addMdClass(formdata: object) {
   return liliRequest.post({
@@ -36,6 +26,18 @@ export function findMdClass(pageNum: string, pageSize: string) {
     data: {
       pageNum,
       pageSize
+    }
+  })
+}
+
+// 查询md内容列表
+export function findMdListById(pageNum: string, pageSize: string, classId: string) {
+  return liliRequest.post({
+    url: '/pcadmin/set/markdown/list',
+    data: {
+      pageNum,
+      pageSize,
+      classId
     }
   })
 }
