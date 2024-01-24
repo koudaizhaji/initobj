@@ -2,9 +2,9 @@
  * @Description: 参考代码，从登录到登录成功后的所作操作
  * 相关开发文件头自动添加：联系微信huaiplayboy
  */
+import { defineStore } from 'pinia'
 import { getUserById, getRoleMenus } from '@/services/public/login/login'
 import { localCache } from '@/utils/cache'
-import { defineStore } from 'pinia'
 import { LOGIN_TOKEN, USER_INFO, USER_MENUS, PERMISSIONS } from '@/config'
 import { mapMenusToRoutes, mapMenuToPermissions } from '@/utils/map-menus'
 import router, { addRoutesWithMenu } from '@/routers'

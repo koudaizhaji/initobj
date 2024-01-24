@@ -27,8 +27,8 @@ if (import.meta.env.PROD) {
 } else {
   // 开发环境
   // BASE_URL = 'http://api.md.yyds.top'
-  BASE_URL = 'http://idoapi.develop.idushenghuo.com'
-  // BASE_URL = 'http://127.0.0.1:12345'
+  // BASE_URL = 'http://idoapi.develop.idushenghuo.com'
+  BASE_URL = 'http://127.0.0.1:12345'
 }
 
 console.log('当前环境是', import.meta.env.MODE, BASE_URL)

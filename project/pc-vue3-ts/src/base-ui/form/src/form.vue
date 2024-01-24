@@ -41,7 +41,12 @@
 
 <script lang="ts" setup>
 import { reactive, ref,defineExpose } from 'vue'
-import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
+import { localCache } from '@/utils/cache'
+import { USER_INFO } from '@/config'
+import useSystemMenuStore from '@/stores/base/system/menu'
+
+const systemMenuStore =useSystemMenuStore()
 // 定义props
 interface IProps {
   modalConfig: {
@@ -77,17 +82,41 @@ function handleConfirmClick(formEl: FormInstance | undefined) {
     // console.log('submit!',valid,formData)
     if (valid) {
       if(formData.newPassword!==formData.confirmPassword){
-        alert('两次密码不一致')
+        // alert('两次密码不一致')
+        ElMessage.warning('两次密码不一致')
         return
       }
       if(formData.newPassword==formData.oldPassword){
-          alert('新老密码一致，请重新修改')
+          // alert('新老密码一致，请重新修改')
+          ElMessage.warning('新老密码一致，请重新修改')
           return
       }
-      alert('密码一致，提交修改，并退出')
-      // await clickConfirmBtn()
+      // alert('密码一致，提交修改，并退出')
+      // 从本地取userInfo
+      const userInfo = {
+        password: formData.oldPassword,
+        newPassword: formData.newPassword
+      }
+      console.log('userInfo',userInfo)
+      // 重新定义一个修改密码的方法
+      // const res = await systemStore.editPageDataAction("users/update",userInfo.id,userInfo)
+      const res = await systemMenuStore.changePasswordAction(userInfo)
+      console.log('修改结果',res)
+      if(res.code==0){
+        ElMessage.success(res.message)
+        // 清除本地信息
+        localCache.clearCache()
+        setTimeout(() => {
+        // 刷新页面
+          window.location.reload()
+        },1000)
+      }else{
+        console.log("res",res)
+        ElMessage.error(res.message)
+      }
     } else {
       console.log('error submit!')
+      ElMessage.error('表单验证失败!')
       return false
     }
   })

@@ -29,9 +29,9 @@
         <pageTags :tabConfig="tabConfig" :tabList="tabList">
           <template #user>
             <lili-form :modalConfig="modalConfig" ref="liliFormRef">
-              <template #footer>
-                  <button class="el-button el-button--primary" @click="changePassword">修改密码</button>
-              </template>
+              <!-- <template #footer>
+                  <button class="el-button el-button--primary" @click="changePassword(liliFormRef)">修改密码</button>
+              </template> -->
             </lili-form>
           </template>
         </pageTags>
@@ -115,18 +115,4 @@ const goUserInfo = () => {
   drawerRef.value?.setDialogVisible()
 }
 
-
-const changePassword = () => {
-  console.log('点击了修改密码',liliFormRef.value.handleConfirmClick(liliFormRef.value.ruleFormRef))
-  // if (!formEl) return
-  // formEl.validate(async (valid) => {
-  //   if (valid) {
-  //     console.log('submit!')
-  //     await clickConfirmBtn()
-  //   } else {
-  //     console.log('error submit!')
-  //     return false
-  //   }
-  // })
-}
 </script>
