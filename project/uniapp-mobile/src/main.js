@@ -3,16 +3,11 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import 'virtual:uno.css';
 import tabBar from '@/components/tabBar.vue';
-import Vant from 'vant';
-import 'vant/lib/index.css';
-import { Lazyload } from 'vant';
+
 const app = createSSRApp(App);
 
 app.component('TabBar', tabBar);
-app.use(Vant);
-  app.use(Lazyload, {
-    lazyComponent: true,
-  });
+
 const pinia = createPinia();
 
 app.use(pinia);
