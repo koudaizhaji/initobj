@@ -1,64 +1,23 @@
 <template>
   <view class="form">
-    <uni-forms
-      ref="forms"
-      :value="formData"
-      :rules="rules"
-      validate-trigger="bind"
-      err-show-type="undertext"
-    >
+    <uni-forms ref="forms" :value="formData" :rules="rules" validate-trigger="bind" err-show-type="undertext">
       <!-- 信息录入区 -->
-      <uni-group
-        title="基础订单录入"
-        top="0"
-      >
-        <uni-forms-item
-          name="name"
-          required
-          label="学生姓名"
-        >
-          <uni-easyinput
-            v-model="formData.name"
-            type="text"
-            placeholder-style="color: #808080"
-            :input-border="true"
-            placeholder="请输入学生姓名"
-          />
+      <uni-group title="基础订单录入" top="0">
+        <uni-forms-item name="name" required label="学生姓名">
+          <uni-easyinput v-model="formData.name" type="text" placeholder-style="color: #808080" :input-border="true"
+            placeholder="请输入学生姓名" />
         </uni-forms-item>
 
-        <uni-forms-item
-          required
-          name="joinData"
-          label="报名日期"
-        >
-          <uni-datetime-picker
-            v-model="formData.joinData"
-            timestamp
-          />
+        <uni-forms-item required name="joinData" label="报名日期">
+          <uni-datetime-picker v-model="formData.joinData" timestamp />
         </uni-forms-item>
 
-        <uni-forms-item
-          name="joinField"
-          required
-          label="报名专业"
-        >
-          <uni-data-select
-            v-model="formData.joinField"
-            :localdata="fieldList"
-            @change="changeField"
-          />
+        <uni-forms-item name="joinField" required label="报名专业">
+          <uni-data-select v-model="formData.joinField" :localdata="fieldList" @change="changeField" />
         </uni-forms-item>
 
-        <uni-forms-item
-          name="source"
-          required
-          label="订单来源"
-        >
-          <uni-data-select
-            v-model="formData.source"
-            :localdata="source"
-            @change="changeField"
-          />
+        <uni-forms-item name="source" required label="订单来源">
+          <uni-data-select v-model="formData.source" :localdata="source" @change="changeField" />
           <!-- <uni-easyinput
             v-model="formData.source"
             type="text"
@@ -68,70 +27,29 @@
           /> -->
         </uni-forms-item>
 
-        <uni-forms-item
-          name="schoolType"
-          required
-          label="学习类型"
-        >
-          <uni-data-select
-            v-model="formData.schoolType"
-            :localdata="sTypeList"
-            @change="changeSchoolType"
-          />
+        <uni-forms-item name="schoolType" required label="学习类型">
+          <uni-data-select v-model="formData.schoolType" :localdata="sTypeList" @change="changeSchoolType" />
         </uni-forms-item>
-        <uni-forms-item
-          name="feeSum"
-          required
-          label="收费金额"
-        >
-          <uni-easyinput
-            v-model="formData.feeSum"
-            type="number"
-            placeholder-style="color: #808080"
-            :input-border="true"
-            placeholder="请输入数字"
-          />
+        <uni-forms-item name="feeSum" required label="收费金额">
+          <uni-easyinput v-model="formData.feeSum" type="number" placeholder-style="color: #808080" :input-border="true"
+            placeholder="请输入数字" />
         </uni-forms-item>
 
-        <uni-forms-item
-          name="teacher"
-          required
-          label="教务老师"
-        >
-          <uni-data-select
-            v-model="formData.teacher"
-            :localdata="teacherList"
-            @change="changeTeacher"
-          />
+        <uni-forms-item name="teacher" required label="教务老师">
+          <uni-data-select v-model="formData.teacher" :localdata="teacherList" @change="changeTeacher" />
         </uni-forms-item>
 
-        <uni-forms-item
-
-          name="overState"
-          required
-          label="结算情况"
-        >
-          <switch
-            :checked="formData.overState"
-            @change="change('checked', $event.detail.value)"
-          />
+        <uni-forms-item name="overState" required label="结算情况">
+          <switch :checked="formData.overState" @change="change('checked', $event.detail.value)" />
         </uni-forms-item>
       </uni-group>
 
       <!-- 校验区 -->
       <view class="w100% flex mb-20px">
-        <button
-          class="btnReset"
-          type="default"
-          @click="resetForm"
-        >
+        <button class="btnReset" type="default" @click="resetForm">
           重置
         </button>
-        <button
-          class="submitBtn"
-          type="primary"
-          @click="submitForm"
-        >
+        <button class="submitBtn" type="primary" @click="submitForm">
           提交
         </button>
       </view>

@@ -953,9 +953,12 @@ export default {
     color: #050505;
     word-wrap: normal;
     white-space: nowrap;
-
     &.selected {
       color: #f90;
+    }
+    text{
+      width:35upx;
+      background-color: green;
     }
   }
 
