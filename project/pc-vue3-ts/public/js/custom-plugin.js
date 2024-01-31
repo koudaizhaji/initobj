@@ -9,7 +9,7 @@ function customPlugin(hook, vm) {
           'Content-Type': 'application/json', // 根据实际情况设置请求头
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJhZG1pbiIsInN0YXR1cyI6MSwicm9sZV9pZCI6MSwiZ3JvdXBfaWQiOjIsImlhdCI6MTcwNTgxODA4MiwiZXhwIjoxNzM3MzU0MDgyfQ.iXYMt-e8mS9_gfcg8TDL7hSt5MWA2nd0LYfAfDJOAxA"
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           pageNum:1,
           pageSize:10,
           classId:2
@@ -27,7 +27,7 @@ function customPlugin(hook, vm) {
       });
 
     // 获取左侧目录结构数据
-    fetch("http://127.0.0.1:12345/pcadmin/set/markdownClass/list", {
+    fetch("http://127.0.0.1:12345/pcadmin/pcadmin/md/class/list", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // 根据实际情况设置请求头
@@ -92,7 +92,7 @@ function customPlugin(hook, vm) {
               });
           }
         });
-        
+
       });
 
     // // 获取右侧Markdown文件的标签数据

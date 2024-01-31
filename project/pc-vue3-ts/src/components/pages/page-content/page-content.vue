@@ -285,14 +285,7 @@ async function handleDeleteClick(id: number) {
 function handleEditClick(data: any) {
   emit('editClick', data)
 }
-// 父组件操作
-async function filterHandlerFn(value: string, row: any, column: TableColumnCtx<any>) {
-  // console.log('点击了表格的某个行', scope)
-  emit('filterMethod', value, row, column)
-  // const property = column['property']
-  // console.log('property', property, row[property], value)
-  // return row[property] === value
-}
+
 // 当前页面操作
 function pageFilterHandler(value: string, row: any, column: TableColumnCtx<any>) {
   // console.log('点击了表格的某个行', scope)

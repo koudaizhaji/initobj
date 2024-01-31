@@ -4,13 +4,13 @@ export const articleConfig: PageModalConfigType = {
   pageName: 'md',
   pageUrl: {
     rootPath: 'pcadmin',
-    pageName: 'set',
-    handleName:"markdown/add"
+    pageName: 'md',
+    handleName: 'class/add'
   },
-  editUrl:{
+  editUrl: {
     rootPath: 'pcadmin',
-    pageName: 'set',
-    handleName:"/markdownClass/list"
+    pageName: 'md',
+    handleName: '/class/list'
   },
   formItems: [
     {
@@ -23,7 +23,7 @@ export const articleConfig: PageModalConfigType = {
       prop: 'desc',
       type: 'input',
       label: '文章简介',
-      placeholder: '请输入文章简介',
+      placeholder: '请输入文章简介'
     },
     {
       prop: 'classId',
@@ -34,4 +34,3 @@ export const articleConfig: PageModalConfigType = {
     }
   ]
 }
-

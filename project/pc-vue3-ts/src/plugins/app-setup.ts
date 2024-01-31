@@ -13,15 +13,20 @@ import '../styles/index.less'
 // import App from '../App.vue'
 import router from '../routers'
 import store from '../stores'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
 
 // svg-icons注册导入，将svg图转icon
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/public/svg-icon/index.vue'
 import type { App } from 'vue'
 
+function useTable (app: App) {
+  app.use(VXETable)
+}
 export default function appSetup(app: App): void {
   app.component('svg-icon', SvgIcon)
-
+  app.use(useTable)
   app.use(store)
 
   app.use(router)

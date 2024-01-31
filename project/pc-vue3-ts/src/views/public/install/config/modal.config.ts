@@ -21,7 +21,7 @@ const modalConfig: PageModalConfigType = {
       // disabled: true
     },
     {
-      prop: 'parent_id',
+      prop: 'parentId',
       type: 'input',
       label: '父级菜单选择'
     },

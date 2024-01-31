@@ -4,25 +4,26 @@
  * @Description: markdown模块前端接口
  */
 import liliRequest from '@/services'
-// 添加markdown
-export function addMd(formdata: object) {
+// 添加md的分类
+export function addMdClass(formdata: object) {
   return liliRequest.post({
-    url: '/pcadmin/set/markdown/add',
+    url: '/pcadmin/md/class/add',
     data: formdata
   })
 }
 
-// 添加md的分类
-export function addMdClass(formdata: object) {
+// 添加markdown
+export function addMd(formdata: object) {
   return liliRequest.post({
-    url: '/pcadmin/set/markdownClass/add',
+    url: '/pcadmin/md/article/add',
     data: formdata
   })
 }
+
 // 查询md的分类
 export function findMdClass(pageNum: string, pageSize: string) {
   return liliRequest.post({
-    url: '/pcadmin/set/markdownClass/list',
+    url: '/pcadmin/md/class/list',
     data: {
       pageNum,
       pageSize
@@ -33,7 +34,7 @@ export function findMdClass(pageNum: string, pageSize: string) {
 // 查询md内容列表
 export function findMdListById(pageNum: string, pageSize: string, classId: string) {
   return liliRequest.post({
-    url: '/pcadmin/set/markdown/list',
+    url: '/pcadmin/md/article/list',
     data: {
       pageNum,
       pageSize,

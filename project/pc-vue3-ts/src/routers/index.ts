@@ -52,7 +52,7 @@ const router = createRouter({
     {
       path: '/admin/install',
       name: 'install',
-      component: () => import('../views/public/install/home.vue')
+      component: () => import('../views/public/install/install.vue')
     },
     {
       path: '/md/read',
@@ -90,21 +90,18 @@ export function addRoutesWithMenu(menus: any) {
 
 router.beforeEach((to, from, next) => {
   const token = localCache.getCache(LOGIN_TOKEN)
-
   // console.log('to.path:', to.path);
-
   if (to.path !== '/login' && !token) {
     console.log('Not on login page')
     // 仅当未登录时才重定向到登录页
     return next('/login')
   }
-  // console.log('1111111',to.path,firstMenu,Object.keys(firstMenu).includes(to.path))
+  console.log('1111111', firstMenu[to.path], Object.keys(firstMenu).includes(to.path))
   if (Object.keys(firstMenu).includes(to.path)) {
     return next(firstMenu[to.path])
   }
-
   // 如果已经在登录页，正常导航
-  console.log('Already on login page, proceeding with navigation')
+  // console.log('Already on login page, proceeding with navigation')
   return next()
 })
 

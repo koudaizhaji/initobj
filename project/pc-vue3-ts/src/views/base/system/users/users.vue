@@ -1,13 +1,13 @@
 <template>
   <div class="user">
     <pageSearch
-      :search-config="searchConfig"
+      :searchConfig="searchConfig"
       @query-click="handleQueryClick"
       @reset-click="handleResetClick"
       @exp-click="handleExportExcel"
     />
     <pageContent
-      :content-config="contentConfig"
+      :contentConfig="contentConfig"
       ref="contentRef"
       @new-click="handleNewDataClick"
       @edit-click="handleEditDataClick"
@@ -43,7 +43,7 @@
       </template>
     </pageContent>
     <!-- 弹窗 -->
-    <pageModal :modal-config="modalConfig" ref="modalRef" />
+    <pageModal :modalConfig="modalConfig" ref="modalRef" />
   </div>
 </template>
 

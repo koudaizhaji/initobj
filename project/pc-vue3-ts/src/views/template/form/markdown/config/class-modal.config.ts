@@ -5,11 +5,15 @@ export const ClassConfig: PageModalConfigType = {
   pageName: 'class',
   pageUrl: {
     rootPath: 'pcadmin',
-    pageName: 'set/markdownClass'
+    pageName: 'md/class'
+  },
+  editUrl: {
+    rootPath: 'pcadmin',
+    pageName: 'md/class'
   },
   formItems: [
     {
-      prop: 'title',
+      prop: 'name',
       type: 'input',
       label: '分类名称',
       placeholder: '请输入分类名称'
@@ -18,7 +22,7 @@ export const ClassConfig: PageModalConfigType = {
       prop: 'desc',
       type: 'input',
       label: '分类描述',
-      placeholder: '请输入分类描述',
+      placeholder: '请输入分类描述'
     }
   ]
 }

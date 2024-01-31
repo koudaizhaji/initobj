@@ -11,7 +11,7 @@ function customPlugin(hook, vm) {
             }
         });
         // 获取左侧目录结构数据
-        const responseDirectory = await fetch('http://127.0.0.1:12345/pcadmin/set/markdownClass/list', {
+        const responseDirectory = await fetch('http://127.0.0.1:12345/pcadmin/pcadmin/md/class/list', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json', // 根据实际情况设置请求头
